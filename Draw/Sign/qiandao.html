@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+	<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<!--<script src="js/iscroll.js"></script>-->
+
+	<link rel="stylesheet" href="css/qiandao.css">
+	<script src="js/jquery-1.11.0.min.js"></script>
+	<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+	<title>管理员后台</title>
+</head>
+<style>
+	ul li div {
+		height: 4rem;
+		line-height: 4rem;
+		display: flex;
+		position: relative;
+	}
+
+	li div img {
+		height: 3rem;
+		width: 3rem;
+		max-width: 10%;
+		border-radius: 50%;
+		/*position: absolute;*/
+		margin-top:0.5rem;
+		/*vertical-align: middle;*/
+		position: absolute;
+		left: 1rem;
+	}
+	li div span{
+		display: inline-block;
+		height: 4rem;
+		line-height: 4rem;
+		margin-left: 5px;
+	}
+	li div .nickname{
+		max-width: 20%;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		position: absolute;
+		left: 4rem;
+
+	}
+	li div .name{
+		max-width: 20%;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		position: absolute;
+		left: 8rem;
+
+	}
+	li div .company{
+		max-width: 30%;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		margin-right: 15px;
+		position: absolute;
+		right: 4rem;
+
+	}
+	li div .Dtype{
+		display: inline-block;
+		height: 3rem;
+		max-width: 20%;
+		margin-top: 0.5rem;
+		position: absolute;
+		right: 5px;
+
+	}
+	.dropdown-menu li a{
+		text-align: center;
+	}
+	.search{
+		height: 3rem;
+		line-height: 3rem;
+	}
+
+</style>
+
+<body>
+	<header>签到审核管理员后台界面</header>
+	<div class="search">
+		<form class="bs-example bs-example-form" role="form">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="input-group">
+						<input type="text" class="form-control" placeholder="请输入查询条件" id="searchI">
+						<div class="input-group-btn">
+							<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+								查询条件
+								<span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu pull-right">
+								<li><a>姓名</a></li>
+								<li class="divider"></li>
+								<li><a>手机号</a></li>
+								<li class="divider"></li>
+								<li><a>公司名称</a></li>
+								<li class="divider"></li>
+								<li><a>已审核</a></li>
+                                <li class="divider"></li>
+                                <li><a>未审核</a></li>
+							</ul>
+						</div><!-- /btn-group -->
+					</div><!-- /input-group -->
+				</div><!-- /.col-lg-6 -->
+			</div><!-- /.row -->
+		</form>
+	</div>
+	<div id="wrapper">
+		<div class="scroller">
+			<ul class='push' style="height:600px;overflow-y:scroll;">
+
+			</ul>
+
+		</div>
+	</div>
+	<footer>中集冷云（北京）供应链管理有限公司</footer>
+	<script>
+		$(function () { // 初始化内容
+			a();
+			var username, company, telphone,is_check;
+
+			$(".row .dropdown-menu li a").click(function () {
+
+				if ($(this).text() == "姓名") {
+					username = $("#searchI").val();
+					if(username==''){
+						alert("查询条件不能为空");
+						return false;
+					}
+					telphone = '';
+					company = '';
+					is_check='';
+				} else if ($(this).text() == "手机号") {
+					telphone = $("#searchI").val();
+					if(telphone==''){
+						alert("查询条件不能为空");
+						return false;
+					}
+					username = '';
+					company = '';
+					is_check='';
+				}else if ($(this).text() == "已审核") {
+					telphone = '';
+					username = '';
+					company = '';
+					is_check='1';
+				}else if ($(this).text() == "未审核") {
+					window.location.reload();
+				}else {
+					company = $("#searchI").val();
+					if(company==''){
+						alert("查询条件不能为空");
+						return false;
+					}
+					username = '';
+					telphone = '';
+					is_check='';
+				}
+
+				a()
+			})
+
+			function a() {
+				$(".push").html('');
+				$.ajax({
+					type: "post",
+					url: "http://www.zjcoldcloud.com/weixin_lucky/admin_list.php",
+					data: {
+						username: username,
+						company: company,
+						telphone: telphone,
+						is_check:is_check
+					},
+					dataType: "JSON",
+					success: function (res) {
+						console.log(res+", "+res.data.length+"人")
+						$('#searchI').val('');
+						var str = '';
+						jQuery.each(res.data, function (i, val) {
+							var select_str='';
+							var _ischeck=`${val.is_check}`;
+                            if(_ischeck=='1')
+                            {
+                            	select_str=`<select class="Dtype" idi=${val.id} disabled="disabled">
+								  <option value="1">通过</option>
+								</select>`;
+								}else{
+								select_str=`<select class="Dtype" idi=${val.id}>
+								 <option value="">待审核</option>
+								  <option value="1">通过</option>
+								  <option value="0">未通过</option>
+								</select>`;	
+								}
+							str =
+								`<li>
+								      <div>
+										<span class="id hide" ch=${val.sex} opid=${val.openid}>${val.id}</span>
+										<img src='${val.headimgurl}' />
+										<span class="nickname">${val.username}</span>
+										<span class="name">${val.telphone}</span>
+										<span class="company">${val.company}</span>
+										${select_str}
+								      </div>
+							        </li>`;
+
+							$(".push").append(str);
+
+						});
+
+					},
+
+				});
+			}
+	        function getNowFormatDate() {
+			    var date = new Date();
+			    var seperator1 = "-";
+			    var seperator2 = ":";
+			    var month = date.getMonth() + 1;
+			    var strDate = date.getDate();
+			    if (month >= 1 && month <= 9) {
+			        month = "0" + month;
+			    }
+			    if (strDate >= 0 && strDate <= 9) {
+			        strDate = "0" + strDate;
+			    }
+			    var currentdate = date.getFullYear() + seperator1 + month + seperator1 + strDate
+			            + " " + date.getHours() + seperator2 + date.getMinutes()
+			            + seperator2 + date.getSeconds();
+			    return currentdate;
+			}
+			function b() {
+			    	$("body").on("change","select",function(){
+			    		if($(this).val()!=''){
+			    		    var is_check=$(this).val();
+					        var _id=$(this).attr('idi');
+					        var sex='';
+					        if($(this).parents('div').children('.id').attr('ch')=='男'){
+					        	sex='先生';
+					        }else{
+					        	sex='女士';
+					        }
+					       var _openid=$(this).parents('div').children('.id').attr('opid');
+					       var xm=$(this).parents('div').children(".nickname").text();
+					       var xmz= xm.substring(0,1);
+					       var nc=xmz+sex;
+						   var yaoqingtime=getNowFormatDate();
+						    console.log(yaoqingtime);//2014-06-18 10:33:24
+					       var _remark="尊敬的"+nc+"，我公司将于2018年10月31日14时00分开始举办客户交流会，地点:湖南·长沙世纪金源大酒店三楼首长接见厅,我们诚邀您出席。您的光临将是我们极大的荣幸，您的邀请码为："+_id+"。接待人员的手机号码为:15901282414，您有需要随时打电话联系我们";
+		                    $.ajax({
+		                        type: "post",
+		                        url: "http://www.zjcoldcloud.com/weixin_lucky/admin_check.php",
+		                        data: {
+		                            id:_id,
+		                            is_check:is_check
+		                        },
+		                        dataType: "JSON",
+		                        success: function (res) {
+		                            $.ajax({
+		                            	type:"post",
+		                            	url:"http://www.ccsc58.cc/weixinnew/Push_message.php",
+		                            	data:{
+		                            		first:"欢迎您,参加本次中集冷云客户交流会",
+		                            		keyword1:nc,
+		                            		keyword2:yaoqingtime,
+		                            		keyword3:"中集冷云",
+		                            		remark:_remark,
+		                            		openid:_openid
+		                            	},
+		                            	dataType:"JSON",
+		                                success:function(res){
+		                                	console.log('消息推送成功');
+		                                	 window.location.href='qiandao.html';
+		                                },
+		                                error:function(err){
+		                                	console.log(err);
+		                                	 window.location.href='qiandao.html';
+		                                }
+		                            });
+		
+		                        },
+
+                    });
+			    		}
+		
+                })
+
+            }
+             b()
+
+		});
+	</script>
+</body>
+
+</html>

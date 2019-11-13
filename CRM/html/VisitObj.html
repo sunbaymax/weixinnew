@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>拜访对象</title>
+		<link rel="stylesheet" href="../css/index.css" type="text/css">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+	</head>
+	<style>
+		.content .bar {
+			width: 100%;
+			height: 4rem;
+			line-height: 4rem;
+			background: #FFFFFF;
+			display: flex;
+		}
+		
+		.content .bar div {
+			width: 50%;
+			height: 4rem;
+			line-height: 4rem;
+			text-align: center;
+			color: #666666;
+		}
+		
+		.content .bar .hover {
+			color: #333333;
+			!important;
+		}
+		
+		.bar div {
+			position: relative;
+		}
+		
+		.hover_img {
+			display: inline-block;
+			width: 1.25rem;
+			height: 0.625rem;
+			position: absolute;
+			bottom: 0;
+			left: 46%;
+		}
+		
+		.query {
+			width: 100%;
+			height: 4.6rem;
+			line-height: 4.6rem;
+			background: #FFFFFF;
+		}
+		
+		.query div {
+			padding: 0 1.25rem;
+			box-sizing: border-box;
+			position: relative;
+		}
+		
+		.query div .input_key {
+			width: 100%;
+			height: 3rem;
+			margin-top: 0.5rem;
+			padding-left: 3rem;
+			border: 1px solid #ccc;
+			box-sizing: border-box;
+		}
+		
+		.query div .search_ok {
+			display: inline-block;
+			width: 1.6rem;
+			height: 1.6rem;
+			position: absolute;
+			top: 1.6rem;
+			left: 2.5rem;
+		}
+		
+		.reset {
+			/*display: inline-block;*/
+			width: 1rem;
+			height: 1rem;
+			position: absolute;
+			top: 1.5rem;
+			right: 2.5rem;
+		}
+		
+		.companys {
+			margin-top: 1rem;
+			width: 100%;
+			height: auto;
+			padding: 0 1.25rem;
+			box-sizing: border-box;
+		}
+		
+		.companys .Target_customers-content,
+		.Click_account-content {
+			background: #FFFFFF;
+		}
+		
+		ul li {
+			padding: 0 0.83rem;
+			box-sizing: border-box;
+			height: 4.6rem;
+			line-height: 4.6rem;
+			border-bottom: 1px solid #E5E5E5;
+			cursor: pointer;
+			display: flex;
+		}
+		ul li div:first-child{
+			width: 80%;
+			height: 4.6rem;
+			line-height: 4.6rem;
+		}
+		ul li div:last-child{
+			width: 20%;
+			height: 4.6rem;
+			line-height: 4.6rem;
+		}
+		.edit-img{
+			display:block ;
+			height: 1.6rem;
+			width: 1.6rem;
+			margin-top: 1.5rem;
+			margin-left: 1.5rem;
+		}
+	</style>
+
+	<body>
+		<div class="content">
+			<div class="content_body">
+				<!--<div class="title">
+					<a href="VisitRecord.php" class="return"><img src="../img/return.png" class="return_img" alt="返回上一页" /></a>
+					<span>拜访对象</span>
+				</div>-->
+
+				<div class="bar">
+					<div class="Target_customers hover">目标客户<img src="../img/choose.png" class="hover_img" /></div>
+					<div class="Click_account">账号客户<img src="../img/choose.png" class="hide" /></div>
+				</div>
+
+				<div class="query">
+					<div>
+						<input type="text" id="search" placeholder="客户搜索" class="input_key" />
+						<img src="../img/search.png" alt="查询" class="search_ok" />
+						<img src="../img/delete.png" class="reset hide" alt="重置" />
+					</div>
+				</div>
+
+				<div class="companys">
+					<div class="Target_customers-content" id="Target_customers-push">
+						<!--目标客户-->
+						<ul>
+							<!--<li id="332" idi="351">
+								<div>测试用1</div>
+								<div><img src="../img/bianji@2x.png" class="edit-img" /></div>
+							</li>-->
+						</ul>
+					</div>
+					<div class="Click_account-content hide" id="Click_account-push">
+						<!--账号客户-->
+						<ul>
+							<!--<li>国药控股有限公司</li>-->
+						</ul>
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<div id="success_mao">
+			<div class="success_box" style="display:block;">
+				<div class="register_right">
+					<img src="../img/ku.png" />
+				</div>
+				<div class="success_information">请使用6-20位字母及数字组合作为用户名</div>
+				<form action="">
+					<input type="button" value="确定" />
+				</form>
+			</div>
+		</div>
+		<script src="../js/jquery-1.11.0.js" type="text/javascript"></script>
+		<script src="../js/toastr.min.js" type="text/javascript"></script>
+		<script src="../js/index.js" type="text/javascript"></script>
+		<script>
+			$(document).ready(function() {
+				//目标客户
+				var zhanghu = 1; //1.默认是目标客户，2.账号客户
+				$('.Target_customers').on("click", function() {
+					$(this).addClass("hover");
+					$(this).children('img').addClass("hover_img");
+					$(this).siblings().removeClass("hover");
+					$(this).siblings().children('img').removeClass("hover_img").addClass('hide');
+					$('.Target_customers-content').show();
+					$('#Click_account-push').hide();
+					zhanghu = 1;
+					Targetinit();
+				});
+				//账号客户
+				$('.Click_account').on("click", function() {
+					$(this).children('img').addClass("hover_img");
+					$(this).addClass("hover");
+					$(this).siblings().removeClass("hover");
+					$(this).siblings().children('img').removeClass("hover_img").addClass('hide');
+					//					$('#Click_account-push').show();
+					//					$('.Target_customers-content').hide();
+					zhanghu = 2;
+					Accountinit()
+				})
+				//当input有查询条件
+				$(".input_key").on("input", function(e) {
+					if(e.delegateTarget.value.length == 0) {
+						$(".reset").fadeOut(1000);
+					} else {
+						$(".reset").show(500);
+					}
+				});
+				//清除input查询条件
+				$('.reset').on("click", function() {
+					$(".input_key").val("");
+					$(".reset").fadeOut();
+					if(zhanghu == 1) {
+						Targetinit()
+					} else {
+						Accountinit()
+					}
+				})
+				Targetinit();
+				//目标账户
+				function Targetinit() {
+					var _userinfo = JSON.parse(localStorage.getItem("userInfo"));
+					var _Knight = localStorage.getItem("Knight");
+					$('#Target_customers-push ul').html('');
+					$.ajax({
+						url: "http://out.ccsc58.cc/DATA_PORT_CRM_1.01/Visiting_object.php",
+						type: "post",
+						data: {
+							State: "object",
+							Knight: _Knight
+						},
+						dataType: "json",
+						success: function(res) {
+							if(res.code == '400') {
+								myPlay("暂无数据");
+								return false;
+							}
+							$.each(res.data, function(key, value) {
+								let str = ` <li id='${value.Id}' idi='${value.InfoId}'>
+								<div>${value.Company}</div>
+								<div><img src="../img/bianji@2x.png" class="edit-img" /></div>
+							</li>`;
+								$('#Target_customers-push ul').append(str);
+							});
+							//							
+						},
+						error: function(err) {
+							console.log(err)
+						}
+					})
+				}
+				//账号客户
+				function Accountinit() {
+					var _userinfo = JSON.parse(localStorage.getItem("userInfo"));
+					var _TrueName = _userinfo.TrueName;
+					$('#Target_customers-push ul').html('');
+					$.ajax({
+						url: "http://out.ccsc58.cc/DATA_PORT_CRM_1.01/Account_visit.php",
+						type: "post",
+						data: {
+							State: "object",
+							TrueName: _TrueName
+						},
+						dataType: "json",
+						success: function(res) {
+							if(res.code == '400') {
+								myPlay("暂无数据");
+								return false;
+							}
+							$.each(res.data, function(key, value) {
+								let str = `<li id='${value.id}' idi='${value.AccountNumber}'>${value.UnitName}</li>`;
+								$('#Target_customers-push ul').append(str);
+							});
+							//							
+						},
+						error: function(err) {
+							console.log(err)
+						}
+					})
+				}
+				$('body').on("click", "#Target_customers-push ul li", function() {
+				
+					var _CustomerType = '';
+					if(zhanghu == 1) {
+						_CustomerType = 'TargetCustomer';
+					} else {
+						_CustomerType = 'AccountCustomer'
+					}
+					var choose_company = {
+						CustomerType: _CustomerType,
+						company: $(this).children('div:first-child').text(),
+						Id: $(this).attr('id'),
+						InfoId: $(this).attr('idi'),
+					}
+					localStorage.setItem("choose_company", JSON.stringify(choose_company));
+					location.href = 'VisitRecord.php';
+				})
+				$(".query .search_ok").on("click", function() {
+					var inputvulue = $('.input_key').val()
+					Search(inputvulue);
+				})
+
+				function Search(key) {
+					var _userinfo = JSON.parse(localStorage.getItem("userInfo"));
+					var _Knight = localStorage.getItem("Knight");
+					$('#Target_customers-push ul').html('');
+					if(zhanghu == 1) {
+						$.ajax({
+							url: "http://out.ccsc58.cc/DATA_PORT_CRM_1.01/Visiting_object.php",
+							type: "POST",
+							data: {
+								State: "object",
+								Knight: _Knight,
+								Company: key
+							},
+							dataType: "JSON",
+							success: function(res) {
+								if(res.code == 200) {
+									$.each(res.data, function(key, value) {
+										let str = `<li id='${value.Id}' idi='${value.InfoId}'>
+								<div>${value.Company}</div>
+								<div><img src="../img/bianji@2x.png" class="edit-img" /></div>
+							</li>`;
+										$('#Target_customers-push ul').append(str);
+									});
+								} else {
+									myPlay(res.msg);
+									Targetinit();
+
+								}
+
+							},
+							error: function(err) {
+								console.log(err)
+							}
+						})
+					} else {
+						$.ajax({
+							url: "http://out.ccsc58.cc/DATA_PORT_CRM_1.01/Account_visit.php",
+							type: "POST",
+							data: {
+								State: "object",
+								TrueName: _userinfo.TrueName,
+								Company: key
+							},
+							dataType: "JSON",
+							success: function(res) {
+								if(res.code == 200) {
+									$.each(res.data, function(key, value) {
+										let str = `<li id='${value.id}' idi='${value.AccountNumber}'>${value.UnitName}</li>`;
+										$('#Target_customers-push ul').append(str);
+									});
+								} else {
+									myPlay(res.msg);
+									Accountinit();
+
+								}
+
+							},
+							error: function(err) {
+								console.log(err)
+							}
+						})
+					}
+
+				}
+
+			})
+		</script>
+	</body>
+
+</html>

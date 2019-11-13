@@ -1,0 +1,57 @@
+body,
+div,
+ul,
+li,
+label,
+nav,
+form,
+p,
+span {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+
+a,
+img {
+	border: 0;
+	text-decoration: underline;
+}
+
+
+input[type=button] {
+	border: 1px solid #d2d8d8;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	-ms-appearance: none;
+	-o-appearance: none;
+	appearance: none;
+}
+
+body {
+	font-family: "微软雅黑"!important;
+}
+
+body,
+header,
+div,
+p,
+span,
+ul,
+li,
+dl,
+dd,
+dt,
+ol,
+textarea,
+
+img {
+	margin: 0px;
+	padding: 0px;
+}
+
+a,
+img {
+	border: 0;
+}
+

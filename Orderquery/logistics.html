@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<title>中集冷云运单查询</title>
+		<link rel="stylesheet" href="css/logistics.css">
+	</head>
+	<style>
+		body {
+			background: #C5E5FE;
+		}
+		
+		#header {
+			width: 100%;
+			border-bottom: 2px solid #C0C0C0;
+			position: relative;
+			background: none;
+		}
+		
+		.return {
+			position: absolute;
+			top: 0.2rem;
+			left: 0.5rem;
+			display: inline-block;
+			width: 2rem;
+			height: 2rem;
+			line-height: 2.2rem;
+			background: url(img/fanhui.png) no-repeat;
+			background-size: 80% 80%;
+		}
+		
+		#header span {
+			color: #004B8F;
+			font-size: 1.0rem;
+			font-family: 微软雅黑;
+		}
+		
+		.chinese {
+			position: absolute;
+			top: 0.3rem;
+			right: 0.5rem;
+			display: inline-block;
+			width: 1.6rem;
+			height: 1.6rem;
+			line-height: 2.2rem;
+			background: url(img/phone.png) no-repeat;
+			background-size: 80% 80%;
+		}
+		
+		.icon1 {
+			width: 0.65rem;
+			height: 0.65rem;
+			position: absolute;
+			left: 0.67rem;
+			background: #c5e5fe;
+		}
+		
+		#details {
+			margin-top: 10px;
+			float: right;
+		}
+		
+		.noimg {
+			width: 100%;
+			height: 300px;
+			text-align: center;
+			margin-top: 2rem;
+		}
+	</style>
+
+	<body>
+		<div id="header">
+			<span class="return"></span>
+			<span class="title">订单详情</span>
+			<a class="chinese" href="tel:400-6507168"></a>
+		</div>
+
+		<div class="track-rcol">
+			<div class="Orderdetail">
+				<div class="OrderID">
+					<span>订单号：</span>
+					<span class="ddh"></span>
+				</div>
+				<span id="details">详情<img src="img/details.png" alt=""></span>
+
+				<div class="clear"></div>
+			</div>
+			<div class="detailsGoods">
+				<div class="noimg kanbujian"></div>
+			</div>
+
+		</div>
+		<div class="track-rcol2">
+
+		</div>
+		<div class="track-rcol-secound">
+
+		</div>
+		<script src="../bangding/js/jquery-2.1.0.js"></script>
+		<script src="js/logistics.js"></script>
+
+		<script>
+			(function(doc, win) {
+				var docEl = doc.documentElement,
+					resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+					recalc = function() {
+						var clientWidth = docEl.clientWidth;
+						if(!clientWidth) return;
+						docEl.style.fontSize = 20 * (clientWidth / 320) + 'px';
+					};
+
+				if(!doc.addEventListener) return;
+				win.addEventListener(resizeEvt, recalc, false);
+				doc.addEventListener('DOMContentLoaded', recalc, false);
+			})(document, window);
+		</script>
+
+	</body>
+	<!--<body>
+		<div id="header">
+			<span class="return"></span>
+			<span class="title">订单详情</span>
+			<a class="chinese" href="tel:400-6507168"></a>
+		</div>
+
+		<div class="track-rcol">
+			<div class="Orderdetail">
+				<div class="OrderID">
+					<span>订单号：</span>
+					<span class="ddh">100001997504</span>
+				</div>
+				<span id="details">详情<img src="img/details.png" alt=""></span>
+
+				<div class="clear"></div>
+			</div>
+			<div class="detailsGoods">
+				<p><span>货物名称:</span>多美素</p>
+				<p><span>始发城市:</span>石家庄</p>
+				<p><span>目的城市:</span>太原</p>
+				<p><span>件数:</span>1</p>
+				<p><span>温度计使用:</span>使用</p>
+				<p><span>温度计区间:</span>2℃~8℃</p>
+				<p><span>实际重量:</span>45</p>
+				<p><span>计费重量:</span>45</p>
+				<p><span>签收人:</span>张玲艳</p>
+				<p><span>签收时间:</span>2019-01-27</p>
+				<p><span>委托时间:</span>2019-01-26</p>
+			</div>
+		</div>
+		<div class="track-rcol2">
+			<div class="track-list"><img class="node-icon icon1 " src="img/huise.png" alt="">
+				<div class="left" style="border-left: 1px solid rgba(153, 153, 153, 0.6); color: rgb(255, 149, 0);">
+					<div class="dateAndTime" style="color: rgb(255, 149, 0);">01-26</div>
+					<div class="dateAndTime times" style="color: rgb(255, 149, 0);">10:29</div>
+				</div>
+				<div class="stateAndPlace  ml36" style="color: rgb(255, 149, 0);">
+					<div class="place" style="color: rgb(255, 149, 0);">石家庄</div>
+					<div class="state" style="color: rgb(255, 149, 0);">入库</div>
+				</div>
+				<div class="claar" style="color: rgb(255, 149, 0);"></div>
+			</div>
+			<div class="track-list">
+				<div class="left">
+					<div class="dateAndTime ">01-26</div>
+					<div class="dateAndTime  times">11:10</div>
+				</div><img class="node-icon icon1 " src="img/yuanquan.png" alt="">
+				<div class="stateAndPlace  ml36">
+					<div class="place ">石家庄</div>
+					<div class="state old">取件</div>
+				</div>
+				<div class="claar"></div>
+			</div>
+			<div class="track-list">
+				<div class="left">
+					<div class="dateAndTime">01-26</div>
+					<div class="dateAndTime times">13:46</div>
+				</div><img class="node-icon icon1 " src="img/huangse.png" alt="">
+				<div class="stateAndPlace  ml36">
+					<div class="place">石家庄</div>
+					<div class="state">出库</div>
+				</div>
+				<div class="claar"></div>
+			</div>
+			<div class="track-list" style="height: 40px;border-bottom: 1px dotted #555555;"><img class="node-icon icon1 " src="img/huise.png" alt="">
+				<div class="left sign_ok_h30" style="border-left:none;height: 30px;">
+					<div class="dateAndTime sign_ok_h30last">01-27</div>
+					<div class="dateAndTime times sign_ok_h30last">15:41</div>
+				</div>
+				<div class="stateAndPlace  ml36">
+					<div class="place">太原</div>
+					<div class="state">签收</div>
+				</div>
+				<div class="claar"></div>
+			</div>
+			
+            
+		</div>
+		<div class="track-rcol2 track-rcol-secound">
+			<h5>次晨达</h5>
+			<div class="track-list">
+				<div class="left">
+					<div class="dateAndTime">01-26</div>
+					<div class="dateAndTime times">13:46</div>
+				</div><img class="node-icon icon1 " src="img/huangse.png" alt="">
+				<div class="stateAndPlace  ml36">
+					<div class="place">【首都机场营业部】已收件</div>
+				</div>
+				<div class="claar"></div>
+			</div>
+			<div class="track-list">
+				<div class="left">
+					<div class="dateAndTime">01-26</div>
+					<div class="dateAndTime times">13:46</div>
+				</div><img class="node-icon icon1 " src="img/huangse.png" alt="">
+				<div class="stateAndPlace  ml36">
+					<div class="place">货物由【首都机场营业部】发往【石家庄运转中心】</div>
+				</div>
+				<div class="claar"></div>
+			</div>
+			
+		</div> -->
+
+</html>

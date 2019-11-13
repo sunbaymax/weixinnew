@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>CRM系统登录</title>
+		<link rel="stylesheet" href="css/toastr.min.css" type="text/css">
+		<link rel="stylesheet" href="css/index.css" type="text/css">
+		<link rel="stylesheet" href="css/login.css" type="text/css">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<meta name="format-detection" content="telephone=no">
+	</head>
+	<style>
+
+	</style>
+
+	<body>
+		<div class="content">
+			<div class="formdata">
+				<div class="formdataline">
+					<input type="text" class="Account" placeholder="账号" />
+				</div>
+				<div class="formdataline">
+					<input type="password" class="psw" placeholder="密码" />
+				</div>
+				<div class="formsessionpsd">
+					<input type="checkbox" id="remember">记住密码
+				</div>
+				<div class="formdataline btn-div">
+					<button class="login_ok">登录</button>
+				</div>
+			</div>
+		</div>
+		<div id="success_mao">
+			<div class="success_box" style="display:block;">
+				<div class="register_right">
+					<img src="../img/ku.png" />
+				</div>
+				<div class="success_information">请使用6-20位字母及数字组合作为用户名</div>
+				<form action="">
+					<input type="button" value="确定" />
+				</form>
+			</div>
+		</div>
+		<script src="js/jquery-1.11.0.js" type="text/javascript"></script>
+		<script src="js/toastr.min.js" type="text/javascript"></script>
+		<script src="js/index.js" type="text/javascript"></script>
+		<script>
+			$(document).ready(function() {
+
+				//				var wx = (function() {
+				//					return navigator.userAgent.toLowerCase().indexOf('micromessenger') !== -1
+				//				})();
+				//				if(!wx) {
+				//					document.head.innerHTML = '<title>抱歉，出错了</title><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0"><link rel="stylesheet" type="text/css" href="https://res.wx.qq.com/open/libs/weui/0.4.1/weui.css">';
+				//					document.body.innerHTML = '<div class="weui_msg"><div class="weui_icon_area"><i class="weui_icon_info weui_icon_msg"></i></div><div class="weui_text_area"><h4 class="weui_msg_title">请在微信客户端打开链接</h4></div></div>';
+				//				}
+				localStorage.clear();
+				if(getCookie('user') && getCookie('pswd')) {
+					$('.Account').val(getCookie('user'));
+					$('.psw').val(getCookie('pswd'));
+					$('#remember').attr("checked", 'checked');
+				}
+				$('.login_ok').on("click", function() {
+					$('body,html').animate({
+						scrollTop: 0
+					}, 1000);
+					var _userName = $(".Account").val();
+					var _password = $(".psw").val();
+					if(_userName == "" || _userName.length == 0) {
+						myPlay("用户名不能为空");
+						return false;
+					} else if(_password == "" || _password.length == 0) {
+						myPlay("密码不能为空");
+						return false;
+					} else {
+						checklogin(_userName, _password);
+					}
+
+				})
+
+				function checklogin(user, psd) {
+					$.ajax({
+						url: "http://out.ccsc58.cc/DATA_PORT_CRM_1.01/Login.php",
+						type: "post",
+						data: {
+							UserName: user,
+							UserPassWord: psd
+						},
+						dataType: "JSON",
+						success: function(res) {
+							console.log(res);
+							if(res.code == '200') {
+								toastr.success("登陆成功");
+								if($("#remember").is(':checked')) {
+									setCookie('user', user, 7); //保存帐号到cookie，有效期7天
+									setCookie('pswd', psd, 7); //保存密码到cookie，有效期7天
+								}
+								localStorage.setItem("userInfo", JSON.stringify(res.data));
+								localStorage.setItem("Knight", user);
+								setTimeout(function() {
+									location.href = "html/Person.html"
+								}, 1000);
+							} else if(res.code == '400') {
+								myPlay(res.msg);
+							} else {
+								myPlay("绑定失败，请重新输入用户名及密码");
+							}
+						},
+						error: function(err) {
+							myPlay("请检查您是否连接网络");
+						}
+					})
+				}
+				//设置cookie
+				function setCookie(name, value, day) {
+					var date = new Date();
+					date.setDate(date.getDate() + day);
+					document.cookie = name + '=' + value + ';expires=' + date;
+				};
+
+				function getCookie(name) {
+					var reg = RegExp(name + '=([^;]+)');
+					var arr = document.cookie.match(reg);
+					if(arr) {
+						return arr[1];
+					} else {
+						return '';
+					}
+				};
+				//删除cookie
+				function delCookie(name) {
+					setCookie(name, null, -1);
+				};
+				$('#remember').on("change", function() {
+					if(!$(this).is(':checked')) {
+						delCookie('user');
+						delCookie('pswd');
+					}
+				})
+				$("input").blur(function() {
+					$('body,html').animate({
+						scrollTop: 0
+					}, 500);
+				})
+			})
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,255 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<!--允许全屏-->
+		<meta content="yes" name="apple-mobile-web-app-capable" />
+		<meta content="yes" name="apple-touch-fullscreen" />
+		<meta content="telephone=no,email=no" name="format-detection" />
+		<meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width" />
+		<title>冰骑士评价</title>
+		<!--<link href="css/EvaluationOrder.debug.css" rel="stylesheet" type="text/css" />-->
+	</head>
+	<style>
+		html {
+			background: #eee;
+		}
+		
+		* {
+			padding: 0;
+			margin: 0;
+		}
+		
+		ol,
+		ul {
+			list-style: none;
+		}
+		
+		.order-list {
+			width: 100%;
+			font-family: myFirstFont;
+			padding-bottom: 70px;
+		}
+		
+		section {
+			width: 100%;
+			height: 150px;
+			background: #FFFFFF;
+		}
+		
+		.order-list-Below {
+			width: 92.5%;
+			padding-top: 30px;
+			position: relative;
+			margin: auto;
+			clear: both;
+		}
+		
+		.order-list-Below div {
+			display: flex;
+			height: 26px;
+			line-height: 26px;
+		}
+		
+		.order-list-Below h1 {
+			width: 20%;
+			text-align: center;
+			font-family: myFirstFont;
+			font-size: 14px;
+			color: #7E7E7E;
+			line-height: 26px;
+			height: 26px;
+			float: left;
+		}
+		
+		.order-list-Below ul {
+			width: 60%;
+			height: 26px;
+			line-height: 26px;
+			margin-top: 4px;
+			float: left;
+			padding-left: 15px;
+		}
+		
+		.order-list-Below span {
+			display: inline-block;
+			width: 20%;
+			padding-right: 0%;
+			text-align: left;
+			height: 26px;
+			line-height: 26px;
+			font-size: 13px;
+		}
+		
+		.order-list-Below ul li.on {
+			background: url(images/pic_start02.png) no-repeat left top;
+			background-size: 18px 18px;
+		}
+		
+		.order-list-Below ul li {
+			float: left;
+			width: 28px;
+			height: 17px;
+			background: url(images/pic_start03.png) no-repeat left top;
+			background-size: 18px 18px;
+		}
+		
+		.order-textbox {
+			margin-top: 10px;
+			width: 100%;
+			height: 230px;
+			background: #FFFFFF;
+		}
+		
+		.order-textbox textarea {
+			text-indent: 13px;
+			width: 100%;
+			height: 120px;
+			padding: 5px;
+			border: none;
+			border-top: 1px solid #bbb;
+			border-radius: 4px;
+			font-family: myFirstFont;
+			font-size: 13px;
+			color: #ccc;
+		}
+		
+		.order-textbox img {
+			width: 100px;
+			height: 100px;
+			margin-left: 2px;
+			border: 1px dashed #D7D7D7;
+		}
+		
+		* {
+			box-sizing: border-box;
+		}
+		
+		.order-button a {
+			position: fixed;
+			bottom: 20px;
+			margin: 0 4%;
+			display: block;
+			width: 92%;
+			height: 39px;
+			line-height: 39px;
+			background: #fff;
+			border: 1px solid #ff4d55;
+			border-radius: 4px;
+			color: #ff4d55;
+			font-size: 14px;
+			text-align: center;
+		}
+		
+		a {
+			text-decoration: none;
+		}
+	</style>
+
+	<body>
+
+		<div class="order-list">
+			<section>
+				<div class="order-list-Below">
+					<div style="width: 100%;">
+						<h1>物流服务</h1>
+						<ul class="wlfw">
+							<li></li>
+							<li></li>
+							<li></li>
+							<li></li>
+							<li></li>
+						</ul>
+						<span class="wen1"></span>
+					</div>
+					<div style="width: 100%;">
+						<h1>服务态度</h1>
+						<ul class="wltd">
+							<li></li>
+							<li></li>
+							<li></li>
+							<li></li>
+							<li></li>
+						</ul>
+						<span class="wen2"></span>
+					</div>
+					<div style="width: 100%;">
+						<h1>操作规范</h1>
+						<ul class="czgf">
+							<li></li>
+							<li></li>
+							<li></li>
+							<li></li>
+							<li></li>
+						</ul>
+						<span class="wen3"></span>
+					</div>
+				</div>
+			</section>
+			<div class="order-textbox">
+				<textarea placeholder="亲，您对冰骑士满意吗？你的评价会帮助我们提供优质的服务哦~"></textarea>
+				<div>
+					<img src="images/photol.png" />
+				</div>
+			</div>
+			<div class="order-button">
+				<a href="javascript:void(0);" class="tijiao">发表评论</a>
+			</div>
+		</div>
+		<script type="text/javascript" src="js/jquery-1.11.0.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$(".order-list-Below ul li").click(
+					function() {
+						var num = $(this).index() + 1;
+						var len = $(this).index();
+						var thats = $(this).parent(".order-list-Below ul").find("li");
+						if($(thats).eq(len).attr("class") == "on") {
+							if($(thats).eq(num).attr("class") == "on") {
+								$(thats).removeClass();
+								for(var i = 0; i < num; i++) {
+									$(thats).eq(i).addClass("on");
+								}
+							} else {
+								$(thats).removeClass();
+								for(var k = 0; k < len; k++) {
+									$(thats).eq(k).addClass("on");
+								}
+							}
+						} else {
+							$(thats).removeClass();
+							for(var j = 0; j < num; j++) {
+								$(thats).eq(j).addClass("on");
+							}
+						}
+						var nums = $(this).parent(".order-list-Below ul").find(".on");
+						console.log(nums.length);
+						if(nums.length == 1) {
+							$(this).parents().next('span').text("糟糕");
+						} else if(nums.length == 2) {
+							$(this).parents().next('span').text("新手吧");
+						} else if(nums.length == 3) {
+							$(this).parents().next('span').text("一般般");
+						} else if(nums.length == 4) {
+							$(this).parents().next('span').text("良好");
+						} else if(nums.length == 5) {
+							$(this).parents().next('span').text("非常棒");
+						}
+					}
+				);
+				$(".tijiao").on("click", function() {
+					var r = confirm("提交成功，感谢您的支持，是否退出！")
+					if(r == true) {
+						 WeixinJSBridge.call('closeWindow');  
+					} else {
+						window.location.href="index.html";
+					}
+				})
+
+			});
+		</script>
+
+	</body>
+
+</html>

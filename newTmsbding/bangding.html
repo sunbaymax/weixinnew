@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>手机号绑定</title>
+		<link rel="stylesheet" type="text/css" href="../css/index.css" />
+		<link rel="stylesheet" type="text/css" href="css/bangding.css" />
+	</head>
+	<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" src="js/jquery-2.1.0.js"></script>
+	<style>
+		.hong_box .phone {
+			padding: 0;
+		}
+	</style>
+
+	<body>
+		<form class="hong_box">
+			<p>手机号码绑定TMS</p>
+			<!--<input type="text" class="account" placeholder="请输入账号" />-->
+			<input type="text" class="phone" name="phone" placeholder="请输入手机号" />
+			<div class="button">确认提交</div>
+		</form>
+		<script type="text/javascript">
+			var _url = window.location.href;
+			var _openId = _url.match(/\?openId=\S+/)[0].replace("?openId=", "");
+			$(".button").on('click', function() {
+				var url = "http://www.ccsc58.com/json/03_00_tb_contact_openid.php";
+				var phone = $("input[name='phone']").val();
+				window.localStorage.setItem("phone", phone);
+				var messageCode = $("input[name='messageCode']").val();
+				var admin_permit = "zjly8888";
+				var reg = /^1[345789]\d{9}$/;
+				if($(".phone").val() == "") {
+					alert("手机号不能为空!");
+					return false;
+				} else if(!reg.test(phone)) {
+					alert("请输入正确格式的手机号!");
+					return false;
+				} else {
+					$.ajax({
+						url: "http://www.ccsc58.cc/zhanghaining/newTms/bind/index.html",
+						type: "post",
+						dataType: "JSON",
+						data: {
+							Phone: phone,
+							OpenId: _openId
+						},
+						success: function(data) {
+							console.log(data);
+							if(data.code == "200") {
+								alert('绑定成功,中集冷云会推送最新消息给您！');
+								window.location.href = "binding_ok.html";
+							} else {
+								alert(data.msg);
+							}
+
+						},
+						error: function() {
+							alert("网络错误！！");
+						}
+					});
+				}
+				$('input').blur(function(){
+					$('body,html').animate({
+							scrollTop: 0
+						}, 0);
+				})
+
+			});
+		</script>
+	</body>
+
+</html>

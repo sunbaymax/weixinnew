@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>个人中心</title>
+		<link rel="stylesheet" href="../css/index.css" />
+		<link rel="stylesheet" href="../css/toastr.min.css">
+		<link rel="shortcut icon" type="image/ico" href="/favicon.ico" />
+	</head>
+	<style>
+		.content {
+			width: 100%;
+			box-sizing: border-box;
+			height: auto;
+			border-top: 1px solid #E8E8E8;
+		}
+		
+		.content div {
+			width: 100%;
+			height: 45px;
+			line-height: 45px;
+			background: #FFFFFF;
+			border-bottom: 1px solid #E8E8E8;
+			position: relative;
+		}
+		
+		.content div a {
+			display: inline-block;
+			width: 100%;
+			height: 45px;
+			color: #000000;
+			text-decoration: none;
+		}
+		
+		.content div img:first-child {
+			display: inline-block;
+			height: 20px;
+			width: 20px;
+			margin-left: 15px;
+			vertical-align: middle;
+		}
+		
+		.content div span {
+			display: inline-block;
+			margin-left: 5px;
+			box-sizing: border-box;
+		}
+		
+		.jiantou {
+			/*display: inline-block;*/
+			height: 15px;
+			width: 15px;
+			transform: rotate(180deg);
+			/*vertical-align: middle;*/
+			position: absolute;
+			top: 15px;
+			right: 15px;
+		}
+	</style>
+
+	<body>
+		<nav>
+			<img src="../img/return.jpg" class="return" />
+			<span>个人中心</span>
+			<img src="../img/PersonalCenter.png" class="Percenter" />
+		</nav>
+		<div class="content">
+			<div>
+				<a href="history.html"><img src="../img/person_history.jpg" /> <span>历史订单</span> <img src="../img/return.jpg" class="jiantou" /> </a>
+			</div>
+			<div>
+				<a href=""><img src="../img/suggest.jpg" /> <span>给出建议</span> <img src="../img/return.jpg" class="jiantou" /></a>
+			</div>
+			<div class="exit">
+				<img src="../img/person_exit.jpg" /><span>注销退出</span>
+			</div>
+			<!--<div>给出建议</div>
+			<div>注销退出</div>-->
+		</div>
+		<script src="../js/jquery-1.11.0.js"></script>
+		<script>
+			$('.return').on("click", function() {
+				history.go(-1);
+			})
+			$('.exit').on("click", function() {
+				disp_confirm()
+			})
+
+			function disp_confirm() {
+				var r = confirm("请确定是否退出登录")
+				if(r == true) {
+					var wx = (function() {
+						return navigator.userAgent.toLowerCase().indexOf('micromessenger') !== -1
+					})();
+					if(wx) {
+						WeixinJSBridge.call('closeWindow');
+						localStorage.clear();
+					} else {
+						window.close();
+						localStorage.clear();
+					}
+				} else {
+
+				}
+			}
+
+			function closeWx() {
+				window.close();
+				WeixinJSBridge.call('closeWindow');
+			}
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,101 @@
+/*出港页面*/
+.chuGang_content,.chuGangCha_content{
+	width:100%;
+	height:auto;
+	margin-top:4rem;
+	overflow: hidden;
+}
+.chuGang_list{
+	width:90%;
+	height:9rem;
+	margin:1rem 0 0 4%;
+	border: 1px solid #ccc;
+	box-sizing: border-box;
+}
+.chuGang_list p{
+	width:95%;
+	padding-left:5%;
+	height:3rem;
+	line-height: 3rem;
+	font-size:1.5rem;
+	font-weight: bold;
+}
+.chuGang_list p span{
+	font-weight: normal;
+}
+.search{
+	width:1.5rem;
+	height:1.5rem;
+	position:absolute;
+	top:1.25rem;
+	right:1rem;
+}
+/*出港详情*/
+.chuGang_xiangcontent p{
+	width:95%;
+	height:4rem;
+	line-height: 4rem;
+	padding-left:5%;
+	border-bottom:1px solid #c1c1c1;
+	font-size:1.5rem;
+}
+.chuGang_xiangcontent p input{
+	box-sizing: border-box;
+	height:4rem;
+	border: none;
+	float:right;
+	width:70%;
+	text-align: right;
+	font-size:1.5rem;
+}
+.xiang_baoCun,.chuGang,.chuGangCha_content div{
+	width:95%;
+	height:4rem;
+	margin:2rem 0 2rem 2.5%;
+	background:#3299fe;
+	text-align: center;
+	line-height: 4rem;
+	color:#fefefe;
+	letter-spacing: 2rem;
+	border-radius:5px;
+	font-weight: bold;
+	font-size:2rem;
+}
+/*出港通知*/
+.chuGang_tong_xiangcontent p{
+	width:95%;
+	height:4rem;
+	line-height: 4rem;
+	padding-left:5%;
+	border-bottom:1px solid #c1c1c1;
+	font-size:1.5rem;
+}
+.chuGang_tong_xiangcontent p input{
+	box-sizing: border-box;
+	height:4rem;
+	border: none;
+	float:right;
+	width:70%;
+	text-align: right;
+	font-size:1.5rem;
+}
+/*出港查询*/
+.chuGangCha_content{
+	position:relative;
+}
+.chuGangCha_content input{
+	width:90%;
+	height:4rem;
+	line-height: 4rem;
+	font-size:1.5rem;
+	margin:2rem 0 0 5%;
+	border:none;
+	border-bottom: 1px solid #c2c2c2;
+}
+.chuGangCha_content img{
+	width:3rem;
+	height:3rem;
+	position:absolute;
+	top:2.5rem;
+	right:5%;
+}

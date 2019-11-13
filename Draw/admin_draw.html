@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<!--<script src="js/iscroll.js"></script>-->
+		<script src="js/jquery-1.11.0.js"></script>
+		<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="css/style.css">
+
+		<title>管理员抽奖后台界面</title>
+	</head>
+	<style>
+		header{
+			position: relative;
+		}
+		header img{
+			display: inline-block;
+			height: 2rem;
+			width: 2rem;
+			position: absolute;
+			top: 1rem;
+			right: 15px;
+		}
+		ul li div {
+			height: 3rem;
+			line-height: 3rem;
+			display: flex;
+			position: relative;
+		}
+		
+		li div img {
+			height: 3rem;
+			width: 3rem;
+			max-width: 10%;
+			border-radius: 50%;
+			/*position: absolute;*/
+			margin-top: 0.5rem;
+			/*vertical-align: middle;*/
+			position: absolute;
+			left: 1rem;
+		}
+		
+		li div span {
+			display: inline-block;
+			height: 4rem;
+			line-height: 4rem;
+			margin-left: 5px;
+		}
+		
+		li div .nickname {
+			max-width: 20%;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			position: absolute;
+			left: 4rem;
+		}
+		
+		li div .name {
+			max-width: 20%;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			position: absolute;
+			left: 11rem;
+		}
+		
+		li div .company {
+			max-width: 30%;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			margin-right: 15px;
+			position: absolute;
+			right: 6rem;
+		}
+		
+		li div .Dtype {
+			display: inline-block;
+			height: 3rem;
+			max-width: 20%;
+			margin-top: 0.5rem;
+			position: absolute;
+			right: 5px;
+		}
+		
+		.dropdown-menu li a {
+			text-align: center;
+		}
+	</style>
+
+	<body>
+		<header>管理员抽奖后台界面 <img src="img/rest.png" class="reset" /> </header>
+		<div class="search">
+			<form class="bs-example bs-example-form" role="form">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="input-group">
+							<input type="text" class="form-control txt" placeholder="请输入查询条件">
+							<div class="input-group-btn">
+								<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+									查询条件
+									<span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu pull-right">
+									<li>
+										<a href="#">姓名</a>
+									</li>
+									<li class="divider"></li>
+									<li>
+										<a href="#">公司名称</a>
+									</li>
+									<li class="divider"></li>
+									<li>
+										<a href="#">中奖奖项</a>
+									</li>
+								</ul>
+							</div>
+							<!-- /btn-group -->
+						</div>
+						<!-- /input-group -->
+					</div>
+					<!-- /.col-lg-6 -->
+				</div>
+				<!-- /.row -->
+			</form>
+		</div>
+		<div id="wrapper">
+			<div class="scroller">
+				<ul class='push' style="height:600px;overflow-y:scroll;">
+					<!--<li>
+						<div>
+							<span class="id hide" >1</span>
+							<img src="http://thirdwx.qlogo.cn/mmopen/GmDYOsDHaEaIPV8yYgOibQbiaRMAFgj6gOd0Z9WIdFOYxcOzeiaIJOlgdyiaSRe2iaempVqmRtKhfkMOVhVrNWS0h3GpX4pYkM2af/132" />
+							<span class="nickname">醉人心จุ๊บ</span>
+							<span class="name">李洋</span>
+							<span class="company">北京中集智冷科技有限公司</span>
+							<select class="Dtype">
+							  <option value="nochoose">中奖</option>
+							  <option value="一等奖">一等奖</option>
+							  <option value="二等奖">二等奖</option>
+							  <option value="三等奖">三等奖</option>
+							</select>
+						</div>
+					</li>-->
+				</ul>
+
+				<div class="more"><i class="pull_icon"></i><span>上拉加载...</span></div>
+			</div>
+		</div>
+		<footer>中集冷云（北京）供应链管理有限公司</footer>
+		<script>
+			$(function() { // 初始化内容
+				$.ajax({
+					type: "post",
+					url: "http://www.zjcoldcloud.com/weixin_lucky/admin_setting.php",
+					data: {
+						is_entrance:"1"
+					},
+					dataType: "JSON",
+					success: function(res) {
+						var str = '';
+						//console.log(res);
+						jQuery.each(res.data, function(i, val) {
+							str = ''; 	
+							str += `<li>
+							      <div>
+									<span class="id hide" >${val.id} -- ${i}</span>
+									<img src='${val.headimgurl}' openid='${val.openid}' />
+									<span class="nickname">${val.nickname}</span>
+									<span class="name">${val.username}</span>
+									<span class="company">${val.telphone}</span>
+									<select class="Dtype">`;
+									if(val.draw=="一等奖"){
+										str+=`<option value="待中奖">待中奖</option>
+									  <option value="一等奖" selected>一等奖</option>
+									  <option value="二等奖">二等奖</option>
+									  <option value="三等奖">三等奖</option>`
+									}else if(val.draw=="二等奖"){
+										str+=`<option value="待中奖">待中奖</option>
+									  <option value="一等奖">一等奖</option>
+									  <option value="二等奖" selected>二等奖</option>
+									  <option value="三等奖">三等奖</option>`
+									}else if(val.draw=="三等奖"){
+										str+=`<option value="待中奖">待中奖</option>
+									  <option value="一等奖">一等奖</option>
+									  <option value="二等奖">二等奖</option>
+									  <option value="三等奖" selected>三等奖</option>`
+									}else{
+										str+=`<option value="待中奖" selected>待中奖</option>
+									  <option value="一等奖">一等奖</option>
+									  <option value="二等奖">二等奖</option>
+									  <option value="三等奖">三等奖</option>`
+									}
+									  
+									str += `</select>
+							      </div>
+				                </li>`;
+							$(".push").append(str);
+						});
+						$(".push").append("<li></li><li></li>");
+					},
+					error: function(err) {
+						console.log(err);
+					}
+				});
+				$('.txt').bind('input propertychange', function() {
+				//console.log($(this).val().length + ' characters');
+				  if($(this).val().length==0){
+				  	window.location.reload();
+				  }
+				});
+								
+				$(".dropdown-menu li a").on("click",function(){
+					var content=$(".txt").val();
+		            if($(this).text()=='姓名'){
+		            	if(content==''){
+		            		alert('查询条件为空');
+		            	}else{
+		            	    $.ajax({
+		             	      url:"http://www.zjcoldcloud.com/weixin_lucky/admin_setting.php",	
+		             	      type:"post",
+		             	      data:{
+		             	      	username:content
+		             	      },
+		             	      dataType:"JSON",
+		             	      success:function(res){
+		             	      	$('.push').html('');
+		             	      	var str = '';
+		             	      	if(res.data.length==0){
+		             	      		$('.push').html('<li><div><span>没有查询到该用户</span></div></li>');
+		             	      	}else{
+		             	      	    jQuery.each(res.data, function(i, val) {
+							   	      	str = ''; 	
+										str += `<li>
+											      <div>
+													<span class="id hide" >${val.id} -- ${i}</span>
+													<img src='${val.headimgurl}' openid='${val.openid}'/>
+													<span class="nickname">${val.nickname}</span>
+													<span class="name">${val.username}</span>
+													<span class="company">${val.telphone}</span>
+													<select class="Dtype">`;
+													if(val.draw=="一等奖"){
+														str+=`<option value="待中奖">待中奖</option>
+													  <option value="一等奖" selected>一等奖</option>
+													  <option value="二等奖">二等奖</option>
+													  <option value="三等奖">三等奖</option>`
+													}else if(val.draw=="二等奖"){
+														str+=`<option value="待中奖">待中奖</option>
+													  <option value="一等奖">一等奖</option>
+													  <option value="二等奖" selected>二等奖</option>
+													  <option value="三等奖">三等奖</option>`
+													}else if(val.draw=="三等奖"){
+														str+=`<option value="待中奖">待中奖</option>
+													  <option value="一等奖">一等奖</option>
+													  <option value="二等奖">二等奖</option>
+													  <option value="三等奖" selected>三等奖</option>`
+													}else{
+														str+=`<option value="待中奖" selected>待中奖</option>
+													  <option value="一等奖">一等奖</option>
+													  <option value="二等奖">二等奖</option>
+													  <option value="三等奖">三等奖</option>`
+													}
+													  
+													str += `</select>
+											      </div>
+								                </li>`;
+									$(".push").append(str);
+								});
+		             	      	}
+
+		             	      },
+		             	      error:function(err){
+		             	      	console.log(err);
+		             	      }
+		             	    })
+		            	}
+		             
+		            }
+		            else if($(this).text()=='公司名称'){
+		            	if(content==''){
+		            		alert('查询条件为空');
+		            	}else{
+		            		$('.push').html('');
+		            	    $.ajax({
+		             	      url:"http://www.zjcoldcloud.com/weixin_lucky/admin_setting.php",	
+		             	      type:"post",
+		             	      data:{
+		             	      	company:content
+		             	      },
+		             	      dataType:"JSON",
+		             	      success:function(res){
+		             	      	var str = '';
+		             	      	if(res.data.length==0){
+		             	      		$('.push').html('<li><div><span>没有查询到该用户</span></div></li>');
+		             	      	}else{
+		             	      	    jQuery.each(res.data, function(i, val) {
+			   	      	            str = ''; 	
+									str += `<li>
+										      <div>
+												<span class="id hide" >${val.id} -- ${i}</span>
+												<img src='${val.headimgurl}' openid='${val.openid}'/>
+												<span class="nickname">${val.nickname}</span>
+												<span class="name">${val.username}</span>
+												<span class="company">${val.telphone}</span>
+												<select class="Dtype">`;
+												if(val.draw=="一等奖"){
+													str+=`<option value="待中奖">待中奖</option>
+												  <option value="一等奖" selected>一等奖</option>
+												  <option value="二等奖">二等奖</option>
+												  <option value="三等奖">三等奖</option>`
+												}else if(val.draw=="二等奖"){
+													str+=`<option value="待中奖">待中奖</option>
+												  <option value="一等奖">一等奖</option>
+												  <option value="二等奖" selected>二等奖</option>
+												  <option value="三等奖">三等奖</option>`
+												}else if(val.draw=="三等奖"){
+													str+=`<option value="待中奖">待中奖</option>
+												  <option value="一等奖">一等奖</option>
+												  <option value="二等奖">二等奖</option>
+												  <option value="三等奖" selected>三等奖</option>`
+												}else{
+													str+=`<option value="待中奖" selected>待中奖</option>
+												  <option value="一等奖">一等奖</option>
+												  <option value="二等奖">二等奖</option>
+												  <option value="三等奖">三等奖</option>`
+												}
+												  
+												str += `</select>
+										      </div>
+							                </li>`;
+									$(".push").append(str);
+								});
+		             	      	}
+
+		             	      },
+		             	      error:function(err){
+		             	      	console.log(err);
+		             	      }
+		             	    })
+		            	}
+		             
+		            }
+		            else if($(this).text()=='中奖奖项'){
+		  
+		            		$('.push').html('');
+		            	    $.ajax({
+		             	      url:"http://www.zjcoldcloud.com/weixin_lucky/admin_setting.php",	
+		             	      type:"post",
+		             	      data:{
+		             	      	draw:"1"
+		             	      },
+		             	      dataType:"JSON",
+		             	      success:function(res){
+		             	      	var str = '';
+		             	      	if(res.data.length==0){
+		             	      		$('.push').html('<li><div>没有查询到该用户</div></li>');
+		             	      	}else{
+		             	      	    jQuery.each(res.data, function(i, val) {
+		             	      	    str = ''; 	
+									str += `<li>
+										      <div>
+												<span class="id hide" >${val.id} -- ${i}</span>
+												<img src='${val.headimgurl}' openid='${val.openid}'/>
+												<span class="nickname">${val.nickname}</span>
+												<span class="name">${val.username}</span>
+												<span class="company">${val.telphone}</span>
+												<select class="Dtype">`;
+												if(val.draw=="一等奖"){
+													str+=`<option value="待中奖">待中奖</option>
+												  <option value="一等奖" selected>一等奖</option>
+												  <option value="二等奖">二等奖</option>
+												  <option value="三等奖">三等奖</option>`
+												}else if(val.draw=="二等奖"){
+													str+=`<option value="待中奖">待中奖</option>
+												  <option value="一等奖">一等奖</option>
+												  <option value="二等奖" selected>二等奖</option>
+												  <option value="三等奖">三等奖</option>`
+												}else if(val.draw=="三等奖"){
+													str+=`<option value="待中奖">待中奖</option>
+												  <option value="一等奖">一等奖</option>
+												  <option value="二等奖">二等奖</option>
+												  <option value="三等奖" selected>三等奖</option>`
+												}else{
+													str+=`<option value="待中奖" selected>待中奖</option>
+												  <option value="一等奖">一等奖</option>
+												  <option value="二等奖">二等奖</option>
+												  <option value="三等奖">三等奖</option>`
+												}
+												  
+												str += `</select>
+										      </div>
+							                </li>`;
+									$(".push").append(str);
+									
+									
+								});
+		             	      	}
+
+		             	      },
+		             	      error:function(err){
+		             	      	console.log(err);
+		             	      }
+		             	    })
+		            	
+		             
+		            }
+				})
+				
+				$('body').on("change",".push .Dtype",function(){
+//					console.log($(this).parents('div').children('.name').text()+","+$(this).val());
+                   var _draw=$(this).val();
+                   var _openid=$(this).parents('div').children('img').attr('openid');
+                   if(_draw=="三等奖"){
+                   	alert("不准许设置三等奖");
+                   }else{
+                   	$.ajax({
+                   	url:"http://www.zjcoldcloud.com/weixin_lucky/admin_setting_list.php",
+                   	type:"post",
+                   	data:{
+                   		draw:_draw,
+                   		openid:_openid
+                   	},
+                   	dataType:"JSON",
+                   	success:function(res){
+                   		console.log(res);
+                   		alert("设置成功");
+                   		window.location.reload();
+                   	},
+                   	error:function(err){
+                   		console.log(err);
+                   		window.location.reload();
+                   	}
+                   })
+                   }
+
+
+                    
+				})
+				
+				$('.reset').click(function(){
+					$.ajax({
+						url:"http://www.zjcoldcloud.com/weixin_lucky/reset.php",
+						type:"post",
+						data:"",
+						dataType:"JSON",
+						success:function(res){
+							if(res.code=="0"){
+								alert("中奖名单重置成功");
+								window.location.reload();
+							}
+						},
+						error:function(err){
+							console.log(err);
+						}
+					})
+				})
+				
+				  
+
+			});
+		</script>
+	</body>
+
+</html>

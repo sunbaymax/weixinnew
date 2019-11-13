@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="format-detection" content="telephone=no">
+		<title>中集冷云</title>
+		<link type="text/css" rel="stylesheet" href="css/body.css" />
+		<link type="text/css" rel="stylesheet" href="css/sugg.css" />
+		<link href="css/common.css" type="text/css" rel="stylesheet">
+		<link href="css/index.css" type="text/css" rel="stylesheet">
+		<!--  <link href="css/shijian.css" type="text/css" rel="stylesheet"/>-->
+		<script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+
+	</head>
+
+	<style>
+		.centent {
+			background: #FFFFFF;
+		}
+		
+		.img-box {
+			margin-top: 10px;
+		}
+		
+		.z_photo {
+			width: 270px;
+			height: 200px;
+			border: none;
+			padding: 0px;
+			margin-left: 47px;
+		}
+		
+		.title {
+			position: relative;
+		}
+		
+		.form_centect {
+			padding-left: 5%;
+		}
+		
+		.pingzheng {
+			margin-left: 5%;
+		}
+		
+		.form_btn {
+			width: 100%;
+			text-align: center;
+		}
+		
+		#queren {
+			width: 300px;
+			height: 44px;
+			color: #FFFFFF;
+			font-size: 18px;
+			background: #3299fe;
+			border-radius: 8px;
+			margin: 0 auto;
+		}
+		
+		textarea {
+			resize: none;
+			overflow: auto;
+			width: 100%;
+			height: 120px;
+			border-bottom: 1px solid #999999;
+			padding-top: 10px;
+			border-top: none;
+			border-right: none;
+			border-left: none;
+		}
+		
+		input:disabled {
+			padding-left: 2%;
+			width: 80%;
+			border: 1px solid #DDD;
+			background-color: #F5F5F5;
+			color: #ACA899;
+			/*margin-left: 5%;*/
+		}
+		
+		input[disabled] {
+			border: 1px solid #DDD;
+			background-color: #F5F5F5;
+			color: #ACA899;
+		}
+		
+		html input.disabled {
+			border: 1px solid #DDD;
+			background-color: #F5F5F5;
+			color: #ACA899;
+		}
+		
+		::-webkit-input-placeholder {
+			/* WebKit, Blink, Edge */
+			color: #DC2D00;
+		}
+		
+		::-moz-placeholder {
+			/* Mozilla Firefox 4 to 18 */
+			color: #DC2D00;
+		}
+		
+		::-moz-placeholder {
+			/* Mozilla Firefox 19+ */
+			color: #DC2D00;
+		}
+		
+		:-ms-input-placeholder {
+			/* Internet Explorer 10-11 */
+			color: #DC2D00;
+		}
+		
+		.box img {
+			margin-top: 20px;
+			width: 100px;
+			height: 100px;
+			margin-left: 10px;
+		}
+		
+		.pingzheng {
+			margin-top: 10px;
+		}
+		
+		.shadow {
+			width: 100%;
+			height: 150%;
+			position: absolute;
+			top: 0px;
+			display: none;
+			z-index: 999;
+			background: rgba(0, 0, 0, 0.8);
+		}
+		
+		.shadow div {
+			height: 50%;
+		}
+		
+		.shadow div img {
+			width: 80%;
+			height: 60%;
+			position: absolute;
+			top: 50%;
+			right: 10%;
+		}
+	</style>
+
+	<body>
+		<div class="title">
+			<a href="Suggs.php"><img class="back" src="img/back.png" alt="返回" /></a>
+			<h3 class="title_h">处理结果</h3>
+		</div>
+		<div class="centent">
+			<img class="touxiangurl" src="" alt="头像" />
+			<span>昵称</span>
+			<input type="text" class="wechat_name" disabled="disabled" name="wechatname" />
+		</div>
+
+		<div id="forAppend" class="demo" style="width: 98%;height: 20px;padding-left:2% ;">客户意见反馈内容</div>
+		<div class="data_center" style="background: #FFFFFF;">
+			<!--<form class="formdata">-->
+			<p class="form_centect">&nbsp;&nbsp;联系人:
+				<input id="linkman" type="text" disabled="disabled" style="font-size: 14px;border: none;" />
+			</p>
+			<p class="form_centect">
+				联系电话:
+				<input type="text" id="phone" value="" disabled="disabled" style="font-size: 14px;border: none;" />
+			</p>
+			<p class="form_centect">
+				所属单位:
+				<input type="text" id="affiliatedUnit" disabled="disabled" value="" style="font-size: 14px;border: none;" />
+			</p>
+			<p class="form_centect">
+				产品名称:
+				<input type="text" id="productName" disabled="disabled" value="" style="font-size: 14px;border: none;" />
+			</p>
+			<p class="form_centect">
+				产生时间:
+				<input type="text" id="time" value="" disabled="disabled" style="font-size: 14px;border: none;" />
+			</p>
+			<p class="form_centect">
+				具体描述:
+				<input type="text" id="description" disabled="disabled" value="" style="font-size: 14px;border: none;" />
+			</p>
+
+			<!--<div class="img-box full">
+				<section class=" img-section" style="border-bottom: 1px solid #999999; padding-bottom: 20px;">
+					<span class="pingzheng">照片凭证:</span>
+					<div class="z_photo upimg-div clear" style="width: 270px; height: 100px; margin-left: 5%;margin-top: 20px;">
+						<section class="z_file fl">
+							<img src="img/a11.png" class="add-img">
+							<input type="file" id="file" class="file" value="" accept="image/jpg,image/jpeg,image/png,image/bmp" enctype="multipart/form-data" multiple />
+						</section>
+					</div>
+				</section>
+			</div>-->
+			<div class="box" style="width: 100%;max-height: 310px;min-height:150px;margin-bottom: 20px;">
+				<p class="pingzheng">照片凭证:</p>
+				<!--<div class="boxImg" style="width: 70px; height: 70px;border: 1px solid #000000; float: left;">
+					<img class="Img"/>
+				</div>-->
+			</div>
+			<div class="clearfloat" style="clear: both;"></div>
+			<div>
+				<p class="form_centect">
+					需求描述:
+					<input type="text" id="requirementDescription" disabled="disabled" value="" style="font-size: 14px;border: none;" />
+				</p>
+			</div>
+			<div style="background: #F4F4F4;"></div>
+			<div>
+				<p class="form_centect" style="border:none;">
+					处理结果描述:
+				</p>
+				<p>
+					<textarea id="resultDescription" style="font-size: 14px; text-indent: 20px;" placeholder="请在这里填写给用户反馈"></textarea>
+				</p>
+
+			</div>
+			<div class="form_btn"><button id="queren">确认提交</button> </div>
+		</div>
+		<br clear="both" />
+
+		<!--图片预览-->
+		<div class="shadow">
+			<div></div>
+		</div>
+		<!--<script src="../js/jquery-1.11.0.js"></script>-->
+		<script src="js/jquery-1.8.3.min.js"></script>
+		<script src="js/jquer_shijian.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/imgUp.js"></script>
+		<script src="../My97DatePicker/WdatePicker.js" type="text/javascript" charset="utf-8"></script>
+		<script>
+			$(document).ready(function() {
+				console.log("初始化方法进入");
+				var _url = window.location.href;
+				if(_url.indexOf("?") != -1) {
+					id = _url.match(/\?id=\S+/)[0].replace("?id=", "");
+					console.log(id);
+				}
+				console.log("上页面传来的id为:" + id);
+				$.ajax({
+					type: "post",
+					url: "http://www.ccsc58.com/json/weixin_select_feedback.php",
+					data: {
+						id: id
+					},
+					success: function(data) {
+						var _json = JSON.parse(data);
+						console.log(_json);
+						if(_json.code == "20000") {
+
+							$(".touxiangurl").attr('src', _json.list.wechat_touxiang);
+							$(".wechat_name").val(_json.list.wechat_nicheng);
+							$("#linkman").val(_json.list.contacts);
+							$("#phone").val(_json.list.tel);
+							$("#affiliatedUnit").val(_json.list.companys);
+							$("#productName").val(_json.list.products);
+							$("#time").val(_json.list.nowtime);
+							$("#description").val(_json.list.desc);
+							$("#requirementDescription").val(_json.list.last_product);
+							//							console.log(_json.list.result);
+							if(_json.list.result == null || _json.list.result == '') {
+								$("#resultDescription").val('');
+							} else {
+								console.log("else" + _json.list.result);
+								$("#resultDescription").val(_json.list.result);
+								$('#queren').css('background-color', '#C1C1C1');
+								$('#queren').css('color', '#3299fe');
+								$('#queren').attr('disabled', "true");
+							}
+							if(_json.list.img_urls != null || _json.list.img_urls != '') {
+
+								var imgs = _json.list.img_urls;
+								var url_imgs = imgs.split(","); // 在每个逗号(,)处进行分解。
+
+								console.log(url_imgs);
+								var html = '';
+								var box = $('.box');
+								for(var i = 0; i < url_imgs.length; i++) {
+									html = '<div class="boxImg" style="float: left;">' +
+										'<img class="Img" src="' + url_imgs[i] + '" style=""/>' +
+										'</div>'
+									box.append(html);
+								}
+							}
+
+							window.sessionStorage.setItem("openid", _json.list.openid);
+							window.sessionStorage.setItem("desc", _json.list.desc);
+							window.sessionStorage.setItem("id", _json.list.id);
+
+						} else if(_json.code == "10001") {
+							$(".more").html("没有数据！").css({
+								color: "#ccc"
+							})
+						} else {
+							$(".more").html("没有查到该数据").css({
+								color: "#ccc"
+							})
+						}
+						console.log(data);
+
+					},
+					error: function() {
+						alert("网络错误！！");
+						window.location.href = window.location.href;
+					}
+				});
+
+				$('#queren').on("click", function() {
+					console.log(id);
+					console.log($('#resultDescription').val());
+					var resultDescriptions = $('#resultDescription').val();
+					$.ajax({
+						type: "post",
+						url: "http://www.ccsc58.com/json/weixin_kefu_feedback.php",
+						data: {
+							id: id,
+							admin_permit: "zjly8888",
+							result: resultDescriptions
+						},
+						success: function(data) {
+							var _json = JSON.parse(data);
+							if(_json.code == "10000") {
+								if(confirm('确定要提交反馈内容吗?')) {
+									alert("反馈成功");
+									console.log("ok");
+
+									var _openId = window.sessionStorage.getItem("openid");
+									var _desc = window.sessionStorage.getItem("desc");
+									var _id = window.sessionStorage.getItem("id");
+									var app_key = "261AFF68C0E9F076420D083D66222824";
+									$.ajax({
+										type: "post",
+										url: "http://www.ccsc58.cc/weixinnew/Push_message.php",
+										data: {
+
+											frist: "您的反馈已经由管理人员处理！",
+											keyword1: "已回复",
+											keyword2: _desc,
+											keyword3: resultDescriptions,
+											remark: "感谢您的反馈，希望我们的回复能解决您的问题！",
+											openid: _openId,
+											app_key: app_key,
+											id: _id,
+											id1: "1",
+											id2: "2",
+											id3: "3"
+										},
+										success: function(data) {
+											console.log(_id);
+											console.log('推送成功');
+											//return false;
+
+										},
+										error: function() {
+											alert("推送失败！");
+										}
+									});
+									return true;
+								}
+								console.log("取消确任");
+								return false;
+							} else {
+								alert("提交失败！！");
+							}
+
+						},
+						error: function() {
+							alert("网络错误！！");
+							window.location.href = window.location.href;
+						}
+					});
+				})
+
+				//   图片预览
+
+				$("body").on("click", ".box img", function() {
+					var html = `<img src=${$(this).attr("src")}>`;
+					$(".shadow div").html(html).parent().css("display", "block");
+				})
+				// 点击阴影 消失
+				$("body").on("click", ".shadow", function(e) {
+
+					if($(e.target)[0] != $(".shadow div img")[0]) {
+						$(".shadow").css("display", "none");
+						$(".shadow div").html("");
+					}
+				})
+
+			});
+		</script>
+
+	</body>
+
+</html>

@@ -1,0 +1,43 @@
+/*出港通知*/
+.zhuanDan_tong_xiangcontent p{
+	width:95%;
+	height:4rem;
+	line-height: 4rem;
+	padding-left:5%;
+	border-bottom:1px solid #c1c1c1;
+	font-size:1.5rem;
+}
+.zhuanDan_tong_xiangcontent p input{
+	box-sizing: border-box;
+	height:4rem;
+	border: none;
+	float:right;
+	width:70%;
+	text-align: center;
+	font-size:1.5rem;
+	position:relative;
+}
+.zhuanDan{
+	width:95%;
+	height:4rem;
+	margin:2rem 0 2rem 2.5%;
+	background:#3299fe;
+	text-align: center;
+	line-height: 4rem;
+	color:#fefefe;
+	letter-spacing: 2rem;
+	border-radius:5px;
+	font-weight: bold;
+	font-size:2rem;
+}
+.zhuanDan_tong_content{
+	margin-top:4rem;
+}
+.zhuanDan_tong_xiangcontent img{
+	position:absolute;
+	right:0;
+	display:block;
+	width:3rem;
+	height:3rem;
+	top:4.5rem;
+}

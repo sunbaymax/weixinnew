@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
+<head>
+<title>入场码</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+<script type="text/javascript" src="http://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/javascript" src="http://static.runoob.com/assets/qrcode/qrcode.min.js"></script>
+</head>
+<body>
+<!--<input id="text" type="text" value="http://www.runoob.com" style="width:80%" /><br />-->
+<div id="qrcode" style="width:100px; height:100px; margin-top:15px;"></div>
+
+<script type="text/javascript">
+	function UrlSearch() {
+		var name, value;
+		var str = location.href; //取得整个地址栏
+		var num = str.indexOf("?")
+		str = str.substr(num + 1); //取得所有参数 stringvar.substr(start [, length ]
+
+		var arr = str.split("&"); //各个参数放到数组里
+		for(var i = 0; i < arr.length; i++) {
+			num = arr[i].indexOf("=");
+			if(num > 0) {
+				name = arr[i].substring(0, num);
+				value = arr[i].substr(num + 1);
+				this[name] = value;
+			}
+		}
+	}
+	var Request = new UrlSearch(); //实例化
+	var _openId = Request.openid;
+	a();
+	function a(){
+        $.ajax({
+            url: 'http://www.zjcoldcloud.com/weixin_lucky/admin_select.php',
+            type: 'post',
+            dataType: 'JSON',
+            data:{
+                openid:_openId
+            },
+            success: function (res) {
+                var aid= res.data.id;
+                console.log(aid);
+                qrcode.makeCode(aid);
+            },
+
+            error: function (err) {
+                console.log(err);
+            }
+        })
+
+    }
+
+var qrcode = new QRCode(document.getElementById("qrcode"), {
+	width : 100,
+	height : 100
+});
+
+//function makeCode () {		
+//	var elText = document.getElementById("text");
+//	
+//	if (!elText.value) {
+//		alert("Input a text");
+//		elText.focus();
+//		return;
+//	}
+//	
+//	qrcode.makeCode(code);
+//}
+
+//makeCode();
+
+//$("#text").on("blur", function () {
+//		makeCode();
+//	}).
+//	on("keydown", function (e) {
+//		if (e.keyCode == 13) {
+//			makeCode();
+//		}
+//	});
+</script>
+</body>
+</html>

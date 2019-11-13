@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>新增联系人</title>
+		<link rel="stylesheet" href="../css/index.css" type="text/css">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+	</head>
+	<style>
+		.add_content {
+			width: 100%;
+			height: auto;
+			padding: 0 1.25rem;
+			box-sizing: border-box;
+			margin-top: 1.25rem;
+		}
+		
+		.add_content div {
+			height: 4.6rem;
+			line-height: 4.6rem;
+			background: #FFFFFF;
+			padding: 0 1.25rem;
+			box-sizing: border-box;
+			border-bottom: 1px solid #E5E5E5;
+			display: flex;
+			position: relative;
+			border-radius: 5px;
+			margin-bottom: 5px;
+		}
+		
+		.add_content div img {
+			display: inline-block;
+			width: 1.4rem;
+			height: 1.4rem;
+			position: absolute;
+			left: 1.25rem;
+			top: 1.6rem;
+		}
+		
+		.add_content div span {
+			margin-left: 0.83rem;
+			margin-right: 1.25rem;
+			color: #333333;
+			position: absolute;
+			left: 3rem;
+		}
+		
+		.add_content div input {
+			height: 3rem;
+			line-height: 3rem;
+			width: 70%;
+			border: none;
+			position: absolute;
+			right: 1.25rem;
+			top: 0.8rem;
+			background: none;
+			border: none;
+		}
+		.submit_ok{
+			margin-left: 10%;
+		    margin-top: 1rem;
+		    border: none;
+		    outline: none;
+		    cursor: pointer;
+		    width: 80%;
+		    height: 4rem;
+		    line-height: 4rem;
+		    letter-spacing: 5px;
+		    background: #12599B;
+		    text-align: center;
+		    color: #fefefe;
+		    border-radius: 5px;
+		    font-size: 16px;
+		}
+	</style>
+
+	<body>
+		<div class="content">
+			<div class="content_body">
+				<!--<div class="title">
+					<a href="VisitMan.html" class="return"><img src="../img/cuo.png" alt="取消" /></a>
+					<span>新增联系人</span>
+					<a href="javascript:void(0)" class="history"><img src="../img/dui_1.png" class="btn_ok" /> </a>
+				</div>-->
+				<div class="add_content">
+					<div>
+						<img src="../img/xingming.png" />
+						<span>姓名:</span>
+						<input type="text" class='username' />
+					</div>
+					<div>
+						<img src="../img/shoujihao.png" />
+						<span>手机:</span>
+						<input type="text" class='telphone' />
+					</div>
+					<div>
+						<img src="../img/zhiwei.png" />
+						<span>职位:</span>
+						<input type="text" class='job' />
+					</div>
+					<div>
+						<img src="../img/bumen.png" />
+						<span>部门:</span>
+						<input type="text" class='department' />
+					</div>
+ 
+				</div>
+				<div> 
+				  <button class="submit_ok btn_ok">提交</button>
+				</div>
+			</div>
+		</div>
+		<div id="success_mao">
+			<div class="success_box" style="display:block;">
+				<div class="register_right">
+					<img src="../img/ku.png" />
+				</div>
+				<div class="success_information">请使用6-20位字母及数字组合作为用户名</div>
+				<form action="">
+					<input type="button" value="确定" />
+				</form>
+			</div>
+		</div>
+		<script type="text/javascript" src="../js/jquery-1.11.0.js"></script>
+		<script type="text/javascript" src="../js/toastr.min.js"></script>
+		<script type="text/javascript" src="../js/index.js"></script>
+		<script>
+			$(document).ready(function() {
+				var knight = localStorage.getItem('Knight');
+				var _choose_company = JSON.parse(localStorage.getItem('choose_company'));
+
+				$('.btn_ok').on("click", function() {
+					var linkUser = $('.username').val();
+					var linkTel = $('.telphone').val();
+					var linkJob = $('.job').val();
+					var linkdepartmentr = $('.department').val();
+					console.log(linkUser);
+					if(linkUser == '' || linkUser == null) {
+						myPlay('客户名称不能为空')
+					} else if(linkTel == '' || linkTel == null) {
+						myPlay('客户联系方式不能为空')
+					} else if(linkJob == '' || linkJob == null) {
+						myPlay('客户职位不能为空')
+					} else if(linkdepartmentr == '' || linkdepartmentr == null) {
+						myPlay('客户部门不能为空')
+					} else if(_choose_company == '' || _choose_company == null) {
+						myPlay('请返回选择公司名称')
+					} else {
+						var choosecompany = _choose_company.CustomerType;
+						if(choosecompany == 'AccountCustomer') {
+							$.ajax({
+								url: "http://out.ccsc58.cc/DATA_PORT_CRM_1.01/Add_account.php",
+								type: "post",
+								data: {
+									Name: linkUser,
+									Knight: knight,
+									Telephone: linkTel,
+									ZW: linkJob,
+									DepartMent: linkdepartmentr,
+									Company: _choose_company.company,
+									Account: _choose_company.InfoId,
+									ID: _choose_company.Id
+								},
+								dataType: "JSON",
+								success: function(res) {
+									if(res.code == 200) {
+										myPlay('人员添加成功');
+										location.href = 'VisitMan.html';
+									} else {
+										myPlay(res.msg);
+									}
+								},
+								error: function(err) {
+									console.log(err)
+								}
+							})
+						} else {
+							$.ajax({
+								url: "http://out.ccsc58.cc/DATA_PORT_CRM_1.01/Add_visitor.php",
+								type: "post",
+								data: {
+									Name: linkUser,
+									Knight: knight,
+									Telephone: linkTel,
+									ZW: linkJob,
+									DepartMent: linkdepartmentr,
+									Company: _choose_company.company,
+									ID1: _choose_company.InfoId,
+									ID2: _choose_company.Id
+								},
+								dataType: "JSON",
+								success: function(res) {
+									if(res.code == 200) {
+										myPlay('人员添加成功');
+										location.href = 'VisitMan.html';
+									} else {
+										myPlay(res.msg);
+									}
+								},
+								error: function(err) {
+									console.log(err)
+								}
+							})
+						}
+
+						//
+
+					}
+				})
+				$('.department').focus(function() {
+					$('html, body').animate({
+						scrollTop: 0
+					}, 'slow');
+				})
+			})
+		</script>
+	</body>
+
+</html>

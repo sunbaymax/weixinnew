@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>下单</title>
+		<link rel="stylesheet" href="../css/index.css" type="text/css">
+
+	</head>
+
+	<body>
+		<nav>
+			<div>
+				< 上一步</div>
+					<div>订单详情</div>
+					<div></div>
+					<div></div>
+		</nav>
+		<!-- 详情 -->
+		<main class="detailMain">
+			<!-- 客户信息 -->
+			<ul>
+				<li>
+					<span>客户账号：</span>
+					<span class="merber_id"></span>
+				</li>
+				<li>
+					<span>手机号：</span>
+					<span class="phone"></span>
+				</li>
+			</ul>
+			<!-- 基础信息 -->
+			<ul>
+				<li>
+					<span>温度区间：</span>
+					<span class="wdqj"></span>
+				</li>
+				<li>
+					<span>货物名称：</span>
+					<span class="carName"></span>
+				</li>
+				<li>
+					<span>保存环境：</span>
+					<span class="bchj"></span>
+				</li>
+				<li style="height:auto;">
+					<span>所需容积及数量：</span>
+					<div style="border:none;width:35%;">
+						<ul style="border:none;" class="asdfkl"></ul>
+					</div>
+				</li>
+				<li>
+					<span>温度计：</span>
+					<span class="tem"></span>
+				</li>
+				<li>
+					<span>备注：</span>
+					<span class="note"></span>
+				</li>
+			</ul>
+			<!-- 发货信息 -->
+			<ul>
+				<li>
+					<span>发货人：</span>
+					<span class="faName"></span>
+				</li>
+				<li>
+					<span>联系电话：</span>
+					<span class="faPhone"></span>
+				</li>
+				<li>
+					<span>公司：</span>
+					<span class="faCompany"></span>
+				</li>
+				<li>
+					<span>部门/科室：</span>
+					<span class="fabumen"></span>
+				</li>
+				<li>
+					<span>发货省份/城市：</span>
+					<span class="facity"></span>
+				</li>
+				<li>
+					<span>发货地址：</span>
+					<span class="faAddress"></span>
+				</li>
+			</ul>
+			<!-- 收货信息 -->
+			<ul>
+				<li>
+					<span>收货人：</span>
+					<span class="shouName"></span>
+				</li>
+				<li>
+					<span>联系电话：</span>
+					<span class="shouPhone"></span>
+				</li>
+				<li>
+					<span>公司：</span>
+					<span class="shouCompany"></span>
+				</li>
+				<li>
+					<span>部门/科室：</span>
+					<span class="shoubumen"></span>
+				</li>
+				<li>
+					<span>收货省份/城市：</span>
+					<span class="shoucity"></span>
+				</li>
+				<li>
+					<span>收货地址：</span>
+					<span class="shouAddress"></span>
+				</li>
+			</ul>
+			<!-- 送达时间及投保情况 -->
+			<ul>
+				<li>
+					<span>上门取件时间：</span>
+					<span class="startTime"></span>
+				</li>
+				<li>
+					<span>要求送达时间：</span>
+					<span class="reTime"></span>
+				</li>
+				<li class="toubao">
+
+				</li>
+				<li class="touman">
+
+				</li>
+			</ul>
+		</main>
+		<!--按钮  下一步-->
+		<footer style="display:flex;">
+			<span>提交</span>
+			<span style="margin-right:10%;">修改</span>
+		</footer>
+
+	</body>
+	<script src="../js/rem.js" type="text/javascript"></script>
+	<script src="../js/jquery-1.9.1.js" type="text/javascript"></script>
+	<script>
+		window.confirm = function(message) {
+			var iframe = document.createElement("IFRAME");
+			iframe.style.display = "none";
+			iframe.setAttribute("src", 'data:text/plain,');
+			document.documentElement.appendChild(iframe);
+			var alertFrame = window.frames[0];
+			var result = alertFrame.window.confirm(message);
+			iframe.parentNode.removeChild(iframe);
+			return result;
+		};
+		$(function() {
+			// 点击上一步                                  
+			$("nav div:first-of-type").on('click', function() {
+				window.location.href = "take.php";
+			})
+			//            获取本地存储的信息
+			var myNum = eval("{localStorage.getItem('myNum')}");
+			var orderMsg = JSON.parse(localStorage.getItem('orderMsg'));
+			var wen = JSON.parse(localStorage.getItem('wen'));
+			var arr = JSON.parse(localStorage.getItem("wenArr"));
+			var phone = JSON.parse(localStorage.getItem("phone"));
+			$(".merber_id").html(myNum);
+			$(".phone").html(phone);
+			$(".wdqj").html(wen.wdqj);
+			$(".carName").html(wen.cargoname);
+			$(".bchj").html(wen.bchj);
+			$(".note").html(wen.note);
+			$(".faName").html(orderMsg.addresser);
+			$(".faPhone").html(orderMsg.addresserphone);
+			$(".faCompany").html(orderMsg.fjgongsi);
+			$(".fabumen").html(orderMsg.fjbumen);
+			$(".facity").html(orderMsg.startprovince + orderMsg.startcity);
+			$(".faAddress").html(orderMsg.addresserdizhi);
+			$(".shouName").html(orderMsg.shouname);
+			$(".shouPhone").html(orderMsg.shoutelephone);
+			$(".shouCompany").html(orderMsg.shougongsi);
+			$(".shoubumen").html(orderMsg.shoubumen);
+			$(".shoucity").html(orderMsg.endprovince + orderMsg.endcity);
+			$(".shouAddress").html(orderMsg.shouadderss);
+			$(".startTime").html(orderMsg.requiretaketime);
+			$(".reTime").html(orderMsg.limittime);
+			
+			for (let i = 0; i < arr.length; i++) { // 所需容积
+				var span = $(`<li style='height:auto;'><span class='rongji' >${arr[i].rongji}</span><span class='shuli'>${arr[i].numbe}</span></li>`);
+				$(".asdfkl").append(span);
+			}
+			// 温度计
+			if (wen.iswdj == 0) {
+				$(".tem").html("不使用温度计");
+			} else {
+				var span = $(`<span class='wdjtype'>${wen.wdjtype}</span><span class='wdjnun' style='padding:0 0 0 0.1rem;'>${wen.wdjnum}</span>`);
+				$(".tem").html(span);
+			}
+			// 投保
+			if (orderMsg.isinsure == 0) {
+				$(".toubao").html('<span>投保状态：</span><span>未投保</span>')
+			} else {
+				$(".toubao").html('<span>投保状态：</span><span>已投保</span>')
+				$(".touman").html(`<span>投保金额：</span><span>${orderMsg.cargovalue}</span>`);
+			}
+			// 提交  
+			$("footer span:first-of-type").on("click", function() {
+					var con = confirm("确定提交？"); //在页面上弹出对话框
+					if (con == true) {
+						tijiao();
+					};
+				})
+				// 修改 
+			$("footer span:last-of-type").on("click", function() {
+				 //window.history.go(-1);
+				window.location.href = "take.php";
+			})
+
+			function tijiao() {
+				$.ajax({
+					url: 'http://www.ccsc58.cc/zjlytms/api.php/Order/add',
+					type: 'post',
+					dataType: "JSON",
+					data: {
+						merber_id: myNum,
+						"wdqj[0]": wen.wdqj,
+						"bchj[0]": wen.bchj,
+						"cargoname[0]": wen.cargoname,
+						bcnum: wen.bcnum,
+						"iswdj[0]": wen.iswdj,
+						"wdjtype": wen.wdjtype,
+						"wdjnum": wen.wdjnum,
+						"note[0]": wen.note,
+						addresser: orderMsg.addresser,
+						addresserphone: orderMsg.addresserphone,
+						fjgongsi: orderMsg.fjgongsi,
+						fjbumen: orderMsg.fjbumen,
+						addresserdizhi: orderMsg.addresserdizhi,
+						shouname: orderMsg.shouname,
+						shoutelephone: orderMsg.shoutelephone,
+						shougongsi: orderMsg.shougongsi,
+						shoubumen: orderMsg.shoubumen,
+						shouadderss: orderMsg.shouadderss,
+						requiretaketime: orderMsg.requiretaketime,
+						limittime: orderMsg.limittime,
+						isinsure: orderMsg.isinsure,
+						cargovalue: orderMsg.cargovalue
+					},
+					
+					success: function(res) {
+						console.log(res);
+						if (res.status == '1') {
+							window.location.href = "price.html";
+						}
+					},
+					error: function(err) {
+						console.log(err);
+						
+					}
+				})
+			}
+		})
+	</script>
+</html>

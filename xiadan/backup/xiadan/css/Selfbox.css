@@ -1,0 +1,90 @@
+ .Ucentect{
+       	width: 100%;
+       	height: auto;
+       }
+       .Ucentect li{
+        border-bottom: 1px solid #E5E5E5;
+       }
+        .line{
+        width: 100%;
+        height: 80px;
+        line-height: 80px;
+        display: flex;
+       }
+      .line .choose{
+        width: 10%;
+        height: 80px;
+        line-height: 80px;
+        text-align: center;
+       } 
+       .choose img{
+        width: 16px;
+        height: 16px;
+        line-height: 80px;
+        text-align: center;
+       } 
+       .line .wenzi{
+        width: 30%;
+        height: 80px;
+        line-height: 80px;
+        text-align: left;
+       }
+       .wenzi p{
+       	width: 90%;
+       	padding-left:10% ;
+       	height: 40px;
+       	font-size:16px;
+       	line-height: 40px;
+       } 
+        .line .txtinput{
+        width: 50%;
+        height: 80px;
+        line-height: 80px;
+        text-align: center;
+       } 
+       .txtinput p{
+       	width: 100%;
+       	height: 40px;
+       	line-height: 40px;
+       	text-align: right;
+       } 
+       .txtinput input{
+       	display: inline-block;
+       	width: 25%;
+       	border-radius: 2px;
+       	text-align: center;
+       	height: 20px;
+       	line-height: 20px;
+       	
+       }
+      .line .bubian{
+       	width: 10%;
+       	height: 80px;
+        line-height: 80px;
+        text-align: left;
+       }
+       .line .bubian p{
+       	padding-left: 25%;
+       	width: 75%;
+       	height: 40px;
+        line-height: 40px;
+       }
+       .caozuo{
+       	width: 25%;
+       	margin-left: 75%;
+       	height: 40px;
+       	line-height: 40px;
+       	text-align: center;
+       }
+        .caozuo p{
+       	height: 40px;
+       	line-height: 40px;
+       }
+       .caozuo img{
+       	margin-left: 10px;
+       	display: inline-block;
+       	width: 24px;
+       	height: 24px;
+       	line-height: 40px;
+       	margin-top: 8px;
+       }

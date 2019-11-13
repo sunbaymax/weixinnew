@@ -1,0 +1,233 @@
+* {
+			padding: 0px;
+			margin: 0px;
+		}
+		
+		input {
+			background: #FFFFFF;
+		}
+		
+		.centect {
+			width: 100%;
+			height: auto;
+			margin-top: 20px;
+		}
+		
+		.scroll {
+			width: 100%;
+			height: 2%;
+		}
+		
+		.currtent {
+			width: 94%;
+			height: 2rem;
+			margin-left: 3%;
+			border: 1px solid #CCCCCC;
+			background: #FFFFFF;
+		}
+		
+		.currtent .content_line {
+			width: 100%;
+			height: 0.55rem;
+			margin-bottom: 2px;
+			display: flex;
+			position: relative;
+			border-bottom:1px solid #cccccc;
+		}
+		
+		.content_line .luruname {
+			width: 30%;
+			margin-left: 10%;
+			height: 0.55rem;
+			line-height: 0.55rem;
+			/*margin-top: 0.05rem;*/
+			border-bottom: 1px solid #CCCCCC;
+			border-right: 1px solid #CCCCCC;
+		}
+		
+		.content_line .lurutel {
+			width: 55%;
+			padding-left: 5%;
+			height: 0.55rem;
+			line-height: 0.55rem;
+			/*margin-top: 0.05rem;*/
+			border-bottom: 1px solid #CCCCCC;
+		}
+		
+		.content_line .luruaddress {
+			margin-left: 10%;
+			width: 80%;
+			height: 0.55rem;
+			line-height: 0.55rem;
+			/*margin-top: 0.05rem;*/
+			border-bottom: 1px solid #CCCCCC;
+		}
+		
+		.altaddress {
+			display: inline-block;
+			width: 10%;
+			/*border: 1px solid #000066;*/
+			height: 0.55rem;
+			line-height: 0.55rem;
+			/*margin-top: 0.05rem;*/
+			border-bottom: 1px solid #CCCCCC;
+		}
+		
+		.altaddress {
+			text-decoration: none;
+			font-size: 18px;
+		}
+		
+		.content_line .lurudescaddress {
+			margin-left: 10%;
+			width: 60%;
+			height: 0.55rem;
+			line-height: 0.55rem;
+			/*margin-top: 0.05rem;*/
+			/*border-bottom: 1px solid #CCCCCC;*/
+		}
+		
+		.content_line .fujin {
+			width: 70px;
+			height: 0.55rem;
+			font-size: 14px;
+			color: red;
+			line-height: 0.55rem;
+			position: absolute;
+			top: 0px;
+			right: 0px;
+		}
+		
+		.content_line .ji {
+			display: inline-block;
+			width: 20px;
+			height: 24px;
+			line-height: 0.55rem;
+			text-align: center;
+			margin-top: 16px;
+			position: absolute;
+			top: 0px;
+			left: 3%;
+		}
+			.lastline {
+			width: 94%;
+			margin-left: 3%;
+			height: 0.55rem;
+			position: relative;
+		}
+		.lastline  span{
+			color: #989898;
+			font-size: 14px;
+			position: absolute;
+		    top: 15px;
+		    left: 10%;
+		}
+		
+		.rdo {
+			width: 20px;
+			height: 0px;
+			background-color: #000;
+			margin-right: 2%;
+			margin-left: 3%;
+			border-radius: 50%;
+			position: relative;
+		}
+		
+		.rdo:before,
+		.rdo:after {
+			content: '';
+			display: block;
+			position: absolute;
+			border-radius: 50%;
+			transition: .3s ease;
+		}
+		
+		.rdo:before {
+			top: 0px;
+			left: 0px;
+			width: 16px;
+			height: 16px;
+			background-color: #fff;
+			border: 1px solid #000;
+			font-size: 14px;
+		}
+		
+		.rdo:after {
+			top: 6px;
+			left: 6px;
+			width: 8px;
+			height: 8px;
+			background-color: #fff;
+		}
+		
+		.rdo:checked:after {
+			top: 3px;
+			left: 3px;
+			width: 12px;
+			height: 12px;
+			background-color: #8C8C8C;
+		}
+		
+		.rdo:checked:before {
+			border-color: #8C8C8C;
+		}
+		.space{
+			display: flex;
+			
+			/*vertical-align: middle;*/
+		}
+		.space span{
+			line-height: 0.5rem;
+			vertical-align: middle;
+			font-size: 14px;
+		}
+		.rdo {
+			width: 20px;
+			height: 0px;
+			/*line-height: 0.5rem;*/
+			margin-top:15px ;
+			background-color: #000;
+			margin-right: 2%;
+			margin-left: 8%;
+			border-radius: 50%;
+			position: relative;
+		}
+		
+		.rdo:before,
+		.rdo:after {
+			content: '';
+			display: block;
+			position: absolute;
+			border-radius: 50%;
+			transition: .3s ease;
+		}
+		
+		.rdo:before {
+			top: 0px;
+			left: 0px;
+			width: 16px;
+			height: 16px;
+			background-color: #fff;
+			border: 1px solid #000;
+		}
+		
+		.rdo:after {
+			top: 6px;
+			left: 6px;
+			width: 8px;
+			height: 8px;
+			background-color: #fff;
+		}
+		
+		.rdo:checked:after {
+			top: 3px;
+			left: 3px;
+			width: 12px;
+			height: 12px;
+			background-color: #f96401;
+		}
+		
+		.rdo:checked:before {
+			/*border-color: #8C8C8C;*/
+			border-color: #f96401;
+		}

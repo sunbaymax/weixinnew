@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>市场信息查询</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<link rel="stylesheet" href="../css/reset.css" type="text/css">
+		<link rel="stylesheet" href="../css/Market.css" type="text/css" />
+
+	</head>
+	<style>
+
+	</style>
+
+	<body>
+		<div class="header_content">
+			<div class="search-content">
+				<input type="text" placeholder="客户搜索" class="search-input" />
+				<img src="../img/soushuo_1@2x.png" class="search-img" />
+				<img src="../img/addmarket.png" class="add-img" />
+			</div>
+		</div>
+		<div class="content-market">
+			<ul>
+				<li class="market-item">
+						<div class="market-left">
+							<p class="inner-line"><span class="username">菲六</span> <span class="company">中集冷云(北京)供应链管理有限公司</span></p>
+							<p class="inner-line"><span class="address">北京市顺义区南彩三街茂化工厂1号楼2层201室中集冷</span></p>
+						</div>
+						<div class="market-right">
+						    <img src="../img/bianji@2x.png" class="Edit operation-img" />
+						</div>
+				</li>
+				<li class="market-item">
+						<div class="market-left">
+							<p class="inner-line"><span class="username">菲六</span> <span class="company">中集冷云(北京)供应链管理有限公司</span></p>
+							<p class="inner-line"><span class="address">北京市顺义区南彩三街茂化工厂1号楼2层201室中集冷云</span></p>
+						</div>
+						<div class="market-right">
+						    <img src="../img/bianji@2x.png" class="Edit operation-img" />
+						</div>
+				</li>
+				<li class="market-item">
+						<div class="market-left">
+							<p class="inner-line"><span class="username">菲六</span> <span class="company">中集冷云(北京)供应链管理有限公司</span></p>
+							<p class="inner-line"><span class="address">北京市顺义区南彩三街茂化工厂1号楼2层201室中集冷云</span></p>
+						</div>
+						<div class="market-right">
+						    <img src="../img/bianji@2x.png" class="Edit operation-img" />
+						</div>
+				</li>
+				<li class="market-item">
+						<div class="market-left">
+							<p class="inner-line"><span class="username">菲六</span> <span class="company">中集冷云(北京)供应链管理有限公司</span></p>
+							<p class="inner-line"><span class="address">北京市顺义区南彩三街茂化工厂1号楼2层201室中集冷</span></p>
+						</div>
+						<div class="market-right">
+						    <img src="../img/bianji@2x.png" class="Edit operation-img" />
+						</div>
+				</li>
+				<li class="market-item">
+						<div class="market-left">
+							<p class="inner-line"><span class="username">菲六</span> <span class="company">中集冷云(北京)供应链管理有限公司</span></p>
+							<p class="inner-line"><span class="address">北京市顺义区南彩三街茂化工厂1号楼2层201室中集冷云</span></p>
+						</div>
+						<div class="market-right">
+						    <img src="../img/bianji@2x.png" class="Edit operation-img" />
+						</div>
+				</li>
+				<li class="market-item">
+						<div class="market-left">
+							<p class="inner-line"><span class="username">菲六</span> <span class="company">中集冷云(北京)供应链管理有限公司</span></p>
+							<p class="inner-line"><span class="address">北京市顺义区南彩三街茂化工厂1号楼2层201室中集冷云</span></p>
+						</div>
+						<div class="market-right">
+						    <img src="../img/bianji@2x.png" class="Edit operation-img" />
+						</div>
+				</li>
+				<li class="market-item">
+						<div class="market-left">
+							<p class="inner-line"><span class="username">菲六</span> <span class="company">中集冷云(北京)供应链管理有限公司</span></p>
+							<p class="inner-line"><span class="address">北京市顺义区南彩三街茂化工厂1号楼2层201室中集冷</span></p>
+						</div>
+						<div class="market-right">
+						    <img src="../img/bianji@2x.png" class="Edit operation-img" />
+						</div>
+				</li>
+				<li class="market-item">
+						<div class="market-left">
+							<p class="inner-line"><span class="username">菲六</span> <span class="company">中集冷云(北京)供应链管理有限公司</span></p>
+							<p class="inner-line"><span class="address">北京市顺义区南彩三街茂化工厂1号楼2层201室中集冷云</span></p>
+						</div>
+						<div class="market-right">
+						    <img src="../img/bianji@2x.png" class="Edit operation-img" />
+						</div>
+				</li>
+				<li class="market-item">
+						<div class="market-left">
+							<p class="inner-line"><span class="username">菲六</span> <span class="company">中集冷云(北京)供应链管理有限公司</span></p>
+							<p class="inner-line"><span class="address">北京市顺义区南彩三街茂化工厂1号楼2层201室中集冷云</span></p>
+						</div>
+						<div class="market-right">
+						    <img src="../img/bianji@2x.png" class="Edit operation-img" />
+						</div>
+				</li>
+				<li class="market-item">
+						<div class="market-left">
+							<p class="inner-line"><span class="username">菲六</span> <span class="company">中集冷云(北京)供应链管理有限公司</span></p>
+							<p class="inner-line"><span class="address">北京市顺义区南彩三街茂化工厂1号楼2层201室中集冷云</span></p>
+						</div>
+						<div class="market-right">
+						    <img src="../img/bianji@2x.png" class="Edit operation-img" />
+						</div>
+				</li>
+			</ul>
+		</div>
+	</body>
+	<script>
+		var ScreenWidth = document.documentElement.clientWidth || document.body.clientWidth;
+		var ScreenHeight = document.documentElement.clientHeight || document.body.clientHeight;
+		document.documentElement.style.fontSize = document.documentElement.clientWidth / 10 + "px";
+	</script>
+
+</html>

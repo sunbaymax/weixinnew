@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="format-detection" content="telephone=no">
+		<title>中集冷云</title>
+		<link type="text/css" rel="stylesheet" href="css/body.css" />
+		<link type="text/css" rel="stylesheet" href="css/sugg.css" />
+	</head>
+	<style>
+		.centent{
+			background: #FFFFFF;
+		}
+		body{
+			background: #f4f4f4;
+		}
+		.data_center{
+			
+			width: 100%;
+			height: 162px;
+			background: #FFFFFF;
+			text-align: center;
+		}
+		.details_wenti{
+			margin-top: 21px;
+			width: 300px;
+			height: 120px;
+			border: 1px solid #8d8d8d;
+			margin-bottom: 21px;
+		}
+		.form_centect{
+			border: none;
+		}
+	</style>
+	<body>
+		<div class="title">
+			<a href="Suggs_products.html" ><img src="img/back.png" alt="返回" /></a>
+			<!--<a class="back_login" href="#">返回</a>-->
+			<h3 class="title_h">意见反馈</h3>
+		</div>
+		<div class="centent">
+			<img class="touxiang" src="img/touxiang.jpg"  alt="微信头像"/>
+			<span>昵称</span>
+			<input type="text"  class="wechat_name" name="wechatname"/>
+		</div>
+		<div class="centent_p">
+			<p class="ti_p">请在下方如实填写您的最终需求结果描述</p>
+		</div>
+		<div class="data_center">
+			<form >
+				<p class="form_centect duowenden"><textarea class="details_wenti" id="xuqiu" placeholder="描述清楚该产品要求满足什么样的需求1、2、3、... ..."></textarea></p> 
+			</form>
+		</div>
+		 <br clear="both" />
+		<div class="btn"><button class="next" id="tijiao">提交</button></div>
+	</body>
+	<script src="../js/jquery-1.11.0.js"></script>
+		<script>
+		$(document).ready(function () {
+				
+				var _touxiangS = window.localStorage.getItem("touxiang");
+	            var _nichengS = window.localStorage.getItem("nicheng");
+	            $(".wechat_name").val(_nichengS);
+		        $(".touxiang").attr("src",_touxiangS);
+		            }); 
+		</script>
+		<script>
+			$('#tijiao').on("click",function(){
+				    var _wechat_touxiang = window.localStorage.getItem("touxiang");
+	                var _wechat_nicheng = window.localStorage.getItem("nicheng");
+	                var _openid = window.localStorage.getItem("openid");
+	                var _contacts = window.localStorage.getItem("lianxiren");
+	                var _tel = window.localStorage.getItem("telphone");
+	                var _companys = window.localStorage.getItem("company");
+	                var _products = window.localStorage.getItem("product");
+	                var _nowtime = window.localStorage.getItem("time");
+	                var _img_urls = window.localStorage.getItem("_img_urls");
+	                var _desc = window.localStorage.getItem("details_wenti");
+	                var _last_product= $(".details_wenti").val();
+	                console.log(_wechat_touxiang+","+_wechat_nicheng+","+_contacts+","+_tel+","+_companys+","+_products+","+_nowtime+","+_desc+","+_img_urls+","+_last_product);
+					$.ajax({
+						type: "Post",
+						url: "http://www.ccsc58.com/json/weixin_feedback.php",
+						dataType:"JSON",
+						data: {
+							admin_permit:"zjly8888",
+							wechat_touxiang:_wechat_touxiang,
+							wechat_nicheng:_wechat_nicheng,
+						    openid:_openid,
+							contacts:_contacts,
+							tel:_tel,
+							companys:_companys,
+							products:_products,
+							nowtime:_nowtime,
+							img_urls:_img_urls,
+							desc:_desc,
+							last_product:_last_product
+						},
+						success: function(data) {
+							if(data.code == "10000") {
+								console.log(data);
+								var name="客服";
+								var gonghao=_nowtime;
+								var contacts=_contacts;
+								var tel =_tel;
+								var desc=_desc;
+								var xuqiu=_last_product;
+								var openid=_openid;
+								var app_key="261AFF68C0E9F076420D083D66222824"; 
+								//alert(openid);
+									$.ajax({
+									type:"post",
+									url:"http://www.ccsc58.cc/weixinnew/Push_message.php",
+									data:{
+										first:name,
+										keyword1:gonghao,
+										keyword2:contacts,
+										keyword3:tel,
+										keyword4:desc,
+										remark:xuqiu,
+										openid:'oTarnv5aWyxLcCENYrs5UOR3FqvQ',
+										app_key:app_key
+									},
+									success:function(data){
+										//alert("推送成功!");
+										console.log('推送成功');
+										//return false;
+										
+									},
+									error:function(){
+										alert("推送失败！");
+									}
+								});
+                              alert("反馈成功，我们会尽快处理，第一时间回复你");
+    						  window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx82dbac04fa8fd8ef&redirect_uri=http://www.ccsc58.cc/weixinnew/oauth2_Suggs.php&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect";										
+							}
+							else if(data.code == "20000"){
+								alert("本人没有参与签到！");
+							}else{
+								alert("手机号预留跟后台有偏差！");
+							}
+						},
+						error: function() {
+							alert("网络错误");
+							//window.location.href = window.location.href;
+						}
+					});
+						
+				    
+			});
+		</script>
+				
+				
+		
+</html>

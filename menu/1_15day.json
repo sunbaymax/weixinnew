@@ -1,0 +1,62 @@
+ {
+        "button": [
+            {
+                "type": "view", 
+                "name": "慧联云", 
+                "url": "http://info.bjxwhl.com:8000/", 
+                "sub_button": [ ]
+            }, 
+            {
+                "name": "服务中心", 
+                "sub_button": [
+                    {
+                        "type": "view", 
+                        "name": "查看环境信息", 
+                        "url": "http://www.bjxwhl.com/wxchat/user/CurrentTemperature.aspx", 
+                        "sub_button": [ ]
+                    }, 
+                    {
+                        "type": "view", 
+                        "name": "我的净化器", 
+                        "url": "http://www.bjxwhl.com/wxchat/user/Purifiers.aspx", 
+                        "sub_button": [ ]
+                    }, 
+                    {
+                        "type": "view", 
+                        "name": "历史曲线", 
+                        "url": "http://www.bjxwhl.com/wxchat/user/HistoryTemperature.aspx", 
+                        "sub_button": [ ]
+                    }, 
+                    {
+                        "type": "view", 
+                        "name": "绑定设置", 
+                        "url": "http://www.bjxwhl.com/wxchat/user/UserBinding.aspx", 
+                        "sub_button": [ ]
+                    }
+                ]
+            }, 
+            {
+                "name": "关于我们", 
+                "sub_button": [
+                    {
+                        "type": "click", 
+                        "name": "联系我们", 
+                        "key": "tel", 
+                        "sub_button": [ ]
+                    }, 
+                    {
+                        "type": "view", 
+                        "name": "公司首页", 
+                        "url": "http://www.bjxwhl.com/", 
+                        "sub_button": [ ]
+                    }, 
+                    {
+                        "type": "click", 
+                        "name": "说明书", 
+                        "key": "shuomingshu", 
+                        "sub_button": [ ]
+                    }
+                ]
+            }
+        ]
+    }

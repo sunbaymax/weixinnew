@@ -1,0 +1,46 @@
+.index_content{
+	width:100%;
+	height:auto;
+	margin-top:8rem;
+}
+.index_content p{
+	width:25%;
+	height:10rem;
+	font-size: 1.5rem;
+	margin-left:6%;
+	margin-top:2rem;
+	float:left;
+}
+.index_content a{
+	color:#000;
+}
+.index_content p img{
+	width:50%;
+	display:block;
+	height:5rem;
+	margin-left:25%;
+}
+.index_content p:nth-of-type(5) img{
+	width:60%;
+	display:block;
+	height:4rem;
+	margin-left:20%;
+	margin-top:0.5rem;
+}
+.index_content p:nth-of-type(5) span{
+	width:100%;
+	display:block;
+	height:5rem;
+	text-align: center;
+	line-height: 5rem;
+	font-size:1.5rem;
+	margin-top:0.5rem;
+}
+.index_content p span{
+	width:100%;
+	display:block;
+	height:5rem;
+	text-align: center;
+	line-height: 5rem;
+	font-size:1.5rem;
+}

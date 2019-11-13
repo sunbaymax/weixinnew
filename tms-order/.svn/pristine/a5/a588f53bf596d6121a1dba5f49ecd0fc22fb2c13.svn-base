@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>下单</title>
+    <link rel="stylesheet" href="css/index.css" type="text/css">
+</head> 
+<body>
+    <nav>
+        <div>< 我的订单</div>
+        <div>下单</div>
+        <div></div>
+        <div></div>
+    </nav>
+  
+<!--内容部分-->
+<main>
+
+    <ul class="contant">
+        <li>
+            <span>客户账号</span>
+            <div style="border: none;">
+                <input type="text" placeholder="请输入客户账号" class="accept">
+            </div>
+        </li>
+    </ul>
+    <ul class="contant">
+        <li>
+            <span>手机号码</span>
+            <div>
+                <input type="text" placeholder="请输入手机号码" class="phone">
+            </div>
+        </li>
+        <li>
+            <span>动态验证码</span>
+            <div style="border: none;">
+                <input type="text" placeholder="请输入验证码" class="lkj">
+                <span class="yanzheng" id="fasas">发送</span>
+            </div>
+        </li>
+    </ul>
+    <p style="color: #169bd5;text-align: right;margin: 0 0.05rem 0 0;">
+        <span class="zhuce">没有客户账号？点击这里</span>
+    </p>
+</main>
+<!--按钮  下一步-->
+<footer>
+        <span>下一步</span>
+</footer>
+</body>
+<script src="js/rem.js" type="text/javascript"></script>
+<script src="js/jquery-1.9.1.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+    
+    $(function () {
+        window.localStorage.clear();
+        $("main input, main select").val('');
+
+
+        var reg = /^1[34578]\d{9}$/;
+
+        $(".lkj").focus(function () {
+            if(!reg.test($(".phone").val())){
+                alert("请输入正确的手机号");
+                $(".lkj").blur();
+            }
+
+        });
+
+            $(".yanzheng").on('click',function () {
+                if(!reg.test($(".phone").val())){
+                    alert("请输入正确的手机号");
+                }else{
+                    yanz();
+                }
+
+            });
+            function yanz() {
+                var num = 60;
+                var id = setInterval(function () {
+                    num = num-1;
+                    $(".yanzheng").html(num).css("color","#000000").css("background","#ccc");
+                    if(num == 0){
+                        $(".yanzheng").html("重新发送").css("color","#ffffff").css("background","#009dd9");
+                        window.clearInterval(id);
+                    }
+                },1000);
+                $.ajax({
+                    url:'http://www.ccsc58.com/SMS/SMS-telephone.php?telephone='+$('.phone').val()+'&action=call&admin_permit=zjly8888',
+                    type:'post',
+                    dataType:'JSON',
+                    success:function (res) {
+                        console.log(res);
+                    },
+                    error:function (err) {
+                        console.log(err);
+                    }
+                })
+            }
+
+
+        $('.zhuce').on('click',function () {
+            window.location.href = "components/zhuce.html"
+        })
+        $('footer span').on('click',function () {
+            if($(".accept").val() == "" || $(".phone").val() == "" || $(".lkj").val() == ""){
+                alert("请输入完整信息");
+            }else{
+                $.ajax({
+                    url:"http://www.ccsc58.com/SMS/SMS-telephone.php?telephone="+$(".phone").val()+"&action=bijiao&admin_permit=zjly8888&yanzhengmas="+$(".lkj").val(),
+                    type:"get",
+                    dataType:"JSON",
+                    success:function (res) {
+                        if(res.result == "success"){
+                            qingqiu();
+                        }else if(res.result == "fail"){
+                            alert("请输入正确的验证码");
+                        }
+                    }
+                })
+            }
+            
+        })
+        
+        
+        function qingqiu() {
+                $.ajax({
+                    url:"http://www.ccsc58.cc/zjlytms/api.php/Order/ajax",
+                    type:"post",
+                    data:{
+                        merber_id: $(".accept").val(),
+                        state:1
+                    },
+                    dataType:"JSON",
+                    success:function(res){
+                        if(res.status == "0"){
+                            alert(res.info);
+                        }else{
+                            localStorage.setItem('myNum',$(".accept").val());
+                            window.location.href = "components/tempature.html";
+                        }
+                    },
+                    error:function(err){
+                        console.log(err);
+                    }
+                })
+        }
+    })
+</script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

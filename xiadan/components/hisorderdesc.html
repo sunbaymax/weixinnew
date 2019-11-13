@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>历史订单详情</title>
+		<link rel="stylesheet" href="../css/details.css" type="text/css">
+		<link rel="shortcut icon" type="image/ico" href="/favicon.ico" />
+		<link rel="stylesheet" type="text/css" href="../css/checkstyle.css" />
+
+	</head>
+
+	<style>
+		.chk_3+label {
+			display: flex;
+		}
+		.xzrjsl ul li {
+			background: #000000;
+		}
+		
+		.hide {
+			display: none;
+		}
+		
+		.show {
+			display: block;
+		}
+	</style>
+
+	<body>
+		<nav>
+			<div>
+				< 上一步 </div>
+					<div>历史订单详情</div>
+					<div></div>
+					<div></div>
+		</nav>
+		<!-- 详情 -->
+		<main class="detailMain">
+			<p class="titile">客户信息</p>
+			<ul class="userinfo">
+				<li>
+					<span>客户账号：</span>
+					<span class="merber_id"></span>
+				</li>
+				<li>
+					<span>手机号：</span>
+					<span class="phone"></span>
+				</li>
+
+			</ul>
+			<p class="titile">物流信息</p>
+			<ul class="wuliu">
+				<li>
+					<span>发货人：</span>
+					<span class="faName"></span>
+				</li>
+				<li>
+					<span>联系电话：</span>
+					<span class="faPhone"></span>
+				</li>
+				<li class="addres">
+					<span>发货地址：</span>
+					<span class="faAddress" style='text-align: initial;line-height: normal;'></span>
+				</li>
+				<li>
+					<span>收货人：</span>
+					<span class="shouName"></span>
+				</li>
+				<li>
+					<span>联系电话：</span>
+					<span class="shouPhone"></span>
+				</li>
+
+				<li class="addres">
+					<span>收货地址：</span>
+					<span class="shouAddress" style='text-align: initial;line-height: normal;'></span>
+				</li>
+				<li>
+					<span>取件时间：</span>
+					<span class="startTime"></span>
+				</li>
+				<li>
+					<span style="width: 40%; text-align: left;">&nbsp;&nbsp;&nbsp;&nbsp;节假派送：</span>
+					<input type="checkbox" id="checkbox_c1" class="chk_3" /><label for="checkbox_c1"></label>
+				</li>
+
+			</ul>
+
+			<!-- 基础信息 -->
+			<p class="titile">商品信息</p>
+			<ul class="basic mybox">
+				<li>
+					<span>温度区间：</span>
+					<span class="wdqj"></span>
+				</li>
+				<li>
+					<span>货物名称：</span>
+					<span class="carName"></span>
+				</li>
+				
+				<li style="height:auto;border: none;">
+					<span class="wenzirongji" style="display:inline-block;width: 30%;padding-right: 0px;">容积数量：</span>
+					<div style="border:none;width:70%;" class="xzrjsl">
+						<span style="border:none;display: inline-block;" class="asdfkl"></span>
+					</div>
+				</li>
+				<li style="border-top: 1px solid #CCCCCC;">
+					<span>温度计：</span>
+					<span class="tem"></span>
+				</li>
+				<li>
+					<span>备注：</span>
+					<span class="note backup"></span>
+				</li>
+			</ul>
+			<ul class="zibei">
+				<li>
+					<span>自备箱：</span>
+					<span class="zbxsl"></span>
+				</li>
+			</ul>
+
+			<!-- 发货信息 -->
+
+			<!-- 送达时间及投保情况 -->
+			<ul class="paisong">
+				<li class="toubao">
+					<span style="width: 40%;text-align: left;">&nbsp;&nbsp;&nbsp;&nbsp;是否投保：</span>
+					<div style="display:inline-block;width: 65%;">
+						<input type="checkbox" id="checkbox_c3" class="chk_3" /><label for="checkbox_c3"></label>
+					</div>
+				</li>
+				<li class="touman">
+					<span style="width: 40%;text-align: left;">&nbsp;&nbsp;&nbsp;&nbsp;投保金额：</span>
+					<input type="text" class="money" disabled="disabled" style="border: none;"/>
+				</li>
+			</ul>
+		</main>
+		<!--按钮  下一步-->
+		<!--<footer>
+			<span>提交</span>
+			<span style="margin-right:15%;">修改</span>
+		</footer>-->
+
+	</body>
+	<script src="../js/rem.js" type="text/javascript"></script>
+	<script src="../js/jquery-1.11.0.js" type="text/javascript"></script>
+	<script>
+		$(function() {
+
+			// 点击上一步                                  
+			$("nav div:first-of-type").on('click', function() {
+				window.location.href = "ordertake.html";
+			})
+
+			function UrlSearch() {
+				var name, value;
+				var str = location.href; //取得整个地址栏
+				var num = str.indexOf("?")
+				str = str.substr(num + 1); //取得所有参数 stringvar.substr(start [, length ]
+
+				var arr = str.split("&"); //各个参数放到数组里
+				for(var i = 0; i < arr.length; i++) {
+					num = arr[i].indexOf("=");
+					if(num > 0) {
+						name = arr[i].substring(0, num);
+						value = arr[i].substr(num + 1);
+						this[name] = value;
+					}
+				}
+			}
+			var Request = new UrlSearch(); //实例化
+			var _id = Request.id;
+			console.log(_id);
+			var _AccountNumber = localStorage.getItem("myNum");
+			var _AccountTelephone = localStorage.getItem("phone");
+			$.ajax({
+				url: "http://out.ccsc58.cc/DATA_PORT_WECHAT_1.01/details.php",
+				type: "post",
+				data: {
+					id: _id,
+				},
+				dataType: "JSON",
+				success: function(obj) {
+					$('.merber_id').text(_AccountNumber);
+					$('.phone').text(_AccountTelephone);
+					$('.faName').text(obj.data.Manager);
+					$('.faPhone').text(obj.data.Telephone);
+					$('.faAddress').text(obj.data.NetDepart + " " + obj.data.NetCity + " " + obj.data.Address);
+					$('.shouName').text(obj.data.GetName);
+					$('.shouPhone').text(obj.data.GetTelephone);
+					$('.shouAddress').text(obj.data.GetDepart + " " + obj.data.GetCity + " "+obj.data.GetArea + " " + obj.data.GetAddress);
+					$('.startTime').text(obj.data.XMNO);
+					if(obj.data.note1.search("不") != -1) {
+						$("#checkbox_c1").attr("checked", false);
+					} else {
+						$("#checkbox_c1").prop("checked", "true");
+					}
+
+					if(obj.data.A1.search("自备") != -1) {
+						$('.mybox').addClass('hide');
+						$('.zbxsl').text(obj.data.B1);
+
+					} else {
+						$('.zibei').addClass('hide');
+						$('.mybox').removeClass('hide');
+						$('.wdqj').text(obj.data.WDQJ);
+						$('.carName').text(obj.data.CargoName);
+						var span2 = `<li style='height:auto;'><span>箱子容积</span><span>件数</span></li>`;
+						$.each(obj.data.model, function(i, item) {
+							var span = $(
+								`<li style='height:auto;'><span class='rongji' >${item.type}</span><span class='shuli'>${item.num}</span></li>`
+							);
+							$(".asdfkl").append(span);
+						});
+						$('.tem').text(obj.data.Name4)
+						$('.backup').text(obj.data.beizhu);
+						if(obj.data.Name4.search("不") != -1) {
+							$("#checkbox_c2").attr("checked", false);
+						} else {
+							$("#checkbox_c2").prop("checked", "true");
+						}
+						
+					}
+					if(obj.data.SafeItem == "投保") {
+						$("#checkbox_c3").prop("checked", "true");
+						$(".money").val(obj.data.SafePay);
+					} else {
+						$("#checkbox_c3").attr("checked", false);
+						$(".touman").addClass("hide");
+					}
+				},
+				error: function(err) {
+					console.log(err)
+				}
+
+			})
+
+		})
+	</script>
+
+</html>

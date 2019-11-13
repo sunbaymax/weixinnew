@@ -1,0 +1,133 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8" />
+<!--允许全屏-->
+<meta content="yes" name="apple-mobile-web-app-capable"/>
+<meta content="yes" name="apple-touch-fullscreen"/>
+<meta content="telephone=no,email=no" name="format-detection"/>
+<meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width"/>
+<title>我要评价</title>
+<link href="css/EvaluationOrder.debug.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+<script type="text/javascript" src="js/jquery.js"></script>
+<!--<div>
+	<img src="images/guanggao.png"  style="width: 100%;height: 300px;"/>
+	<img src="images/haoshi.png"  style="width: 100%;height: 50px;"/>
+</div>-->
+<div class="order-list">
+    <section>
+        <div class="order-list-top">
+            <p class="order-list-top-img">
+                <!--<img src="uploadfile/EvaluationOrder_01.jpg" />-->
+                <img src="images/LOGO.png" />
+            </p>
+            <div class="order-list-top-info">
+                <h1> 没有特别的地方去评价， 只能在给卖家评价的时候，会有一个快递的评分， 你要喜欢就给5分， 不喜欢就给1分</h1>
+                <h2><span class="pingjia"></span></h2>
+            </div>
+        </div>
+        <div class="order-list-Below">
+            <h1>物流服务</h1>
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+            
+           
+            <div class="order-textbox">
+                <textarea placeholder="在此中集冰骑士进行评价"></textarea>
+            </div>
+        </div>
+        
+    </section>
+
+   
+    
+    <div class="order-button">
+        <a href="javascript:void(0);">发表评论</a>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(".order-list-Below ul li").click(
+    function(){
+        var num = $(this).index()+1;
+        var len = $(this).index();
+        var thats = $(this).parent(".order-list-Below ul").find("li");
+        if($(thats).eq(len).attr("class")=="on"){
+            if($(thats).eq(num).attr("class")=="on"){
+                $(thats).removeClass();
+                for (var i=0 ; i<num; i++) {
+                    $(thats).eq(i).addClass("on");
+                }
+            }else{
+                $(thats).removeClass();
+                for (var k=0 ; k<len; k++) {
+                    $(thats).eq(k).addClass("on");
+                }
+            }
+        }else{
+            $(thats).removeClass();
+            for (var j=0 ; j<num; j++) {
+                $(thats).eq(j).addClass("on");
+            }
+        }
+    var nums = $(this).parent(".order-list-Below ul").find(".on"); 
+    console.log(nums.length);
+	    if(nums.length==1){
+	    	$('.pingjia').text("垃圾!简直就是垃圾！！！");
+	    }else if(nums.length==2){
+	    	$('.pingjia').text("糟糕透了！！");
+	    }else if(nums.length==3){
+	    	$('.pingjia').text("一般、小鲜肉、非常热情。");
+	    }
+	    else if(nums.length==4){
+	    	$('.pingjia').text("个性稳重、具高度责任感。");
+	    }
+	    else if(nums.length==5){
+	    	$('.pingjia').text("速度快、外包装完好、态度好。");
+	    }
+    }
+);
+$("#file").on("change", function() {
+				uploadPic();
+			})
+
+			function uploadPic() {
+				var formM = $('#file')[0].files;
+				var obj = [];
+				for(var i = 0; i < formM.length; i++) {
+					var formData = new FormData();
+					formData.append('file', $('#file')[0].files[i]);
+					formData.append('token', $('input[name=token]').val());
+					$.ajax({
+						url: 'http://up-z1.qiniup.com',
+						type: 'POST',
+						cache: false,
+						data: formData,
+						processData: false,
+						async: false,
+						contentType: false,
+						success: function(res) {
+							obj.push(res);
+
+						}
+					})
+				}
+				for(var i = 0; i < obj.length; i++) {
+
+					$(".upimg-div .up-img")[i].setAttribute('src', 'http://ov0v30wya.bkt.clouddn.com/' + obj[i].key);
+
+				}
+
+			}
+</script>
+
+</body>
+</html>

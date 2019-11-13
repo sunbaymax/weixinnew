@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+	<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="js/jquery-1.11.0.js"></script>
+	<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="css/style.css">
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			background: #66AEFF;
+            opacity: 0.9;
+		}
+
+		nav {
+			font-size: 20px;
+			/*line-height: 40px;*/
+			text-align: center;
+			padding: 10px 0;
+		}
+
+		ul li div {
+			height: 3rem;
+			line-height: 3rem;
+			display: flex;
+			position: relative;
+		}
+
+		li div img {
+			height: 3rem;
+			width: 3rem;
+			/*max-width: 10%;*/
+			border-radius: 50%;
+			margin-top: 0.5rem;
+			position: absolute;
+			left: 1rem;
+		}
+
+		li div span {
+			display: inline-block;
+			height: 4rem;
+			line-height: 4rem;
+			margin-left: 5px;
+		}
+
+		li div .nickname {
+			max-width: 20%;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			position: absolute;
+			left: 4rem;
+
+		}
+
+		li div .name {
+			max-width: 20%;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			position: absolute;
+			left: 8rem;
+
+		}
+
+		li div .company {
+			max-width: 30%;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			margin-right: 15px;
+			position: absolute;
+			right: 1rem;
+
+		}
+
+		li div .Dtype {
+			display: inline-block;
+			height: 3rem;
+			max-width: 20%;
+			margin-top: 0.5rem;
+			position: absolute;
+			right: 5px;
+
+		}
+
+		.panel-title {
+			display: flex;
+			justify-content: space-between;
+		}
+		ul li{
+			height:4rem;
+			/*line-height:4rem;*/
+		}
+		.panel-body{
+			padding-top:0 ;
+		}
+	</style>
+	<title>统计管理</title>
+</head>
+<body>
+	<div class="container">
+		<nav>统计管理</nav>
+	<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+
+		<div class="panel panel-default">
+			<div class="panel-heading" role="tab">
+				<h4 class="panel-title" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true"
+				 aria-controls="collapseOne">
+				 <span class="panel-t">已签到</span> <span><span class="span1"></span>人</span></h4>
+			</div>
+			<div id="collapseOne" class="panel-collapse collapse">
+				<div class="panel-body">
+					<ul class="push" style="height:max-content;overflow-y:scroll;"></ul>
+				</div>
+			</div>
+		</div>
+
+		<div class="panel panel-default">
+			<div class="panel-heading" role="tab">
+				<h4 class="panel-title" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="true"
+				 aria-controls="collapseFour">
+				 <span class="panel-t">已审核</span> <span><span  class="span4"></span>人</span></h4>
+			</div>
+			<div id="collapseFour" class="panel-collapse collapse">
+				<div class="panel-body">
+						<ul class="push" style="height:max-content;overflow-y:scroll;"></ul>
+				</div>
+			</div>
+		</div>
+
+		<div class="panel panel-default">
+			<div class="panel-heading" role="tab">
+				<h4 class="panel-title" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="true"
+				 aria-controls="collapseFive">
+				 <span class="panel-t">未审核</span> <span><span  class="span5"></span>人</span></h4>
+			</div>
+			<div id="collapseFive" class="panel-collapse collapse">
+				<div class="panel-body">
+						<ul class="push" style="height:max-content;overflow-y:scroll;"></ul>
+				</div>
+			</div>
+		</div>
+		
+				<div class="panel panel-default">
+			<div class="panel-heading" role="tab">
+				<h4 class="panel-title" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true"
+				 aria-controls="collapseTwo">
+				 <span class="panel-t">已入场</span> <span><span class="span2"></span>人</span></h4>
+			</div>
+			<div id="collapseTwo" class="panel-collapse collapse">
+				<div class="panel-body">
+						<ul class="push" style="height:max-content;overflow-y:scroll;"></ul>
+				</div>
+			</div>
+		</div>
+
+		<div class="panel panel-default">
+			<div class="panel-heading" role="tab">
+				<h4 class="panel-title" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true"
+				 aria-controls="collapseThree">
+				 <span class="panel-t">未入场</span> <span><span class="span3"></span>人</span></h4>
+			</div>
+			<div id="collapseThree" class="panel-collapse collapse">
+				<div class="panel-body">
+						<ul class="push" style="height:max-content;overflow-y:scroll;"></ul>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	</div>
+	
+</body>
+<script>
+	$(function () {
+		show();
+		$("body").on("click", ".panel-heading", function () {
+			var status = $(this).find(".panel-t").text();
+			var is_check = "";
+			var is_sign = "";
+			var is_entrance = "";
+			$(this).parent().find('ul').html('');
+			var panel_html = $(this).parent().find('ul');
+			switch (status) {
+				case "已签到":
+					is_check = '';
+					is_sign = 1;
+					is_entrance = '';
+					break;
+				case "已入场":
+					is_check = '';
+					is_sign = '';
+					is_entrance = 1;
+					break;
+				case "未入场":
+					is_check = '';
+					is_sign = '';
+					is_entrance = 0;
+					break;
+				case "已审核":
+					is_check = 1;
+					is_sign = '';
+					is_entrance = '';
+					break;
+				case "未审核":
+					is_check = 0;
+					is_sign = '';
+					is_entrance = '';
+					break;
+			}
+			$.ajax({
+				url: "http://www.zjcoldcloud.com/weixin_lucky/statistics.php",
+				type: "post",
+				data: {
+					is_check: is_check, //是否审核：1审核，0未审核
+					is_sign: is_sign, // 是否签到：1签到，0未签到
+					is_entrance: is_entrance // 是否入场：1入场，0未入场
+				},
+				dataType: "JSON",
+				async: false,
+				success: function (res) {
+					var str = '';
+					jQuery.each(res.data, function (i, val) {
+						var select_str = '';
+						if (val.headimgurl == '' || val.headimgurl == null) {
+							val.headimgurl = 'https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=1405405591,839252436&fm=58'
+						}
+						str =
+							`<li>
+								<div>
+									<img src='${val.headimgurl}' />
+									<span class="name">${val.username}</span>
+									<span class="company">${val.company}</span>
+								</div>
+							</li>`;
+
+						panel_html.append(str);
+
+					});
+				},
+				error: function (err) {
+					console.log(err);
+				}
+
+			})
+
+
+		})
+
+		function show() {
+			$.ajax({
+				url: "http://www.zjcoldcloud.com/weixin_lucky/statistics.php",
+				type: "post",
+				data: {
+					is_check: "", //是否审核：1审核，0未审核
+					is_sign: "", // 是否签到：1签到，0未签到
+					is_entrance: "" // 是否入场：1入场，0未入场
+				},
+				dataType: "JSON",
+				async: false,
+				success: function (res) {
+					var num0 = res.data[0].already_sign;
+					var num1 = res.data[0].already_entrance;
+					var num2 = res.data[0].not_entrance;
+					var num3 = res.data[0].already_check;
+					var num4 = res.data[0].not_check;
+					$(".span1").text(num0);
+					$(".span2").text(num1);
+					$(".span3").text(num2);
+					$(".span4").text(num3);
+					$(".span5").text(num4);
+				},
+				error: function (err) {
+					console.log(err);
+				}
+
+			})
+		}
+
+	})
+</script>
+
+</html>

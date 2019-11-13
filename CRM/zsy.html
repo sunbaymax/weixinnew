@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<link rel="stylesheet" href="css/shijian.css" type="text/css" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<style type="text/css">
+          .container{
+          	width: 100%;
+          	height: auto;
+          }
+          .container input{
+          	width: 60%;
+          	height: 80px;
+          }
+          .container button{
+          	width: 80px;
+          	height: 80px;
+          }
+          * {
+	touch-action: pan-y;
+}
+		</style>
+	</head>
+
+	<body>
+		<div class="container">
+
+			<input type="text" class="dsa" id="feeConfirmDate" name="feeConfirmDate">
+
+			<button type="button" id="btnSave">保存</button>
+
+		</div>
+		<div >
+			<img src="http://59.110.61.154/PDF/100001627227_6027036.pdf" alt="没"/>
+			<embed src="http://59.110.61.154/PDF/100001627227_6027036.pdf" height=800 width=800>
+		</div>
+	</body>
+	<script src="js/jquery-1.11.0.js"></script>
+	<script src="js/jquer_shijian.js"></script>
+	<script>
+		$(document).ready(function() {
+             
+             $(".dsa").shijian(); // 调时间接口
+			
+			$("#btnSave").click(function() {
+				var thetime = $(".dsa").val();
+				var d = new Date(Date.parse(thetime.replace(/-/g, "/")));
+
+				var curDate = new Date();
+				if(d <= curDate) {
+					alert("小于当前时间");
+				} else {
+					alert("大于当前时间");
+				}
+
+			});
+
+		});
+	</script>
+
+</html>

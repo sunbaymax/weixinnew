@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>我要下单</title>
+		<link rel="stylesheet" href="../css/index.css" type="text/css">
+		<link rel="stylesheet" href="../css/toastr.min.css">
+		<link rel="stylesheet" href="../css/Selfbox.css" />
+		<link rel="shortcut icon" href="#" />
+	</head>
+	<style>
+
+	</style>
+
+	<body>
+		<nav>
+			<div class="back">
+				< 上一步</div>
+					<div>下单</div>
+					<div></div>
+					<div></div>
+					<img src="../img/history5.png" class="title_history_img" />
+		</nav>
+		<!--内容部分-->
+		<div>
+			<div style="padding: 10px;border-bottom: 1px solid #000000;">
+				<p style="font-size: 14px;padding: 5px;">请输入自备箱的容积和数量</p>
+			</div>
+
+			<ul class="Ucentect" id="test">
+				<li class="linemoban">
+					<div class="line">
+						<div class="choose">
+							<img src="../img/weixuanze.png" alt="选择" xz="0" di="" />
+						</div>
+						<div class="wenzi">
+							<p>箱子容积</p>
+							<p>箱子数量</p>
+						</div>
+						<div class="txtinput">
+							<p><input type="text" class="zxrj" /> </p>
+							<p><input type="text" class="zxsl" /></p>
+						</div>
+						<div class="bubian">
+							<p>&nbsp;L</p>
+							<p>个</p>
+						</div>
+					</div>
+				</li>
+			</ul>
+			<div class="caozuo">
+				<p>
+					<img src="../img/add.png" / class="add" alt="加">
+					<img src="../img/jian2.png" class="jian" />
+				</p>
+			</div>
+
+		</div>
+		<!--按钮  下一步-->
+		<footer class="footer">
+			<span class="next">下一步</span>
+		</footer>
+		<script src="../js/rem.js" type="text/javascript"></script>
+		<script src="../js/jquery-1.11.0.js" type="text/javascript"></script>
+		<script src="../js/toastr.min.js" type="text/javascript"></script>
+		<script>
+			$(function() {
+				var frame = true;
+				toastr.options = {
+					timeOut: "3000",
+					positionClass: "toast-center-center"
+				};
+				var muban = $('.linemoban');
+				var choose = $('.choose');
+				var jian = $('.jian');
+				if(muban.length <= 1) {
+					choose.hide();
+					jian.hide();
+				}
+				//点击添加按钮
+				$(".add").on("click", function() {
+					var str = "";
+					str += '<li class="linemoban">';
+					str += '<div class="line">';
+					str += '<div class="choose">';
+					str += '<img src="../img/weixuanze.png" alt="选择" xz="0" />';
+					str += '</div>';
+					str += '<div class="wenzi">';
+					str += '<p>箱子容积</p>';
+					str += '<p>箱子数量</p>';
+					str += '</div>';
+					str += '<div class="txtinput">';
+					str += '<p><input type="text" class="zxrj" /> </p>';
+					str += '<p><input type="text" class="zxsl" /></p>';
+					str += '</div>';
+					str += '<div class="bubian">';
+					str += '<p>&nbsp;L</p>';
+					str += '<p>个</p>';
+					str += '</div>';
+					str += '</div>';
+					str += '</li>';
+
+					$('.Ucentect').append(str);
+					choose.show();
+					jian.show();
+				})
+				//点击删除按钮
+				var noxz = true;
+				$(".jian").on("click", function() {
+						var muban = $('.linemoban');
+						var img = $('.line .choose img');
+						var a = [];
+						for(var i = 0; i < img.length; i++) {
+							var xz = $(img[i]).attr('xz');
+							if(xz == 1) {
+								a.push($(img[i]).parent().parent().parent().index());//将选中的索引下标存入数组中
+							}
+
+						}
+
+						if(a.length == 0) {
+							if(noxz) {
+								toastr.error("没有选中的标签");
+								noxz = false;
+								window.setTimeout(function() {
+									noxz = true;
+								}, 3000);
+							}
+							
+						} else {
+							for(var j = 0; j < a.length; j++)
+								$(img[a[j]]).parent().parent().parent().remove();
+						}
+						//var current= $('.choose img [xz=1]').parents('.linemoban').index()+1;//选中索引下标
+						var lishu = muban.length;
+						var jian = $('.jian');
+						//$(".Ucentect li").eq(lishu - 1).remove();
+						if(lishu == 1) {
+							choose.hide();
+							jian.hide();
+						}
+
+				})
+				//选中状态
+				$("body").on("click", ".choose img", function() {
+					if($(this).attr('src') == '../img/weixuanze.png') {
+						$(this).attr('src', '../img/xuanze.png');
+						$(this).attr("xz", "1");
+
+					} else {
+						$(this).attr('src', '../img/weixuanze.png');
+						$(this).attr("xz", "0");
+					}
+				})
+				//点击input按钮获取焦点背景颜色变白
+				$("body").on("focus", ".linemoban .txtinput .zxrj,.zxsl", function() {
+					$(this).css('background', '#fff');
+				})
+
+				//点击下一步
+				var norongji=true;
+				var noshuliang=true;
+				$(".next").on("click", function() {
+					var xzdx = {};
+					var myzx = [];
+					var muban = $('.linemoban');
+					var rj = $(".linemoban .txtinput .zxrj");
+					var sl = $(".linemoban .txtinput .zxsl");
+
+					for(let i = 0; i < muban.length; i++) {
+						if($(rj[i]).val() == '') {
+							if(norongji) {
+								toastr.error("请输入当前容积");
+								norongji = false;
+								window.setTimeout(function() {
+									norongji = true;
+								}, 3000);
+							}
+							$(rj[i]).css("background-color", "yellow");
+							return false;
+						}
+						if($(sl[i]).val() == '') {
+							if(noshuliang) {
+								toastr.error("请输入当前数量");
+								noshuliang = false;
+								window.setTimeout(function() {
+									noshuliang = true;
+								}, 3000);
+							}
+							$(sl[i]).css("background-color", "yellow");
+							return false;
+						}
+						var zxrj = $(rj[i]).val() + "L";
+						var zxsl = $(sl[i]).val();
+						xzdx[zxrj] = zxsl;
+					}
+					myzx.push(xzdx);
+					console.log(myzx)
+					window.localStorage.setItem("zxdxs", JSON.stringify(myzx));
+					//myzx.push(xzdx);
+
+				})
+
+				$('.back').on("click", function() {
+					window.history.go(-1);
+				})
+
+			})
+		</script>
+
+	</body>
+
+</html>

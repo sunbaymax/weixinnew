@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<meta content="telephone=no" name="format-detection">
+		<meta content="email=no" name="format-detection">
+		<meta name="description" content="中集冷云冷链运输微信下单平台" />
+		<meta name="keywords" content="微信下单，冷链运输 " />
+		<meta name=" author " content="中集冷云 " />
+		<title>订单详情</title>
+		<link rel="stylesheet " href="../css/base.css ">
+		<link rel="stylesheet " href="../css/toastr.min.css">
+	</head>
+	<style>
+		body {
+			background: #E8E8E8;
+			width: 100%;
+			min-height: 100%;
+			position: relative;
+		}
+		
+		.container {
+			padding: 0 0.3rem;
+			box-sizing: border-box;
+			font-size: 0.28rem;
+		}
+		
+		.top {
+			display: flex;
+			margin-top: 0.2rem;
+			margin-bottom: 0.2rem;
+			align-items: center;
+		}
+		
+		.top img {
+			display: inline-block;
+			width: 0.4rem;
+			height: 0.4rem;
+		}
+		
+		.content {
+			width: 100%;
+			height: auto;
+			background: #FFFFFF;
+			border-radius: 5px;
+		}
+		
+		.titile {
+			border-bottom: 1px solid #E8E8E8;
+			padding: 0.2rem 0.2rem 0.1rem;
+		}
+		
+		.address {
+			width: 100%;
+			height: 1.8rem;
+			position: relative;
+		}
+		
+		.address .facity {
+			position: absolute;
+			top: 0.2rem;
+			left: 1.9rem;
+			font-size: 0.3rem;
+			font-weight: bold;
+		}
+		
+		.address .shoucity {
+			position: absolute;
+			right: 1.9rem;
+			top: 0.2rem;
+			font-size: 0.3rem;
+			font-weight: bold;
+		}
+		
+		.zhi {
+			display: inline-block;
+			width: 0.6rem;
+			top: 0.4rem;
+			height: auto;
+			position: absolute;
+			left: 3.2rem;
+		}
+		
+		.address .faxcity {
+			position: absolute;
+			top: 0.9rem;
+			left: 1.95rem;
+			/*font-size: 0.22rem;*/
+		}
+		
+		.address .shouxcity {
+			position: absolute;
+			top: 0.9rem;
+			right: 1.95rem;
+			/*font-size: 0.22rem;*/
+		}
+		
+		.mengling {
+			/*font-size: 0.22rem;*/
+			color: #12599B;
+			position: absolute;
+			top: 0.7rem;
+			left: 3rem;
+		}
+		
+		.linkren {
+			padding: 0 0.3rem;
+			box-sizing: border-box;
+			display: flex;
+			font-size: 0.24rem;
+			color: #333333;
+		}
+		
+		.linkren div:first-child {
+			width: 0.4rem;
+			margin-right: 0.2rem;
+		}
+		
+		.linkren div:first-child img {
+			margin-top: 0.2rem;
+		}
+		
+		.linkren div:last-child {
+			flex: 1;
+		}
+		
+		.linkren .linkinfo {
+			display: flex;
+			justify-content: space-between;
+		}
+		
+		.linkren p {
+			height: auto;
+			line-height: 0.5rem;
+		}
+		
+		.goodinfo {
+			background: #FFFFFF;
+			border-radius: 5px;
+			margin-top: 15px;
+			font-size: 0.26rem;
+			color: #333;
+		}
+		
+		.goodinfo .gooddesc {
+			padding: 0 0.2rem;
+		}
+		
+		.goodinfo .title {
+			border-bottom: 1px solid #E8E8E8;
+			padding: 0.2rem 0.2rem 0.1rem;
+		}
+		
+		.goodinfo .gooddesc .goodline {
+			display: flex;
+		}
+		
+		.gooddesc .goodline p {
+			width: 50%;
+			height: 0.6rem;
+			line-height: 0.6rem;
+		}
+		
+		.goodinfo .baocai {
+			padding: 0 0.2rem;
+			border-bottom: 1px solid #E8E8E8;
+		}
+		
+		.goodinfo .baocai div {
+			height: 0.6rem;
+			line-height: 0.6rem;
+			display: flex;
+		}
+		
+		.time {
+			padding: 0 0.2rem;
+			background: #FFF;
+			border-radius: 5px;
+		}
+		
+		.time div {
+			height: 0.6rem;
+			line-height: 0.6rem;
+		}
+		
+		.btn {
+			width: 100%;
+			text-align: center;
+			margin-top: 0.4rem;
+		}
+		
+		.btn button {
+			width: 3rem;
+			height: 0.9rem;
+			border-radius: 0.5rem;
+			background: #12599B;
+			color: #FFFFFF;
+			font-size: 0.28rem;
+			border: none;
+		}
+		/*.linkren .company {
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap; 
+		}*/
+	</style>
+
+	<body>
+		<div class="container">
+			<div class="top">
+				<img src="../img/returns.png" class="return" /><span>返回</span>
+			</div>
+			<div class="content">
+				<div class="titile"><span>客户账号:</span><span class="acount"></span></div>
+				<div class="address">
+					<span class="facity"></span>
+					<img src="../img/jiantou.png" class="zhi" />
+					<span class="shoucity"></span>
+					<span class="faxcity"></span>
+					<span class="mengling"></span>
+					<span class="shouxcity"></span>
+				</div>
+				<div class="linkren">
+					<div>
+						<img src="../img/jijianren.png" />
+					</div>
+					<div>
+						<p class="linkinfo">
+							<span class="sendname send_name"></span><span class="tel send_tel"></span>
+						</p>
+						<p>公司名称：<span class="company send_commpay"></span></p>
+						<p style="height: auto;line-height: 0.5rem;">详细地址：<span class="company send_address"></span></p>
+					</div>
+				</div>
+				<div class="linkren" style="margin-top: 0.2rem;">
+					<div>
+						<img src="../img/shoujianren.png" />
+					</div>
+					<div>
+						<p class="linkinfo">
+							<span class="sendname get_name"></span><span class="tel get_tel"></span>
+						</p>
+						<p>公司名称：<span class="company get_commpany"></span></p>
+						<p>详细地址：<span class="company get_address"></span></p>
+					</div>
+				</div>
+			</div>
+
+			<div class="goodinfo">
+				<div class="title">货物信息</div>
+				<div class="gooddesc">
+					<div class="goodline">
+						<p>
+							货物类型：<span class="goodname good_type">试剂</span>
+						</p>
+						<p>
+							产品名称：<span class="goodname good_name">试剂</span>
+						</p>
+					</div>
+					<div class="goodline">
+						<p>
+							温度计使用：<span class="goodname good_iswendj"></span>
+						</p>
+						<p>
+							件数：<span class="goodname good_jianshu"></span>
+						</p>
+					</div>
+
+				</div>
+				<div class="baocai">
+					<div>
+						温度区间：<span class="wdqj"></span>
+					</div>
+					<div>
+						箱型统计：
+						<p class="box"><span class="box1"><label class="A1"></label> * <label class="B1"></label></span> <span class="box2"><label class="A2"></label> * <label class="B2"></label></span>  <span class="box3"><label class="A3"></label> * <label class="B3"></label></span></p>
+					</div>
+				</div>
+				<div class="time">
+					<div>
+						预约区间时间：<span class="taketime"></span>
+					</div>
+					<div>
+						下单时间：<span class="intime">2019-08-25 14:10</span>
+					</div>
+					<div class="signtime">
+						签收时间：<span class="sign_time">2019-08-29 14:10</span>
+					</div>
+				</div>
+			</div>
+			<div class="btn">
+				<button></button>
+			</div>
+
+		</div>
+		<script src="../js/flexible.js "></script>
+		<script src="../js/jquery-1.11.0.js"></script>
+		<script src="../js/toastr.min.js"></script>
+		<script src="../js/jquery.idcode.js"></script>
+		<script>
+			$(function() {
+				var _account = localStorage.getItem('Acount');
+				var _tel = localStorage.getItem('Telphone');
+				var _openid = localStorage.getItem('openid');
+				function UrlSearch() {
+					var name, value;
+					var str = location.href; //取得整个地址栏
+					var num = str.indexOf("?")
+					str = str.substr(num + 1); //取得所有参数 stringvar.substr(start [, length ]
+	
+					var arr = str.split("&"); //各个参数放到数组里
+					for(var i = 0; i < arr.length; i++) {
+						num = arr[i].indexOf("=");
+						if(num > 0) {
+							name = arr[i].substring(0, num);
+							value = arr[i].substr(num + 1);
+							this[name] = value;
+						}
+					}
+				}
+			    var Request = new UrlSearch(); //实例化
+			    var _Id = Request.id;
+			    var _isget=Request.isget=='指令下达'?1:0;
+				$.ajax({
+					type:"post",
+					url:'http://out.ccsc58.cc/DATA_PORT_WECHAT_1.01/History.php',
+					data:{
+						ID:_Id,
+						IsGet:_isget
+					},
+					dataType:'json',
+					success:function(res){
+						if(res.code=='200'){
+							console.log(res);
+							$('.titile .acount').text(res.data.AccountNumber);
+							$('.address .facity').text(res.data.Depart);
+							$('.address .shoucity').text(res.data.GetDepart);
+							$('.address .faxcity').text(res.data.City);
+							$('.address .shouxcity').text(res.data.GetCity);
+							$('.address .mengling').text( decodeURI(Request.isget));
+							$('.linkren .send_name').text(res.data.Manager);
+							$('.linkren .send_tel').text(res.data.Telephone);
+							$('.linkren .send_commpay').text(res.data.Company);
+							$('.linkren .send_address').text(res.data.Depart+' '+res.data.City+' '+res.data.Address);
+							$('.linkren .get_name').text(res.data.GetName);
+							$('.linkren .get_tel').text(res.data.GetTelephone);
+							$('.linkren .get_commpany').text(res.data.GetCompany);
+							$('.linkren .get_address').text(res.data.GetDepart+' '+res.data.GetCity+' '+res.data.GetAddress);
+							$('.goodinfo .good_type').text(res.data.BusinessType);
+							$('.goodinfo .good_name').text(res.data.CargoName);
+							$('.goodinfo .good_iswendj').text(res.data.Name4);
+							$('.goodinfo .good_jianshu').text(res.data.Jian);
+							if(res.data.A1!=''&&res.data.A1!=null){
+								$('.goodinfo .A1').text(res.data.A1);
+								$('.goodinfo .B1').text(res.data.B1);
+							}else{
+								$('.goodinfo .box1').hide();
+							}
+						    if(res.data.A2!=''&&res.data.A2!=null){
+								$('.goodinfo .A2').text(res.data.A2);
+								$('.goodinfo .B2').text(res.data.B2);
+							}else{
+								$('.goodinfo .box2').hide();
+							}
+							if(res.data.A3!=''&&res.data.A3!=null){
+								$('.goodinfo .A3').text(res.data.A3);
+								$('.goodinfo .B3').text(res.data.B3);
+							}else{
+								$('.goodinfo .box3').hide();
+							}
+							$('.goodinfo .intime').text(res.data.Indate);
+							$('.goodinfo .taketime').text(res.data.OrderTime);
+							if(res.data.GetTime==''){
+								$('.signtime').hide();
+							}else{
+								$('.signtime').show();
+								$('.sign_time').text(res.data.GetTime)
+							}
+							if(decodeURI(Request.isget)=='指令下达'&&decodeURI(Request.isstate)=='联系客服'){
+								$('.btn button').text('联系客服');
+							}else if(decodeURI(Request.isget)=='指令下达'&&decodeURI(Request.isstate)=='取消订单'){
+								$('.btn button').text('取消订单');
+							}else{
+								$('.btn button').text('再来一单');
+							}
+						}
+					},
+					error:function(err){
+						
+					}
+				})
+				
+
+				$(".top .return").on("click", function() {
+					history.go(-1);
+				});
+				$('.btn button').on("click",function(){
+					console.log($(this).text());
+					var btnok=$(this).text();
+					if(btnok=='联系客服'){
+						var r = confirm("确定要拨打电话吗？")
+						if(r == true) {
+							window.location.href = "tel:400-6507168";
+						} else {
+							console.log("You pressed Cancel!")
+						}
+					}else if(btnok=='取消订单'){
+						var r = confirm("确定要取消订单吗？")
+						if(r == true) {
+							$.ajax({
+								type: "post",
+								url: "http://out.ccsc58.cc/DATA_PORT_WECHAT_1.01/Cancel.php",
+								async: true,
+								data: {
+									ID: _Id,
+									EntryName: _tel
+								},
+								dataType: "json",
+								success: function(res) {
+									if(res.code == 200) {
+										alert("取消成功");
+										window.location.reload();
+									} else {
+										alert(res.msg)
+									}
+								},
+								error: function(err) {
+
+								},
+							});
+						} else {
+							console.log("You pressed Cancel!")
+						}
+					}else{
+						window.location.href='order.html'
+					}
+					
+				})
+			})
+		</script>
+	</body>
+
+</html>

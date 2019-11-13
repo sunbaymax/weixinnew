@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>市场信息查询</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<link rel="stylesheet" href="../css/reset.css" type="text/css">
+		<link rel="stylesheet" href="../css/Market.css" type="text/css" />
+
+	</head>
+	<style>
+
+	</style>
+
+	<body>
+		<div class="header_content">
+			<div class="search-content">
+				<div class="father-search-content">
+					<input type="text" placeholder="客户搜索" class="search-input" />
+					<img src="../img/soushuo.png" class="search-img" />
+					<img src="../img/delete.png" class="delete-img hide" />
+					<s class="split-line hide"></s>
+				</div>
+
+				<img src="../img/addmarket.png" class="add-img" />
+			</div>
+		</div>
+		<div class="content-market">
+			<ul>
+				<li class="market-item">
+					<div class="market-right">
+						<span class="username">菲六</span>
+					</div>
+					<div class="market-left">
+						<p class="inner-line"> <span class="company">中集冷云(北京)供应链管理有限公司</span></p>
+						<p class="inner-line"><span class="address">北京市顺义区南彩三街茂化工厂1号楼2层201室中集冷</span></p>
+					</div>
+
+				</li>
+
+			</ul>
+		</div>
+		<div class="nothing hide" id="nothing-content">
+			<img src="../img/nothing_1.png" class="nothing-img" />
+			<p class="nothingText">没有找到匹配的结果</p>
+		</div>
+	</body>
+	<script src="../js/jquery-1.11.0.js"></script>
+	<script>
+		$(document).ready(function() {
+			var ScreenWidth = document.documentElement.clientWidth || document.body.clientWidth;
+			var ScreenHeight = document.documentElement.clientHeight || document.body.clientHeight;
+			document.documentElement.style.fontSize = document.documentElement.clientWidth / 10 + "px";
+			$(".search-input").bind('input propertychange', function() {
+				var inputValue = $(this).val();
+				if(inputValue.length > 0) {
+					$(this).parent().children('.search-img').removeClass("searchLeft")
+					$(this).parent().children('.search-img').attr('src', '../img/search.png');
+					$(this).parent().children('.search-img').addClass("searchRight");
+					$(this).parent().children('.split-line').show();
+					$(this).parent().children('.delete-img').fadeIn(1000);
+				} else {
+					$(this).parent().children('.search-img').removeClass("searchRight")
+					$(this).parent().children('.search-img').attr('src', '../img/soushuo.png');
+					$(this).parent().children('.search-img').addClass("searchLeft");
+					$(this).parent().children('.split-line').hide();
+					$(this).parent().children('.delete-img').fadeOut(1000);
+				}
+
+			});
+			$(".search-img").on("click", function() {
+				let inputval = $(this).parent().children('input').val();
+				if(inputval == '中集冷云') {
+					$('.content-market').hide();
+					$('#nothing-content').removeClass('hide');
+				} else {
+					$('.content-market').show();
+					$('#nothing-content').addClass('hide');
+				}
+			})
+
+			$(".delete-img").on("click", function() {
+				$(this).parent().children('input').val('');
+				$(this).hide();
+				$(this).parent().children('.search-img').removeClass("searchRight")
+				$(this).parent().children('.search-img').attr('src', '../img/soushuo.png');
+				$(this).parent().children('.search-img').addClass("searchLeft");
+				$(this).parent().children('.split-line').hide();
+				$(this).parent().children('.delete-img').fadeOut(1000);
+			})
+
+		})
+	</script>
+
+</html>

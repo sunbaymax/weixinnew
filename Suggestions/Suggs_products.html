@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="format-detection" content="telephone=no">
+		<title>意见反馈</title>
+		<link type="text/css" rel="stylesheet" href="css/body.css" />
+		<link type="text/css" rel="stylesheet" href="css/sugg.css" />
+		<link href="css/common.css" type="text/css" rel="stylesheet">
+		<link href="css/index.css" type="text/css" rel="stylesheet">
+		<link href="css/shijian.css" type="text/css" rel="stylesheet" />
+		<!--<script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>-->
+
+	</head>
+	<style>
+		.centent {
+			background: #FFFFFF;
+		}
+		
+		.duowenden {
+			width: 100%;
+			height: 120px;
+			line-height: 120px;
+			border: none;
+			margin-top: 21px;
+			margin-bottom: 10px;
+		}
+		
+		.details_wenti {
+			width: 252px;
+			height: 120px;
+			margin-left: 47px;
+			border: 1px solid #8d8d8d;
+			padding-left: 8px;
+			padding-top: 3px;
+		}
+		
+		.dianji {
+			width: 100%;
+			height: 79px;
+		}
+		
+		.dianji img {
+			width: 79px;
+			height: 79px;
+			margin-left: 47px;
+		}
+		
+		.img-box {
+			margin-top: 10px;
+		}
+		
+		.z_photo {
+			width: 270px;
+			height: 200px;
+			border: none;
+			padding: 0px;
+			margin-left: 47px;
+		}
+		
+		.next {
+			position: fixed;
+			bottom: 20px;
+			z-index: -99;
+			margin: 100px 0 0 0;
+		}
+		
+		.formdata {
+			max-height: 500px;
+			width: 100%;
+			background: #ffffff;
+		}
+		
+		.title {
+			position: relative;
+		}
+		
+		.back {
+			width: 7.5px;
+			height: 15px;
+			line-height: 44px;
+			position: absolute;
+			top: 14.5px;
+			left: 15px;
+		}
+		
+		.anniu {
+			width: 100%;
+			height: 44px;
+			text-align: center;
+		}
+		
+		#btn_next2 {
+			width: 300px;
+			height: 44px;
+			color: #FFFFFF;
+			font-size: 18px;
+			background: #3299fe;
+			border-radius: 8px;
+			margin: 0 auto;
+		}
+		
+		input#input1 {
+			width: 260px;
+			height: 40px;
+		}
+	</style>
+
+	<body>
+		<!--<div class="title">
+			<a href="Suggs.php"><img class="back" src="img/back.png" alt="返回" /></a>
+			<h3 class="title_h">意见反馈</h3>
+		</div>-->
+		<div class="centent">
+			<img class="touxiangurl" src="" alt="微信头像" />
+			<span>昵称</span>
+			<input type="text" class="wechat_name" name="wechatname" />
+		</div>
+		<div class="centent_p">
+			<p class="ti_p">请在下方如实填写您在使用产品遇到的问题！</p>
+		</div>
+		<!--<div id="forAppend" class="demo"><img src="blob:http://www.zhangxinxu.com/6b569fdc-ddd1-48f8-b418-91cebb588d27"></div>-->
+		<div class="data_center" style="background: #FFFFFF;">
+			<!--<form class="formdata">-->
+			<p class="form_centect"><img class="t1" src="img/product.png" /><input class="input_data" id="product" type="text" placeholder="请输入产品名称（例如:冷藏箱）" /> </p>
+			<p class="form_centect"><img class="t1" src="img/time.png" />
+				<!--<input class="input_data" type="text" placeholder="请选择发生问题时间"  id="history_start_time" readonly onFocus="WdatePicker({startDate:'%y-%M-{%d-1} %H:%m:%s',dateFmt:'yyyy-MM-dd HH:mm:ss'})" /> -->
+				<input type="text" id="input1" value="" placeholder="请选择发生问题时间" style="font-size: 14px;border: none;" />
+			</p>
+			<p class="form_centect duowenden"><textarea class="details_wenti" placeholder="请输入具体描述"></textarea></p>
+			<div class="img-box full">
+				<section class="img-section">
+					<div class="z_photo upimg-div clear" id="tupian">
+						<section class="z_file fl">
+							<img src="img/a11.png" class="add-img">
+							<input name="token" type="hidden" value="KXg05-xfaxEg5AOqCMkKDCr6C4Spix4F_D6rXvSg:st1hWk7QuAGLqCi19C3zdXhhGng=:eyJyZXR1cm5Cb2R5Ijoie1wia2V5XCI6XCIkKGtleSlcIixcImhhc2hcIjpcIiQoZXRhZylcIixcImZzaXplXCI6JChmc2l6ZSksXCJidWNrZXRcIjpcIiQoYnVja2V0KVwiLFwibmFtZVwiOlwiJCh4Om5hbWUpXCJ9Iiwic2NvcGUiOiJ6amx5dG1zIiwiZGVhZGxpbmUiOjE1MjE3ODUwOTN9" />
+							<input type="file" id="file" class="file" value="" accept="image/jpg,image/jpeg,image/png,image/bmp" enctype="multipart/form-data" multiple />
+						</section>
+					</div>
+				</section>
+			</div>
+			<aside class="mask works-mask">
+				<div class="mask-content">
+					<p class="del-p ">您确定要删除作品图片吗？</p>
+					<p class="check-p"><span class="del-com wsdel-ok">确定</span><span class="wsdel-no">取消</span></p>
+				</div>
+			</aside>
+			<div class="anniu"><button id="btn_next2">下一步</button></div>
+			<!--	</form>-->
+		</div>
+		<br clear="both" />
+	</body>
+
+</html>
+<script src="../js/jquery-1.11.0.js"></script>
+<script src="js/jquery-1.8.3.min.js"></script>
+<script src="js/jquer_shijian.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/imgUp.js"></script>
+<script src="../My97DatePicker/WdatePicker.js" type="text/javascript" charset="utf-8"></script>
+<script>
+	$('#btn_next2').on("click", function() {
+		var _product = $("#product").val();
+		var _input1 = $("#input1").val();
+		var _wenbendetial = $(".details_wenti").val();
+		if(_product == "" || _input1 == "" || _wenbendetial == "") {
+			alert("请输入完整信息");
+			return false;
+		}
+
+		var img_urls = [];
+		$(".up-img").each(function() {
+			img_urls.push($(this).attr("src"));
+		});
+
+		window.localStorage.setItem("product", _product);
+		window.localStorage.setItem("_img_urls", img_urls);
+		window.localStorage.setItem("time", _input1);
+		window.localStorage.setItem("details_wenti", _wenbendetial);
+		window.location.href = "Suggs_xuqiu.html";
+
+	});
+	$("#input1").shijian();
+	$(document).ready(function() {
+		var _touxiangS = window.localStorage.getItem("touxiang");
+		var _nichengS = window.localStorage.getItem("nicheng");
+		$(".wechat_name").val(_nichengS);
+		$(".touxiangurl").attr("src", _touxiangS);
+		var _openid = $("#openid").val();
+	});
+
+	$(document).ready(function() {
+		$.ajax({
+			url: 'http://www.ccsc58.cc/weixinnew/Suggestions/php-sdk-7.2.3/getToken.php',
+			type: 'POST',
+			dataType: 'JSONP',
+			jsonp: 'callback',
+			jsonpCallback: 'data',
+			success: function(res) {
+				$('input[name=token]').val(res.list);
+			}
+		})
+	});
+	$(function() {
+		$("#file").on("change", function() {
+			uploadPic();
+		})
+
+		function uploadPic() {
+			var formM = $('#file')[0].files;
+			var obj = [];
+			for(var i = 0; i < formM.length; i++) {
+				var formData = new FormData();
+				formData.append('file', $('#file')[0].files[i]);
+				formData.append('token', $('input[name=token]').val());
+				$.ajax({
+					url: 'http://up-z1.qiniup.com',
+					type: 'POST',
+					cache: false,
+					data: formData,
+					processData: false,
+					async: false,
+					contentType: false,
+					success: function(res) {
+						obj.push(res);
+
+					}
+				})
+			}
+			for(var i = 0; i < obj.length; i++) {
+
+				$(".upimg-div .up-img")[i].setAttribute('src', 'http://qiniu.ccsc58.com/' + obj[i].key);
+
+			}
+
+		}
+	})
+</script>

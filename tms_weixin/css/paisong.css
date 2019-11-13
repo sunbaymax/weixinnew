@@ -1,0 +1,115 @@
+/*派送页面*/
+.paiSong_content,.paiSongCha_content{
+	width:100%;
+	height:auto;
+	margin-top:4rem;
+	overflow: hidden;
+}
+.paiSong_list{
+	width:100%;
+	height:9rem;
+	margin-top:1rem;
+	border-top: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	box-sizing: border-box;
+}
+.paiSong_list p{
+	width:100%;
+	padding-left:5%;
+	height:3rem;
+	line-height: 3rem;
+	font-size:1.5rem;
+	font-weight: bold;
+}
+.paiSong_list p span{
+	font-weight: normal;
+}
+.search{
+	width:1.5rem;
+	height:1.5rem;
+	position:absolute;
+	top:1.25rem;
+	right:1rem;
+}
+/*派送详情*/
+.paiSong_xiangcontent p{
+	width:95%;
+	height:4rem;
+	line-height: 4rem;
+	padding-left:5%;
+	border-bottom:1px solid #c1c1c1;
+	font-size:1.5rem;
+}
+.paiSong_xiangcontent p input{
+	box-sizing: border-box;
+	height:4rem;
+	border: none;
+	float:right;
+	width:70%;
+	text-align: right;
+	font-size:1.5rem;
+}
+.xiang_baoCun,.paiSong,.paiSongCha_content div{
+	width:95%;
+	height:4rem;
+	margin:2rem 0 2rem 2.5%;
+	background:#3299fe;
+	text-align: center;
+	line-height: 4rem;
+	color:#fefefe;
+	letter-spacing: 2rem;
+	border-radius:5px;
+	font-weight: bold;
+	font-size:2rem;
+}
+/*派送通知*/
+.paiSong_tong_xiangcontent p{
+	width:95%;
+	height:4rem;
+	line-height: 4rem;
+	padding-left:5%;
+	border-bottom:1px solid #c1c1c1;
+	font-size:1.5rem;
+}
+.paiSong_tong_xiangcontent p input{
+	box-sizing: border-box;
+	height:4rem;
+	border: none;
+	float:right;
+	width:70%;
+	text-align: right;
+	font-size:1.5rem;
+}
+.img_test{
+	width:42.5vw;
+	height:42.5vw;
+	margin-left:5vw;
+	margin-top:1rem;
+	border:1px solid #ccc;
+	box-sizing: border-box;
+}
+.img_test img{
+	width:80%;
+	height:80%;
+	margin:10% 0 0 10%;
+}
+/*派送查询*/
+.paiSongCha_content{
+	position:relative;
+}
+.paiSongCha_content input{
+	width:90%;
+	height:4rem;
+	line-height: 4rem;
+	font-size:1.5rem;
+	margin:2rem 0 0 5%;
+	border:none;
+	border-bottom: 1px solid #c2c2c2;
+}
+.paiSongCha_content img{
+	width:3rem;
+	height:3rem;
+	position:absolute;
+	top:2.5rem;
+	right:5%;
+}

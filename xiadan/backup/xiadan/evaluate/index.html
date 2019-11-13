@@ -1,0 +1,444 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<!--允许全屏-->
+		<meta content="yes" name="apple-mobile-web-app-capable" />
+		<meta content="yes" name="apple-touch-fullscreen" />
+		<meta content="telephone=no,email=no" name="format-detection" />
+		<meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width" />
+		<title>中集智冷</title>
+		<!--<link href="css/EvaluationOrder.debug.css" rel="stylesheet" type="text/css" />-->
+	</head>
+	<style>
+		html {
+			background: #eee;
+		}
+		
+		* {
+			padding: 0;
+			margin: 0;
+		}
+		
+		ol,
+		ul {
+			list-style: none;
+		}
+		
+		.header {
+			background: #3299fe;
+			font-size: 16px;
+			height: 44px;
+			width: 100vw;
+			text-align: center;
+			line-height: 44px;
+			color: #fefefe;
+			position: relative;
+		}
+		
+		.header img {
+			width: 30px;
+			height: 24px;
+			position: absolute;
+			top: 10px;
+			left: 15px;
+		}
+		
+		.order-list {
+			width: 100%;
+			font-family: myFirstFont;
+			padding-bottom: 70px;
+		}
+		
+		section {
+			width: 100%;
+			height: 210px;
+			background: #FFFFFF;
+		}
+		
+		.order-list-Below {
+			width: 92.5%;
+			padding-top: 30px;
+			position: relative;
+			margin: auto;
+			clear: both;
+		}
+		
+		.order-list-Below div {
+			display: flex;
+			height: 26px;
+			line-height: 26px;
+		}
+		
+		.order-list-Below h1 {
+			width: 20%;
+			text-align: center;
+			font-family: myFirstFont;
+			font-size: 14px;
+			color: #7E7E7E;
+			line-height: 26px;
+			height: 26px;
+			float: left;
+		}
+		
+		.order-list-Below ul {
+			width: 60%;
+			height: 26px;
+			line-height: 26px;
+			margin-top: 4px;
+			float: left;
+			padding-left: 15px;
+		}
+		
+		.order-list-Below span {
+			display: inline-block;
+			width: 20%;
+			padding-right: 0%;
+			text-align: left;
+			height: 26px;
+			line-height: 26px;
+			font-size: 13px;
+		}
+		
+		.order-list-Below ul li.on {
+			background: url(images/pic_start02.png) no-repeat left top;
+			background-size: 18px 18px;
+		}
+		
+		.order-list-Below ul li {
+			float: left;
+			width: 28px;
+			height: 17px;
+			background: url(images/pic_start03.png) no-repeat left top;
+			background-size: 18px 18px;
+		}
+		
+		.order-textbox {
+			margin-top: 10px;
+			width: 100%;
+			height: 230px;
+			background: #FFFFFF;
+		}
+		
+		.order-textbox textarea {
+			text-indent: 13px;
+			width: 100%;
+			height: 120px;
+			padding: 5px;
+			border: none;
+			border-top: 1px solid #bbb;
+			border-radius: 4px;
+			font-family: myFirstFont;
+			font-size: 13px;
+			color: #ccc;
+		}
+		
+		.z_file {
+			width: 100px;
+			height: 100px;
+			/*background: #0096E6;*/
+			position: relative;
+		}
+		
+		.order-textbox img {
+			width: 100px;
+			height: 100px;
+			margin-left: 2px;
+			border: 1px dashed #D7D7D7;
+		}
+		
+		.z_file .file {
+			width: 100%;
+			height: 100%;
+			opacity: 0;
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			z-index: 100;
+		}
+		
+		* {
+			box-sizing: border-box;
+		}
+		
+		.order-button a {
+			position: fixed;
+			bottom: 20px;
+			margin: 0 4%;
+			display: block;
+			width: 92%;
+			height: 39px;
+			line-height: 39px;
+			background: #fff;
+			border: 1px solid #ff4d55;
+			border-radius: 4px;
+			color: #ff4d55;
+			font-size: 14px;
+			text-align: center;
+		}
+		
+		.z_photo {
+			width: 100%;
+			height: auto;
+		}
+		
+		a {
+			text-decoration: none;
+		}
+		
+		.fl {
+			display: inline-block;
+			margin: 0 5px;
+			width: 100px;
+			height: 100px;
+			position: relative;
+		}
+		
+		.up-section:hover .close-upimg {
+			display: block;
+		}
+		
+		.up-section .close-upimg {
+			width: 25px;
+			height: 25px;
+			position: absolute;
+			top: 5px;
+			right: 2px;
+			display: none;
+			z-index: 10;
+		}
+		
+		.img-name-p {
+			display: none;
+		}
+	</style>
+
+	<body>
+		<div class="header">
+			<img src="../images/top_back.png" /> 冰骑士评价
+		</div>
+		<div class="order-list">
+			<section>
+				<div class="order-list-Below">
+					<div style="width: 100%;">
+						<h1>物流服务</h1>
+						<ul class="wlfw">
+							<li></li>
+							<li></li>
+							<li></li>
+							<li></li>
+							<li></li>
+						</ul>
+						<span class="wen1"></span>
+					</div>
+					<div style="width: 100%;">
+						<h1>服务态度</h1>
+						<ul class="wltd">
+							<li></li>
+							<li></li>
+							<li></li>
+							<li></li>
+							<li></li>
+						</ul>
+						<span class="wen2"></span>
+					</div>
+					<div style="width: 100%;">
+						<h1>操作规范</h1>
+						<ul class="czgf">
+							<li></li>
+							<li></li>
+							<li></li>
+							<li></li>
+							<li></li>
+						</ul>
+						<span class="wen3"></span>
+					</div>
+				</div>
+			</section>
+			<div class="order-textbox">
+				<textarea placeholder="亲，您对冰骑士满意吗？你的评价会帮助我们提供优质的服务哦~" class="desc"></textarea>
+				<section class="img-section">
+					<div class="z_photo upimg-div clear" id="tupian">
+						<section class="z_file fl">
+							<img src="images/photol.png" class="add-img" />
+							<input name="token" type="hidden" value="KXg05-xfaxEg5AOqCMkKDCr6C4Spix4F_D6rXvSg:WHdPVFB4gAnWH7WlM-LUKy-O8_U=:eyJyZXR1cm5Cb2R5Ijoie1wia2V5XCI6XCIkKGtleSlcIixcImhhc2hcIjpcIiQoZXRhZylcIixcImZzaXplXCI6JChmc2l6ZSksXCJidWNrZXRcIjpcIiQoYnVja2V0KVwiLFwibmFtZVwiOlwiJCh4Om5hbWUpXCJ9Iiwic2NvcGUiOiJ6amx5dG1zIiwiZGVhZGxpbmUiOjE1Mjk3NDc3MDV9">
+							<input type="file" id="file" class="file" value="" accept="image/jpg,image/jpeg,image/png,image/bmp" enctype="multipart/form-data" multiple="">
+						</section>
+					</div>
+				</section>
+
+			</div>
+			<div class="order-button">
+				<a href="javascript:void(0);" class="tijiao">发表评论</a>
+			</div>
+		</div>
+		<script type="text/javascript" src="js/jquery-1.11.0.js"></script>
+		<script src="js/imgUp.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				var _AccountNumber = localStorage.getItem("myNum");
+				var _AccountTelephone = localStorage.getItem("phone");
+				$.ajax({
+					url: 'http://www.ccsc58.cc/weixinnew/Suggestions/php-sdk-7.2.3/getToken.php',
+					type: 'POST',
+					dataType: 'JSONP',
+					jsonp: 'callback',
+					jsonpCallback: 'data',
+					success: function(res) {
+						$('input[name=token]').val(res.list);
+					}
+				})
+
+				function UrlSearch() {
+					var name, value;
+					var str = location.href; //取得整个地址栏
+					var num = str.indexOf("?")
+					str = str.substr(num + 1); //取得所有参数 stringvar.substr(start [, length ]
+
+					var arr = str.split("&"); //各个参数放到数组里
+					for(var i = 0; i < arr.length; i++) {
+						num = arr[i].indexOf("=");
+						if(num > 0) {
+							name = arr[i].substring(0, num);
+							value = arr[i].substr(num + 1);
+							this[name] = value;
+						}
+					}
+				}
+				var Request = new UrlSearch(); //实例化
+				var _id = Request.id;
+				
+				$(".header img").on("click",function(){
+					history.go(-1);
+				})
+
+				$(".order-list-Below ul li").click(
+					function() {
+						var num = $(this).index() + 1;
+						var len = $(this).index();
+						var thats = $(this).parent(".order-list-Below ul").find("li");
+						if($(thats).eq(len).attr("class") == "on") {
+							if($(thats).eq(num).attr("class") == "on") {
+								$(thats).removeClass();
+								for(var i = 0; i < num; i++) {
+									$(thats).eq(i).addClass("on");
+								}
+							} else {
+								$(thats).removeClass();
+								for(var k = 0; k < len; k++) {
+									$(thats).eq(k).addClass("on");
+								}
+							}
+						} else {
+							$(thats).removeClass();
+							for(var j = 0; j < num; j++) {
+								$(thats).eq(j).addClass("on");
+							}
+						}
+						var nums = $(this).parent(".order-list-Below ul").find(".on");
+						console.log(nums.length);
+						if(nums.length == 1) {
+							$(this).parents().next('span').text("糟糕");
+						} else if(nums.length == 2) {
+							$(this).parents().next('span').text("新手吧");
+						} else if(nums.length == 3) {
+							$(this).parents().next('span').text("一般般");
+						} else if(nums.length == 4) {
+							$(this).parents().next('span').text("良好");
+						} else if(nums.length == 5) {
+							$(this).parents().next('span').text("非常棒");
+						}
+					}
+				);
+				$(".tijiao").on("click", function() {
+					var frist = $(".wlfw").children(".on").length;
+					var second = $(".wltd").children(".on").length;
+					var third = $(".czgf").children(".on").length;
+					var _content = $('.desc').val();
+
+					var img_urls = [];
+
+					$(".up-img").each(function() {
+						img_urls.push($(this).attr("src"));
+					});
+
+					$.ajax({
+						url: "http://out.ccsc58.cc/DATA_PORT_WECHAT_1.01/proposal.php",
+						type: "post",
+						data: {
+							AccountNumber: _AccountNumber,
+							AccountTelephone: _AccountTelephone,
+							order_id: _id,
+							service: frist,
+							attitude: second,
+							standard: third,
+							content: _content,
+							picture: img_urls
+						},
+						dataType: "JSON",
+						success: function(res) {
+							if(res.code == "200") {
+								alert("评价成功，感谢您的支持！");
+								window.location.href = "../components/history.html";
+							} else {
+								alert("评价失败，感谢您的支持！");
+								WeixinJSBridge.call('closeWindow');
+							}
+
+						},
+						error: function(err) {
+							WeixinJSBridge.call('closeWindow');
+						}
+
+					})
+				})
+
+				var img_urls = [];
+				$(".up-img").each(function() {
+					img_urls.push($(this).attr("src"));
+				});
+				$("#file").on("change", function() {
+					uploadPic();
+				})
+
+				function uploadPic() {
+					var formM = $('#file')[0].files;
+					var obj = [];
+					if(formM.length > 5) {
+						alert("上传图片不能超出5张");
+						return false;
+					} else {
+						for(var i = 0; i < formM.length; i++) {
+							var formData = new FormData();
+							formData.append('file', $('#file')[0].files[i]);
+							formData.append('token', $('input[name=token]').val());
+							$.ajax({
+								url: 'http://up-z1.qiniup.com',
+								type: 'POST',
+								cache: false,
+								data: formData,
+								processData: false,
+								async: false,
+								contentType: false,
+								success: function(res) {
+									obj.push(res);
+
+								}
+							})
+						}
+						for(var i = 0; i < obj.length; i++) {
+
+							$(".upimg-div .up-img")[i].setAttribute('src', 'http://ov0v30wya.bkt.clouddn.com/' + obj[i].key);
+
+						}
+					}
+
+				}
+
+			});
+		</script>
+
+	</body>
+
+</html>

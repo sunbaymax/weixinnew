@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>拜访记录</title>
+		<link rel="stylesheet" href="../css/index.css" type="text/css">
+		<link rel="stylesheet" href="../css/visit.css" type="text/css">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+	</head>
+	<style>
+
+	</style>
+
+	<body>
+		<div class="content">
+			<div class="content_body">
+				<div class="title">
+					<a href="Person.html" class="return"><img src="../img/return.png" class="return_img" alt="返回上一页" /></a>
+					<span>拜访记录</span>
+					<a href="VisitList.html" class="history"><img src="../img/histroylist.png" class="history_img" /> </a>
+				</div>
+				<div class="visit-top">
+					<ul>
+						<li>
+							<div class="click_visitobj">
+								<img src="../img/important.png" />
+								<span>拜访对象</span>
+								<img src="../img/click_right.png" />
+							</div>
+							<div class="hide">
+								<input type="text" placeholder="请输入" class="visit_obj" />
+								
+							</div>
+						</li>
+						<li>
+							<div class="click_type">
+								<img src="../img/important.png" />
+								<span>拜访方式</span>
+								<img src="../img/click_right.png" />
+							</div>
+							<div class="hide">
+								<!--<input type="text" placeholder="请输入" class="visit_type" />-->
+								<select class="choose_visit_obj">
+									<option value="当面采访">当面拜访</option>
+									<option value="电话拜访">电话拜访</option>
+									<option value="聊天软件拜访">聊天软件拜访</option>
+								</select>
+							</div>
+						</li>
+					</ul>
+					<ul>
+						<li>
+							<div>
+								<img src="../img/user.png" />
+								<span>联系人</span>
+								<img src="../img/click_right.png" />
+							</div>
+							<div class="hide">
+								<input type="text" placeholder="请输入" class="link_user" />
+							</div>
+						</li>
+						<li>
+							<div>
+								<img src="../img/telphone.png" />
+								<span>联系电话</span>
+								<img src="../img/click_right.png" />
+							</div>
+							<div class="hide">
+								<input type="text" placeholder="请输入" class="visit_type" />
+							</div>
+						</li>
+						<li>
+							<div class="click_address">
+								<img src="../img/address.png" />
+								<span>所在位置</span>
+								<img src="../img/click_right.png" />
+							</div>
+							<div class="hide">
+								<input type="text" placeholder="请输入" class="visit_type" />
+							</div>
+						</li>
+					</ul>
+					<div class="backup">
+						<li>
+							<div>
+								<img src="../img/Explain.png" />
+								<span>拜访说明</span>
+								<img src="../img/click_right.png" />
+							</div>
+							<div class="hide">
+								<textarea placeholder="请输入"></textarea>
+							</div>
+						</li>
+					</div>
+					<div class="footer">
+						<button>提交</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="../js/jquery-1.11.0.js" type="text/javascript"></script>
+		<script>
+			$(document).ready(function() {
+				$(".visit-top li .click_visitobj").on("click", function() {
+					location.href = "VisitObj.html";
+				})
+				$(".visit-top li .click_type").on("click", function() {
+					$(this).next().toggle();
+				})
+				$(".visit-top li .click_address").on("click", function() {
+					$(this).next().toggle();
+				})
+
+			})
+		</script>
+	</body>
+
+</html>

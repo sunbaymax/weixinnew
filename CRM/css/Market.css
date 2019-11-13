@@ -1,0 +1,145 @@
+body {
+  background: #E8E8E8; }
+
+.header_content {
+  width: 100%;
+  height: 1.6rem;
+  line-height: 1.6rem;
+  background: #FFFFFF;
+  padding: 0 0.4rem !important;
+  box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  z-index: 999; }
+  .header_content .search-content {
+    width: 100%;
+    height: 1.6rem;
+    position: relative; }
+  .header_content .father-search-content {
+    display: inline-block;
+    width: 92%;
+    padding-left: 0.13333rem;
+    box-sizing: border-box;
+    height: 0.90667rem;
+    margin-top: 0.34667rem;
+    position: relative; }
+  .header_content .search-input {
+    width: 100%;
+    height: 0.90667rem;
+    font-size: 0.37333rem;
+    position: absolute;
+    top: 0rem;
+    left: 0rem;
+    border: 1px solid #CCCCCC;
+    padding-left: 0.58667rem;
+    padding-right: 0.58667rem;
+    box-sizing: border-box; }
+  .header_content .search-img {
+    width: 0.42667rem;
+    height: 0.42667rem;
+    position: absolute;
+    top: 0.24rem; }
+  .header_content .searchRight {
+    position: absolute;
+    top: 0.24rem;
+    right: 0.26667rem; }
+  .header_content .serchLeft {
+    position: absolute;
+    top: 0.24rem;
+    left: 0.26667rem; }
+  .header_content .add-img {
+    display: inline-block;
+    width: 0.53333rem;
+    height: 0.53333rem;
+    position: absolute;
+    top: 0.48rem;
+    right: 0.02667rem; }
+  .header_content .split-line {
+    width: 0.05333rem;
+    height: 0.90667rem;
+    border-left: 1px solid #C0C0C0;
+    position: absolute;
+    top: 0rem;
+    right: 0.8rem; }
+  .header_content .delete-img {
+    width: 0.32rem;
+    height: 0.32rem;
+    position: absolute;
+    top: 0.29333rem;
+    right: 1.01333rem; }
+
+.content-market {
+  margin-top: 1.73333rem;
+  width: 100%;
+  height: auto;
+  padding: 0 0.26667rem;
+  box-sizing: border-box; }
+  .content-market .market-item {
+    width: 100%;
+    height: 1.6rem;
+    font-size: 0.32rem;
+    display: flex;
+    background: #ffffff;
+    margin-top: 0.13333rem;
+    padding: 0 0.26667rem;
+    box-sizing: border-box;
+    border-radius: 0.13333rem; }
+  .content-market .market-left {
+    width: 84%;
+    height: 1.6rem;
+    border-left: 1px solid #E8E8E8; }
+  .content-market .market-right {
+    width: 16%;
+    height: 1.6rem;
+    line-height: 1.6rem;
+    text-align: center; }
+  .content-market .inner-line {
+    height: 0.8rem;
+    line-height: 0.8rem;
+    display: flex; }
+  .content-market .username {
+    display: inline-block;
+    height: 1.6rem;
+    line-height: 1.6rem;
+    font-size: 0.42667rem;
+    font-weight: bold; }
+  .content-market .company {
+    display: inline-block;
+    width: 100%;
+    height: 0.8rem;
+    line-height: 0.8rem;
+    text-align: right;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap; }
+  .content-market .address {
+    display: inline-block;
+    width: 100%;
+    text-align: right;
+    height: 0.8rem;
+    line-height: 0.8rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap; }
+
+.hide {
+  display: none; }
+
+.nothing {
+  margin-top: 3.2rem;
+  width: 100%;
+  height: auto; }
+  .nothing .nothing-img {
+    display: block;
+    width: 2.66667rem;
+    height: 2.66667rem;
+    margin: 0 auto; }
+  .nothing .nothingText {
+    width: 100%;
+    text-align: center;
+    font-size: 0.37333rem;
+    padding-top: 0.4rem;
+    color: #CCCCCC;
+    margin: 0 auto; }
+
+/*# sourceMappingURL=Market.css.map */

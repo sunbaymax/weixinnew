@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>信息收集</title>
+    <link rel="stylesheet" href="../css/index.css" type="text/css">
+</head>
+<style>
+
+</style>
+
+<body>
+    <nav>
+        <div>
+            < 上一步</div>
+                <div>信息收集</div>
+                <div></div>
+                <div></div>
+    </nav>
+    <!--内容部分-->
+    <main>
+        <div style="padding: 10px;border-bottom: 1px solid #000000;">
+            <p style="font-size: 14px;padding: 5px;">基本信息填写</p>
+        </div>
+        <ul class="contant">
+            <li>
+                <div>
+                    <span>联系人</span>
+                    <input type="text" placeholder="请输入联系人姓名" class="man">
+                </div>
+            </li>
+            <li>
+
+                <div>
+                    <span>联系电话</span>
+                    <input type="text" placeholder="请输入联系电话" class="manNum">
+                </div>
+            </li>
+            <li>
+
+                <div>
+                    <span>公司</span>
+                    <input type="text" placeholder="请输入所在公司" class="unit">
+                </div>
+            </li>
+            <li>
+
+                <div>
+                    <span>部门/科室</span>
+                    <input type="text" placeholder="请输入所在部门/科室" class="uniu">
+                </div>
+            </li>
+            <li>
+
+                <div style="border: none;">
+                    <span>详细地址</span>
+                    <input type="text" placeholder="请输入详细地址" class="add">
+                </div>
+            </li>
+        </ul>
+    </main>
+    <!--按钮  下一步-->
+    <footer id="con">
+        <span class="next">确认提交</span>
+    </footer>
+    <!-- 提交成功  提示 -->
+    <div class="fsda">
+        <div></div>
+        <div>
+            <p class="msg">提交成功</p>
+            <p class="yin" style="background:#009dd9;color:#ffffff;">确定</p>
+        </div>
+    </div>
+</body>
+<script src="../js/rem.js" type="text/javascript"></script>
+<script src="../js/jquery-1.9.1.js" type="text/javascript"></script>
+<script>
+    $(function () {
+        $("nav div:first-of-type").on('click', function () {
+            window.location.href = '../index.php';
+        })
+        $(".next").on('click', function () {
+            $.ajax({
+                url: "http://www.ccsc58.cc/zjlytms/api.php/Order/register",
+                type: "post",
+                data: {
+                    "telephone": $(".manNum").val(),
+                    "manager": $(".man").val(),
+                    "unitname": $(".unit").val(),
+                    "department": $(".uniu").val(),
+                    "address": $(".add").val()
+                },
+                dataType: "JSON",
+                success: function (res) {
+                    $(".msg").html(res.info);
+                    $(".fsda").show();
+                },
+                error: function (err) {
+                    console.log(err);
+                }
+            })
+
+
+        })
+        //      点击弹框消失
+        $(".yin").on('click', function () {
+            $(".fsda").hide();
+            $(".manNum").val("");
+            $(".man").val("");
+            $(".unit").val("");
+            $(".uniu").val("");
+            $(".add").val("");
+            window.location.href = "../index.php";
+        })
+    })
+</script>
+
+</html>

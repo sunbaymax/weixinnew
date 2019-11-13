@@ -1,0 +1,419 @@
+* {
+	padding: 0px;
+	margin: 0px;
+}
+
+input {
+	background: #FFFFFF;
+}
+
+.centect {
+	width: 100%;
+	height: auto;
+	margin-top: 15px;
+	padding: 0 15px;
+	box-sizing: border-box;
+}
+
+.scroll {
+	width: 100%;
+	height: 2%;
+}
+
+.currtent {
+	width: 94%;
+	height: 2rem;
+	margin-left: 3%;
+	border: 1px solid #CCCCCC;
+	background: #FFFFFF;
+}
+
+.currtent .content_line {
+	width: 100%;
+	height: 0.55rem;
+	margin-bottom: 2px;
+	display: flex;
+	position: relative;
+	border-bottom: 1px solid #cccccc;
+}
+
+.content_line .luruname {
+	width: 30%;
+	margin-left: 10%;
+	height: 0.55rem;
+	line-height: 0.55rem;
+	/*margin-top: 0.05rem;*/
+	border-bottom: 1px solid #CCCCCC;
+	border-right: 1px solid #CCCCCC;
+}
+
+.content_line .lurutel {
+	width: 55%;
+	padding-left: 5%;
+	height: 0.55rem;
+	line-height: 0.55rem;
+	/*margin-top: 0.05rem;*/
+	border-bottom: 1px solid #CCCCCC;
+}
+
+.content_line .luruaddress {
+	margin-left: 10%;
+	width: 80%;
+	height: 0.55rem;
+	line-height: 0.55rem;
+	/*margin-top: 0.05rem;*/
+	border-bottom: 1px solid #CCCCCC;
+}
+
+.altaddress {
+	display: inline-block;
+	width: 10%;
+	/*border: 1px solid #000066;*/
+	height: 0.55rem;
+	line-height: 0.55rem;
+	/*margin-top: 0.05rem;*/
+	border-bottom: 1px solid #CCCCCC;
+}
+
+.altaddress {
+	text-decoration: none;
+	font-size: 18px;
+}
+
+.content_line .lurudescaddress {
+	margin-left: 10%;
+	width: 60%;
+	height: 0.55rem;
+	line-height: 0.55rem;
+	/*margin-top: 0.05rem;*/
+	/*border-bottom: 1px solid #CCCCCC;*/
+}
+
+.content_line .fujin {
+	width: 70px;
+	height: 0.55rem;
+	font-size: 14px;
+	color: red;
+	line-height: 0.55rem;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+}
+
+.content_line .ji {
+	display: inline-block;
+	width: 20px;
+	height: 24px;
+	line-height: 0.55rem;
+	text-align: center;
+	margin-top: 16px;
+	position: absolute;
+	top: 0px;
+	left: 3%;
+}
+
+.lastline {
+	width: 94%;
+	margin-left: 3%;
+	height: 0.55rem;
+	position: relative;
+}
+
+.lastline span {
+	color: #989898;
+	font-size: 14px;
+	position: absolute;
+	top: 15px;
+	left: 10%;
+}
+
+.rdo {
+	width: 20px;
+	height: 0px;
+	background-color: #000;
+	margin-right: 2%;
+	margin-left: 3%;
+	border-radius: 50%;
+	position: relative;
+}
+
+.rdo:before,
+.rdo:after {
+	content: '';
+	display: block;
+	position: absolute;
+	border-radius: 50%;
+	transition: .3s ease;
+}
+
+.rdo:before {
+	top: 0px;
+	left: 0px;
+	width: 16px;
+	height: 16px;
+	background-color: #fff;
+	border: 1px solid #000;
+	font-size: 14px;
+}
+
+.rdo:after {
+	top: 6px;
+	left: 6px;
+	width: 8px;
+	height: 8px;
+	background-color: #fff;
+}
+
+.rdo:checked:after {
+	top: 3px;
+	left: 3px;
+	width: 12px;
+	height: 12px;
+	background-color: #8C8C8C;
+}
+
+.rdo:checked:before {
+	border-color: #8C8C8C;
+}
+
+.space {
+	display: flex;
+	/*vertical-align: middle;*/
+}
+
+.space span {
+	line-height: 0.5rem;
+	vertical-align: middle;
+	font-size: 14px;
+}
+
+.rdo {
+	width: 20px;
+	height: 0px;
+	/*line-height: 0.5rem;*/
+	margin-top: 15px;
+	background-color: #000;
+	margin-right: 2%;
+	margin-left: 8%;
+	border-radius: 50%;
+	position: relative;
+}
+
+.rdo:before,
+.rdo:after {
+	content: '';
+	display: block;
+	position: absolute;
+	border-radius: 50%;
+	transition: .3s ease;
+}
+
+.rdo:before {
+	top: 0px;
+	left: 0px;
+	width: 16px;
+	height: 16px;
+	background-color: #fff;
+	border: 1px solid #000;
+}
+
+.rdo:after {
+	top: 6px;
+	left: 6px;
+	width: 8px;
+	height: 8px;
+	background-color: #fff;
+}
+
+.rdo:checked:after {
+	top: 3px;
+	left: 3px;
+	width: 12px;
+	height: 12px;
+	background-color: #f96401;
+}
+
+.rdo:checked:before {
+	/*border-color: #8C8C8C;*/
+	border-color: #f96401;
+}
+
+.centect {
+	padding: 0;
+}
+
+.fjreninfo {
+	width: 100%;
+	height: auto;
+	border: none;
+	margin: 15px 0;
+}
+
+* {
+	touch-action: pan-y;
+}
+
+main ul li span:first-child {
+	width: 20%;
+	line-height: 100%;
+}
+
+.open>.dropdown-menu {
+	display: block;
+	width: 280px;
+	max-height: 200px;
+	overflow: scroll;
+	border-radius: 4px;
+}
+
+.dropdown-menu {
+	border-radius: 0;
+}
+
+.dropdown-menu>li>a {
+	width: 100%;
+}
+
+.currtentfainfo {
+	padding: 0;
+	margin: 0;
+}
+
+.secendline {
+	width: 100%;
+	height: 0.3rem;
+	line-height: 0.3rem;
+}
+
+.topfauserinfo p:last-child {
+	border: none;
+	margin: 0;
+}
+
+.jinameinfo {
+	padding: 0;
+}
+
+.fjreninfo {
+	font-size: 14px;
+}
+
+.jiaddressinfo {
+	margin: 0;
+}
+
+main ul li:nth-child(6) div {
+	display: inline-block;
+}
+
+.lasttopline {
+	width: 100%;
+	height: 0.5rem;
+	line-height: 0.25rem;
+	display: inline-block;
+	position: relative;
+}
+
+.fjreninfo .exist {
+	height: auto;
+}
+
+.fjreninfo .exist .currtentfainfo {
+	height: auto;
+}
+
+.text-center {
+	padding: 5px;
+	margin-bottom: 5px;
+}
+
+.lasttopline1 {
+	display: flex;
+	height: 45px;
+	line-height: 45px;
+}
+
+.lasttopline {
+	width: 100%;
+	height: 0.5rem;
+	line-height: 0.25rem;
+	display: inline-block;
+	position: relative;
+	margin-bottom: 15px;
+}
+
+.jiaddressinfo {
+	width: 100%;
+}
+
+.commpany {
+	display: inline-block;
+	height: 48px;
+	width: 100%;
+	border-radius: 0.05rem;
+	text-align: right;
+	line-height: 24px;
+}
+
+.currtentfainfo .topfauserinfo {
+	width: 100%;
+	height: 0.6rem;
+	line-height: 0.6rem;
+	/* border-bottom: 1px solid #8C8C8C; */
+	margin-bottom: 15px;
+}
+
+.currtentfainfo-top {
+	padding: 0;
+}
+
+.lasttopline1 input[name='radio'] {
+	margin: 12px 2px;
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+}
+
+.lastline span {
+	position: absolute;
+	top: 15px;
+	left: 15%;
+}
+
+.centect {
+	padding: 0;
+	height: auto;
+}
+
+.centect .currtent {
+	padding: 0;
+	height: auto;
+}
+
+.content_line1 {
+	height: 0.55rem;
+	border-bottom: 1px solid #ccc;
+}
+
+.fjcompany {
+	height: 0.55rem;
+	padding-left: 10%;
+	box-sizing: border-box;
+	width: 80%;
+}
+
+.lastline {
+	display: flex;
+}
+
+.lastline div {
+	display: inline-block;
+	width: 50%;
+	position: relative;
+}
+
+.lastline div span {
+	position: absolute;
+	top: 15px;
+	left: 20%;
+}

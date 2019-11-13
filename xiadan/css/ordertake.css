@@ -1,0 +1,261 @@
+body {
+	font-size: 16px!important;
+}
+
+
+.currentline {
+	width: 100%;
+	height: 0.55rem;
+	border-bottom: 1px solid #CCCCCC;
+}
+.currentlinetop {
+	border-top: 1px solid #CCCCCC;
+}
+
+.centect {
+	width: 100%;
+	height: auto;
+	text-align: center;
+	background: #FFFFFF;
+}
+.currentline-address {
+	width: 100%;
+	height: 0.8rem;
+	border-bottom: 1px solid #CCCCCC;
+}
+.scroll {
+	width: 100%;
+	height: auto;
+}
+
+.currentline {
+	width: 100%;
+	font-size: 14px!important;
+	position: relative;
+	display: flex;
+}
+
+.currentline .leftimg {
+	width: 10%;
+	height: 0.8rem;
+}
+
+.leftimg>img {
+	display: inline-block;
+	width: 20px;
+	height: 24px;
+	line-height: 0.8rem;
+	text-align: center;
+	margin-top: 16px;
+}
+
+.compangline {
+	height: 0.25rem;
+	line-height: 0.25rem;
+	text-align: left;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.leftimg .timetubiao {
+	display: inline-block;
+	width: 24px;
+	height: 24px;
+	line-height: 0.55rem;
+	text-align: center;
+	margin-top: 15px;
+}
+
+.leftimg:nth-child(2)>img {
+	display: inline-block;
+	width: 20px;
+	height: 24px;
+	line-height: 0.55rem;
+	text-align: center;
+	margin-top: 18px;
+}
+
+.currentline .centerinfo {
+	width: 75%;
+	height: 0.55rem;
+}
+
+.centerinfo .centerinfotop {
+	width: 100%;
+	height: 0.28rem;
+	line-height: 0.28rem;
+	display: flex;
+}
+
+.centerinfotop .username {
+	width: 37%;
+	padding-left: 3%;
+	height: 0.28rem;
+	text-align: left;
+}
+
+.centerinfotop .tel {
+	width: 60%;
+	height: 0.28rem;
+	text-align: left;
+}
+
+.currentline>input {
+	width: 70%;
+	height: 0.45rem;
+	line-height: 0.55rem;
+	position: absolute;
+	top: 0.05rem;
+	left: 15%;
+	border: none;
+}
+
+.dizhi {
+	width: 100%;
+	height: 0.27rem;
+	text-align: left;
+	padding-left: 3%;
+	line-height: 0.27rem;
+}
+
+.dizhibo {
+	margin-top: 0.05rem;
+	width: 14%;
+	height: 0.45rem;
+	border-left: 2px solid #C1CACA;
+	line-height: 0.45rem;
+	text-align: center;
+}
+
+.dizhibo a {
+	text-align: center;
+	color: red;
+	text-decoration: none;
+}
+
+.alt {
+	border: none;
+}
+
+.alt a {
+	color: #000000;
+}
+
+.shangmentime {
+	width: 98%;
+	padding-left: 2%;
+	height: 0.45rem;
+	margin-top: 0.05rem;
+}
+
+.tou {
+	border-top: none;
+}
+
+.toubao {
+	font-size: 14px!important;
+}
+
+.centerinfotop {
+	width: 100%;
+}
+
+.centerinfotop .faName,
+.shouusername {
+	width: 50%;
+}
+
+.centerinfotop .fatel,
+.shoutel {
+	width: 50%;
+	text-align: left;
+}
+
+.fadizhi {
+	text-align: left;
+	overflow: hidden;
+	/*内容超出后隐藏*/
+	text-overflow: ellipsis;
+	/* 超出内容显示为省略号*/
+	white-space: nowrap;
+	/*文本不进行换行*/
+}
+
+.shoudizhi {
+	text-align: left;
+	overflow: hidden;
+	/*内容超出后隐藏*/
+	text-overflow: ellipsis;
+	/* 超出内容显示为省略号*/
+	white-space: nowrap;
+}
+
+.hide {
+	display: none;
+}
+
+.centerinfotop input {
+	display: inline-block;
+	width: 30%;
+	height: 0.28rem;
+}
+
+* {
+	touch-action: pan-y;
+}
+
+.select_timelimit {
+	height: 0.50rem;
+	line-height: 0.50rem;
+	/*margin: 10px 0;*/
+	border: none;
+	outline: none;
+}
+
+.dizhibo_img {
+	margin-top: 0.1rem;
+	display: inline-block;
+	width: 20px;
+	height: 24px;
+}
+
+
+.select_timelimit {
+	width: 100%;
+}
+
+.leftimg .timetubiao {
+	display: inline-block;
+	width: 20px;
+	height: 24px;
+}
+
+select {
+	border: 0;
+	display: block;
+	position: relative;
+	white-space: nowrap;
+	width: 100%;
+	overflow: hidden;
+	background-color: #eee;
+	padding-left: 5px;
+	box-sizing: border-box;
+	background: transparent;
+	appearance: none;
+	-moz-appearance: none;
+	/* Firefox */
+	-webkit-appearance: none;
+	/* Safari 和 Chrome */
+}
+
+.centerinfotop input {
+	display: inline-block;
+	width: 50%;
+	height: 0.28rem;
+}
+.shoutel {
+	overflow: hidden;
+text-overflow:ellipsis;
+white-space: nowrap;
+}

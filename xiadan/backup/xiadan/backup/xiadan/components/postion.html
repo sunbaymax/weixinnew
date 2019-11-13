@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<title>中集智冷科技</title>
+		<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.2"></script>
+		<script src="../js/bootcss.js"></script>
+	</head>
+
+	<body>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			.anchorBL {
+				display: none;
+			}
+			
+			.item {
+				height: 44px;
+				border: 1px solid #eee;
+				/*overflow: hidden;*/
+				display: flex;
+			}
+			
+			.item:nth-of-type(odd) {
+				background: #EFFEDD;
+			}
+			
+			.item:nth-of-type(even) {
+				background: #D2FCA0;
+			}
+			
+			.item .left {
+				border-radius: 50%;
+				width: 20px;
+				height: 20px;
+				margin-top: 10px;
+				border-radius: 50%;
+			}
+			
+			.item .title {
+				height: 24px;
+				line-height: 24px;
+				clear: left;
+				font-weight: bold;
+				font-size: 16px;
+			}
+			
+			.item .address {
+				height: 20px;
+				clear: left;
+				color: gray;
+				font-size: 14px;
+				width:100%;
+				/*word-wrap: break-word;*/
+				overflow: hidden;
+				line-height: 20px;
+
+			}
+			
+			.item img {
+				line-height: 20px;
+				height: 20px;
+				margin-left: 10px;
+			}
+		</style>
+		<div style="width:100%;height:340px;float:left;border-bottom: 1px solid #A1A1A1;" id="container"></div>
+		<div style="width:100%;height:340px;overflow: scroll;" id="panel">
+
+			<input type="hidden" id=""></input>
+
+		</div>
+	</body>
+
+</html>
+<script type="text/javascript">
+	var map = new BMap.Map("container");
+	var jingdu = window.localStorage.getItem("_longitude");
+	var weidu = window.localStorage.getItem("_latitude");
+	//alert(jingdu+",,,,"+weidu);
+	//	window.localStorage.removeItem('_longitude');
+	//	window.localStorage.removeItem('_latitude');
+	map.enableScrollWheelZoom(true);
+	map.disableDragging(); //禁止拖拽
+	setTimeout(function() {
+		map.enableDragging(); //两秒后开启拖拽
+		//map.enableInertialDragging();   //两秒后开启惯性拖拽
+	}, 2000);
+	var mPoint = new BMap.Point(116.301537, 39.834468);
+	//var mPoint = new BMap.Point(jingdu, weidu);
+	map.centerAndZoom(mPoint, 16);
+	map.enableScrollWheelZoom(true);
+	//禁止拖拽
+	map.disableDragging();
+	var mOption = {
+		poiRadius: 500, //半径为1000米内的POI,默认100米
+		numPois: 12 //列举出50个POI,默认10个
+	}
+
+	var myGeo = new BMap.Geocoder(); //创建地址解析实例
+
+	// displayPOI();
+	$(function() {
+
+		//添加一个圆形覆盖物
+		map.addOverlay(new BMap.Marker(mPoint));
+		myGeo.getLocation(mPoint,
+			function mCallback(rs) {
+				var allPois = rs.surroundingPois;
+				console.log(allPois);
+				//获取全部POI（该点半径为100米内有6个POI点）
+				for(i = 0; i < allPois.length; ++i) {
+					$("#panel").append('<div class="item" onclick="switchs(this)" ><div class="left"><img src="../../img/res.png" alt=""></div><div class="right" style="margin-left: 20px;"><p class="title">' + allPois[i].title + '</p><p class="address">' + allPois[i].address + '</p></div><input type="hidden" id="lat" value="' + allPois[i]["point"]["lat"] + '"><input type="hidden"  id="lng" value="' + allPois[i]["point"]["lng"] + '"/>' + '</div>');
+
+				}
+				$(".address").each(function() {
+					var maxwidth = 25;
+					if($(this).text().length > maxwidth) {
+						$(this).text($(this).text().substring(0, maxwidth));
+						$(this).html($(this).html());
+					}
+				});
+			}, mOption
+		);
+
+	});
+
+	//选中所需要的位置
+	function switchs(t) {
+		//切换图片
+		if($(t).find('img').attr('src') == "../../img/res.png") {
+			$(t).find('img').attr('src', "../../img/res.png");
+			var position = $(t).find('.address').text();
+			var lat = $(t).find('#lat').val();
+			var lng = $(t).find('#lng').val();
+			//把经纬度添传递回去，最终显示在文本框的定位那里
+			//window.location.href = "__CONTROLLER__/waiqinqiandao?position=" + position + "&lat=" + lat + "&lng=" + lng;
+			window.localStorage.setItem('weizhi', position);
+			//window.history.go(-1);
+			window.location.href = "fjaddrs.php";
+		} else {
+
+			$(t).find('img').attr('src', "../../img/res.png");
+
+		}
+
+	}
+
+	function GetRequest() {
+		var url = location.search; //获取url中"?"符后的字串   
+		var theRequest = new Object();
+		if(url.indexOf("?") != -1) {
+			var str = url.substr(1);
+			strs = str.split("&");
+			for(var i = 0; i < strs.length; i++) {
+				theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+			}
+		}
+		console.log(theRequest);
+		return theRequest;
+	}
+
+	GetRequest();
+</script>

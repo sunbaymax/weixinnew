@@ -1,0 +1,309 @@
+/*运单首页*/
+.yunDan_content,.ruKu_content{
+	width:100%;
+	height:auto;
+	margin-top:10rem;
+}
+.search{
+	display:block;
+	width:1.5rem;
+	height:1.5rem;
+	position:absolute;
+	top:1.25rem;
+	right:1rem;
+}
+.yunDan_zhuangtai{
+	width:100%;
+	height:5rem;
+	position:relative;
+	border-bottom:1px solid #c1c1c1;
+	line-height:5rem;
+	font-size:1.5rem;
+	text-align: right;
+}
+.yunDan_zhuangtai p{
+	display:block;
+	width:60%;
+	height:4rem;
+	line-height: 4rem;
+	border:1px solid #c1c1c1;
+	color:#000;
+	text-align: center;
+	font-size:1.5rem;
+	box-sizing: border-box;
+	float:right;
+	margin-right:2rem;
+	margin-top:0.5rem;
+}
+.yunDan_zhuangtai p img{
+	width:1.2rem;
+	height:1.5rem;
+	margin-top:1.25rem;
+	float:left;
+	margin-left:0.5rem;
+}
+.yunDan_zhuangtai ul{
+	position:absolute;
+	right:2rem;
+	top:4.5rem;
+	width:60%;
+	height:0rem;
+	border:1px solid #c1c1c1;
+	border-top:none;
+	line-height:3rem;
+	overflow: hidden;
+	transition:height 0.5s;
+	background:#fefefe;
+	box-sizing: border-box;
+}
+.yunDan_zhuangtai ul li{
+	box-sizing: border-box;
+	border-bottom: 1px solid #c1c1c1;
+	font-size:1.5rem;
+	color:#8a8a8a;
+	height:3rem;
+	text-align: center;
+}
+.yunDan_zhuangtai ul li:last-of-type{
+	border:none;
+}
+.yunDan_list{
+	width:100%;
+	height:12rem;
+	margin:1rem 0 0 0;
+	border-top: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	box-sizing: border-box;
+}
+.yunDan_list p{
+	width:95%;
+	padding-left:5%;
+	height:3rem;
+	line-height: 3rem;
+	font-size:1.5rem;
+	font-weight: bold;
+}
+.yunDan_list p span{
+	font-weight: normal;
+}
+.yunDan_zhuangtai{
+	position:fixed;
+	left:0px;
+	top:4rem;
+	background:#fefefe;
+}
+.warning_yunDan{
+	display:block;
+	width:100%;
+	height:3rem;
+	line-height: 3rem;
+	font-size:1.5rem;
+	text-align: center;
+	color:red;
+}
+/*运单详情*/
+.buLu{
+	position:absolute;
+	right:1rem;
+	color:#fefefe;
+}
+.yunDan_xiangcontent{
+	margin-top:4rem;
+}
+.yunDan_xiangcontent p{
+	width:95%;
+	height:4rem;
+	line-height: 4rem;
+	padding-left:5%;
+	border-bottom:1px solid #c1c1c1;
+	font-size:1.5rem;
+}
+.yunDan_xiangcontent p input{
+	box-sizing: border-box;
+	height:4rem;
+	border: none;
+	float:right;
+	width:70%;
+	text-align: center;
+	font-size:1.5rem;
+}
+.ruKu,.buLu_Bao,.ruKu_BaoCun,.yunDanCha_content div{
+	width:95%;
+	height:4rem;
+	margin:2rem 0 2rem 2.5%;
+	background:#3299fe;
+	text-align: center;
+	line-height: 4rem;
+	color:#fefefe;
+	letter-spacing: 2rem;
+	border-radius:5px;
+	font-weight: bold;
+	font-size:2rem;
+}
+/*运单详情弹窗*/
+.yunDan_tanChuang{
+	width:100%;
+	height:100%;
+	position: fixed;
+	top:0;
+	left:0;
+	background:rgba(255,255,255,.8);
+	z-index: 999999;
+}
+.tanChuang_box{
+	width:80vw;
+	height:18rem;
+	box-shadow: 3px 3px 9px #c2c2c2;
+	position:absolute;
+	top:50%;
+	left:50%;
+	margin-top:-10rem;
+	margin-left:-40vw;
+	background:#fefefe;
+	border:1px solid #C2C2C2;
+}
+.tanChuang_top{
+	width:100%;
+	height:3rem;
+	line-height: 3rem;
+	text-align: center;
+	font-size: 2rem;
+}
+.tanChuang_content{
+	width:100%;
+	height:8rem;
+	font-size: 1.5rem;
+	text-align: center;
+	overflow: hidden;
+}
+.tanChuang_content span{
+	display:block;
+	width:100%;
+	height:4rem;
+	margin-top:2rem;
+	line-height: 2rem;
+	text-align: center;
+}
+.tanChuang_bottom{
+	width:100%;
+	height:4rem;
+}
+.tanChuang_bottom div{
+	width:42.5%;
+	height:3rem;
+	float:left;
+	margin-left:5%;
+	margin-top:0.5rem;
+	box-sizing: border-box;
+	border:1px solid #c2c2c2;
+	text-align: center;
+	line-height: 3rem;
+	font-size:1.5rem;
+}
+/*补录*/
+ h3{
+ 	width:95%;
+ 	padding-left:5%;
+ 	border-bottom:1px solid #c1c1c1;
+ 	height:3rem;
+ 	line-height: 3rem;
+ }
+ .yunDanBuLu{
+ 	margin-top:4rem;
+ }
+.zhangDan p{
+	width:95%;
+	height:3rem;
+	line-height: 3rem;
+	padding-left:5%;
+	border-bottom:1px solid #c1c1c1;
+	font-size:1.5rem;
+}
+.zhangDan p input{
+	box-sizing: border-box;
+	height:3rem;
+	border: none;
+	float:right;
+	width:70%;
+	text-align: right;
+	font-size:1.5rem;
+	margin-right:2%;
+}
+.zhangDan input[type='checkbox']{
+	width:1.5rem;
+	height:1.5rem;
+	margin-top:0.75rem;
+	margin-right:5%;
+}
+.faJian p,.shouJian p{
+	width:95%;
+	height:3rem;
+	line-height: 3rem;
+	padding-left:5%;
+	border-bottom:1px solid #c1c1c1;
+	font-size:1.5rem;
+}
+.faJian p input,.shouJian p input{
+	box-sizing: border-box;
+	height:3rem;
+	border: none;
+	float:right;
+	width:70%;
+	margin-right:2%;
+	text-align: right;
+	font-size:1.5rem;
+}
+.important_say div{
+	margin:0 10px 0 10px;
+	height:15rem;
+	border:1px solid #ccc;
+}
+/*入库*/
+.ruKu_xiangcontent,.yunDanCha_content{
+	margin-top:4rem;
+}
+.ruKu_xiangcontent p{
+	width:95%;
+	height:4rem;
+	line-height: 4rem;
+	padding-left:5%;
+	border-bottom:1px solid #c1c1c1;
+	font-size:1.5rem;
+}
+.ruKu_xiangcontent p input{
+	box-sizing: border-box;
+	height:4rem;
+	border: none;
+	float:right;
+	width:70%;
+	text-align: right;
+	font-size:1.5rem;
+}
+/*运单查询*/
+.yunDanCha_content{
+	position:relative;
+}
+.yunDanCha_content input{
+	width:90%;
+	height:4rem;
+	line-height: 4rem;
+	font-size:1.5rem;
+	margin:2rem 0 0 5%;
+	border:none;
+	border-bottom: 1px solid #c2c2c2;
+}
+.yunDanCha_content img{
+	width:3rem;
+	height:3rem;
+	position:absolute;
+	top:2.5rem;
+	right:5%;
+}
+.warning_yunCha{
+	width:100%;
+	height:3rem;
+	line-height:3rem;
+	text-align: center;
+	color:red;
+	font-size: 1.5rem;
+}

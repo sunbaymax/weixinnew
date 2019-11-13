@@ -1,0 +1,139 @@
+/*body {
+	font-size: 1.5rem;
+}*/
+
+.content {
+	width: 100%;
+	height: auto;
+}
+
+.content .content_body .visit-top {
+	padding: 0 1.25rem;
+	box-sizing: border-box;
+}
+
+.visit-top ul {
+	background: #FFFFFF;
+	padding: 0 0.83rem;
+	box-sizing: border-box;
+	margin: 0.83rem auto;
+}
+
+.visit-top ul li {
+	border-bottom: 1px solid #D9D9D9;
+	/*box-sizing: border-box;*/
+}
+
+.visit-top ul li:last-child {
+	border-bottom: none;
+	margin: 0.5rem 0;
+	/*box-sizing: border-box;*/
+}
+
+
+/*.visit-top ul li:last-child{
+			border-bottom:none
+		}*/
+
+ul li div:first-child {
+	height: 4.6rem;
+	line-height: 4.6rem;
+}
+
+li div:first-child img:first-child {
+	display: inline-block;
+	height: 1.8rem;
+	margin-right: 0.5rem;
+	float: left;
+	margin-top: 1.4rem;
+}
+
+li div:first-child img:last-child {
+	display: inline-block;
+	height: 1.4rem;
+	float: right;
+	margin-top: 1.6rem;
+}
+
+ul li div:last-child {
+	height: 3rem;
+	/*line-height: 2.5rem;*/
+	/*border-bottom: 2px solid #D9D9D9;*/
+}
+
+ul li div:last-child input,
+select {
+	height: 3rem;
+	width: 100%;
+	padding-left: 2rem;
+	box-sizing: border-box;
+	border: none;
+	outline: none;
+	color: #666666;
+	appearance: none;
+	-moz-appearance: none;
+	/* Firefox */
+	-webkit-appearance: none;
+	/* Safari 和 Chrome */
+	font-size: 1.5rem;
+}
+
+.backup {
+	height: auto;
+	background: #FFFFFF;
+}
+
+.backup {
+	height: auto;
+	width: auto;
+	padding: 0 0.83rem;
+}
+
+.backup div:first-child {
+	height: 4.6rem;
+	line-height: 4.6rem;
+}
+
+.backup textarea {
+	display: inline-block;
+	height: auto;
+	line-height: 3rem;
+	width: 100%;
+	padding-left: 2rem;
+	box-sizing: border-box;
+	border: none;
+	outline: none;
+	color: #666666;
+	font-size: 1.5rem;
+}
+
+.change {
+	transform: rotate(90deg);
+	-ms-transform: rotate(90deg);
+	/* IE 9 */
+	-moz-transform: rotate(90deg);
+	/* Firefox */
+	-webkit-transform: rotate(90deg);
+	/* Safari 和 Chrome */
+	-o-transform: rotate(90deg);
+}
+
+ul li div:last-child {
+	position: relative;
+}
+
+.resert_input,
+.postion {
+	display: inline-block;
+	height: 1.4rem;
+	width: 1.4rem;
+	position: absolute;
+	top: 1rem;
+	right: 0.5rem;
+	cursor: pointer;
+}
+
+ul li div:first-child span {
+	display: inline-block;
+	width: 80%;
+}

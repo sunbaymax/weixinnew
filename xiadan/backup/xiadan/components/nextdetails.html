@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>下单详情</title>
+		<link rel="stylesheet" href="../css/next.css" type="text/css">
+		<link rel="shortcut icon" type="image/ico" href="/favicon.ico" />
+		<link rel="stylesheet" type="text/css" href="../css/checkstyle.css" />
+		<link rel="stylesheet" type="text/css" href="../css/shijian.css" />
+		<link rel="stylesheet" href="../css/toastr.min.css">
+	</head>
+
+	<style>
+		.chk_3+label {
+			display: flex;
+		}
+		
+		li span {
+			margin-left: 15px;
+		}
+	</style>
+
+	<body>
+		<nav>
+			<div>
+				< 上一步 </div>
+					<div>下单详情</div>
+					<div></div>
+					<div></div>
+		</nav>
+		<!-- 详情 -->
+		<main class="detailMain">
+			<p class="titile">客户信息</p>
+			<ul class="userinfo">
+				<li>
+					<span>客户账号：</span>
+					<!--<span class="merber_id"></span>-->
+					<input type="text" class="merber_id" />
+				</li>
+				<li>
+					<span>手机号&nbsp;&nbsp;&nbsp;：</span>
+					<!--<span class="phone"></span>-->
+					<input type="text" class="phone" />
+				</li>
+
+			</ul>
+			<p class="titile">物流信息</p>
+			<ul class="wuliu">
+				<li>
+					<span>发货人&nbsp;&nbsp;&nbsp;&nbsp;：</span>
+					<input type="text" class="faName" />
+				</li>
+				<li>
+					<span>联系电话：</span>
+					<input type="text" class="faPhone" />
+				</li>
+				<li class="addres">
+					<span>发货地址：</span>
+					<input type="text" class="faAddress" />
+				</li>
+				<li>
+					<span>收货人&nbsp;&nbsp;&nbsp;&nbsp;：</span>
+					<input type="text" class="shouName" />
+				</li>
+				<li>
+					<span>联系电话：</span>
+					<input type="text" class="shouPhone" />
+				</li>
+
+				<li class="addres">
+					<span>收货地址：</span>
+					<input type="text" class="shouAddress" />
+				</li>
+				<li>
+					<span>取件时间：</span>
+					<input type="text" class="startTime" />
+				</li>
+				<li>
+					<span class="jia" style="">节假派送：</span>
+					<div style="display:inline-block;width: 65%;">
+						<input type="checkbox" id="checkbox_c1" class="chk_3" /><label for="checkbox_c1"></label>
+					</div>
+
+				</li>
+
+			</ul>
+
+			<!-- 基础信息 -->
+			<p class="titile">商品信息</p>
+			<ul class="basic">
+				<li class="mybox">
+					<span>温度区间：</span>
+					<!--<input type="text" class="wdqj" />-->
+					<select name="" id="wdqjian">
+						<option value="" class="moren">请选择</option>
+						<option value="0℃~30℃">0℃~30℃</option>
+						<option value="15℃~25℃">15℃~25℃</option>
+						<option value="-25℃~-15℃">-25℃~-15℃</option>
+						<option value="2℃~8℃">2℃~8℃</option>
+						<option value="-78℃~-20℃">-78℃~-20℃</option>
+					</select>
+				</li>
+				<li class="mybox">
+					<span>货物名称：</span>
+					<input type="text" class="carName" />
+				</li>
+
+				<li class="ssrj mybox" style="height:auto;">
+
+					<div style='display: flex;justify-content: space-between;'>
+						<span>所需容积:</span>
+						<div style="border: none;" class="rongji rongjiTan1">
+							<div style="border:none;">
+								<ul class="ewrq" style="border:none;margin-left: 1rem;"></ul>
+							</div>
+							<span class="jiantou" style="padding:0.1rem 0 0.1rem 0;margin-left: 80%;font-weight: bold;"> ></span>
+						</div>
+					</div>
+				</li>
+				<li style="border-top: 1px solid #CCCCCC;" class="mybox">
+					<span>温&nbsp;度&nbsp;计&nbsp;&nbsp;：</span>
+					<div style="display:inline-block;width: 65%;">
+						<input type="checkbox" id="checkbox_c2" class="chk_3" /><label for="checkbox_c2"></label>
+					</div>
+				</li>
+				<li style="height: 0.8rem;" class="mybox">
+					<span>备&nbsp;&nbsp;&nbsp;&nbsp;注&nbsp;&nbsp;&nbsp;&nbsp;：</span>
+					<input type="text" class="backup" style="height: 0.76rem;" />
+				</li>
+
+				<li class="yourbox">
+					<span>自备箱&nbsp;&nbsp;：</span>
+					<input type="text" class="zbx" />
+				</li>
+				<li class="toubao">
+					<span>是否投保：</span>
+					<div style="display:inline-block;width: 65%;">
+						<input type="checkbox" id="checkbox_c3" class="chk_3" /><label for="checkbox_c3"></label>
+					</div>
+				</li>
+				<li class="touman">
+					<span>投保金额：</span>
+					<input type="text" class="money" />
+				</li>
+			</ul>
+
+		</main>
+		<!--按钮  下一步-->
+		<footer style="text-align: center;margin-bottom: 10px;">
+			<span class="btn">提交</span>
+		</footer>
+
+		<!--所需容积  弹框  start-->
+		<div class="fda rongjiTan" style="height:100%;">
+			<div class="yin"></div>
+			<!-- 所需容积 -->
+			<div class="rong rongj">
+				<div style="line-height:0.5rem;">&nbsp;&nbsp;所需容积</div>
+				<div class="fasf"></div>
+				<div class="nextNum">
+					<span>下一步</span>
+				</div>
+				<div></div>
+
+			</div>
+			<!-- 所需数量 -->
+			<div class="deep fdasfs">
+				<span>&nbsp;&nbsp;请输入所需容积数量</span>
+				<div>
+					<ul class="rongNum"></ul>
+				</div>
+				<div class="rongque">
+					<span>确认</span>
+				</div>
+			</div>
+		</div>
+		<!--所需容积  弹框  end-->
+	</body>
+	<script src="../js/rem.js" type="text/javascript"></script>
+	<script src="../js/jquery-1.11.0.js" type="text/javascript"></script>
+	<script src="../js/jquer_shijian.js?ver=1" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/toastr.min.js" type="text/javascript"></script>
+	<script>
+		$(function() {
+			toastr.options = {
+				timeOut: "3000",
+				positionClass: "toast-center-center"
+			};
+			// 点击上一步                                  
+			$("nav div:first-of-type").on('click', function() {
+				window.location.href = "history.html";
+			})
+
+			function UrlSearch() {
+				var name, value;
+				var str = location.href; //取得整个地址栏
+				var num = str.indexOf("?")
+				str = str.substr(num + 1); //取得所有参数 stringvar.substr(start [, length ]
+
+				var arr = str.split("&"); //各个参数放到数组里
+				for(var i = 0; i < arr.length; i++) {
+					num = arr[i].indexOf("=");
+					if(num > 0) {
+						name = arr[i].substring(0, num);
+						value = arr[i].substr(num + 1);
+						this[name] = value;
+					}
+				}
+			}
+			var Request = new UrlSearch(); //实例化
+			var _id = Request.id;
+			var _AccountNumber = localStorage.getItem("myNum");
+			var _AccountTelephone = localStorage.getItem("phone");
+			$.ajax({
+				url: "http://out.ccsc58.cc/DATA_PORT_WECHAT_1.01/details.php",
+				type: "post",
+				data: {
+					id: _id,
+				},
+				dataType: "JSON",
+				success: function(obj) {
+					$('.merber_id').val(_AccountNumber);
+					$('.phone').val(_AccountTelephone);
+					$('.faName').val(obj.data.Manager);
+					$('.faPhone').val(obj.data.Telephone);
+					$('.faAddress').val(obj.data.NetDepart + " " + obj.data.NetCity + " " + obj.data.Address);
+					$('.shouName').val(obj.data.GetName);
+					$('.shouPhone').val(obj.data.GetTelephone);
+					$('.shouAddress').val(obj.data.GetDepart + " " + obj.data.GetCity +  " "+ obj.data.GetArea +" " + obj.data.GetAddress);
+					$('.startTime').val(obj.data.XMNO);
+					if(obj.data.note1.search("不") != -1) {
+						$("#checkbox_c1").attr("checked", false);
+					} else {
+						$("#checkbox_c1").prop("checked", "true");
+					}
+					if(obj.data.A1.search("自备") != -1) {
+						$(".titile").attr("box", "自备箱");
+						console.log("自备箱");
+						$('.mybox').addClass('hide');
+						$('.zbx').val(obj.data.B1);
+						if(obj.data.SafeItem == "投保") {
+							$("#checkbox_c3").prop("checked", "true");
+							$(".money").val(obj.data.SafePay);
+						} else {
+							$("#checkbox_c3").attr("checked", false);
+							$(".touman").addClass("hide");
+						}
+					} else {
+						console.log("冷云箱子");
+						$(".titile").attr("box", "冷云箱子");
+						$('.zbx').parent().addClass('hide');
+						$('.mybox').removeClass('hide');
+						$('#wdqjian').val(obj.data.WDQJ);
+						$('.carName').val(obj.data.CargoName);
+						var span2 = `<li style='height:auto;'><span>箱子容积</span><span>件数</span></li>`;
+						$.each(obj.data.model, function(i, item) {
+							var span = $(
+								`<li style='height:auto;'><span class='rongji' >${item.type}</span><span class='shuli'>${item.num}</span></li>`
+							);
+							$(".ewrq").append(span);
+						});
+						$('.backup').val(obj.data.beizhu)
+						console.log(obj.data.Name4);
+						if(obj.data.Name4.search("不") != -1) {
+							$("#checkbox_c2").attr("checked", false);
+						} else {
+							$("#checkbox_c2").prop("checked", "true");
+						}
+						if(obj.data.SafeItem == "投保") {
+							$("#checkbox_c3").prop("checked", "true");
+							$(".money").val(obj.data.SafePay);
+						} else {
+							$("#checkbox_c3").prop("checked", "false");
+							$(".touman").addClass("hide");
+						}
+
+						console.log(obj.data);
+					}
+				},
+				error: function(err) {}
+
+			})
+
+			$(".startTime").shijian();
+			//        点击弹框消失
+			$(".yin").on('click', function() {
+				$(".fda").hide();
+				$(".rongNum").html("");
+			})
+			// 点击温度区间
+			$("#wdqjian").change(function() {
+				var wdqj = $(this).val();
+				if(wdqj == '') {
+					$(".ewrq").html('')
+				} else {
+					$.ajax({
+						url: "http://www.ccsc58.cc/zjlytms/api.php/Order/ajax",
+						type: "post",
+						data: {
+							wdqj: wdqj,
+							state: 2
+						},
+						dataType: "JSON",
+						success: function(res) {
+							//                  console.log(res);\n
+							if(res.length == 0) {
+								toastr.success('该温度区间没有箱子，请换个试试');
+								isRongji = false;
+							} else {
+								var dataArr = [];
+								res.forEach(item => {
+									dataArr.push(
+										'<span class="ni" id="' + item.id + '">', item.bcname,
+										'</span>'
+									)
+								});
+								$(".fasf").html(dataArr.join(''));
+							}
+
+						},
+						error: function(err) {
+							console.log(失败);
+						}
+					})
+				}
+
+			})
+
+			// 点击所需容积
+			var isRongji = true;
+			var isR = true;
+
+			function rongji() {
+
+				var wen = $(".wenqj").val();
+				if(wen == "") {
+					isRongji = false;
+					toastr.error("请选择温度要求");
+					window.setTimeout(function() {
+						isRongji = true
+					}, 3000);
+				} else {
+					//					console.log($(".rongj"))
+					//					console.log($(".rongj")[0].style.height);
+					$(".yin").css("top", $(document).scrollTop() + 'px');
+					$(".rong").css({
+						top: $(document).height() - 400 + 'px',
+						opacity: 0
+					});
+					$(document.body).css({
+						"overflow-x": "hidden",
+						"overflow-y": "hidden"
+					});
+					$(".rongjiTan").show();
+					$(".rongj").show();
+					$(".fdasfs").hide();
+					$(".fasf span").attr("class", "ni");
+					$(document.body).css({
+						"overflow-x": "show",
+						"overflow-y": "show"
+					});
+				}
+			}
+			$(".rongji").on('click', function() {
+				$('.ewrq').html("");
+				if($("#wdqjian").val() == '') {
+					isRongji = false;
+					if(isR) {
+						isR = false;
+						window.setTimeout(() => {
+							isR = true
+						}, 3000);
+						toastr.error("请选择温度区间");
+
+					}
+
+				} else {
+					isRongji = true;
+				}
+				if(isRongji) {
+					rongji();
+				}
+			})
+
+			// 点击容积
+			$("body").on("click", ".fasf span", function() {
+
+				if($(this).attr("class") == "ni") {
+					$(this).attr("class", "spanActive");
+				} else if($(this).attr("class") == "spanActive") {
+					$(this).attr("class", "ni");
+				}
+			})
+			// 点击所需容积中的下一步
+			function rongNext() {
+				var dataSpan = $(".fasf span[class=spanActive]");
+				if(dataSpan.length == 0) {
+					isRongji = false;
+					window.setTimeout(() => {
+						isRongji = true
+					}, 3000);
+					toastr.error("请选择箱子容积");
+				} else if(dataSpan.length > 3) {
+					isRongji = false;
+					window.setTimeout(() => {
+						isRongji = true
+					}, 3000);
+					toastr.error("所选箱子不能超过3个");
+				} else {
+					$(".fdasfs").css({
+						top: $(document).height() - 400 + 'px',
+						opacity: 0
+					});
+					var span2 = `<li style='height:auto;'><span>箱子容积</span><span>件数</span></li>`;
+					$(".rongj").hide();
+					for(let i = 0; i < dataSpan.length; i++) {
+						var li = $("<li><span><span class='sheng' id='" + dataSpan[i].id + "'>" + dataSpan[i].textContent +
+							"</span></span><input type='number' style='border:1px solid #ccc;text-align:center;'></li>"
+						);
+						$(".rongNum").append(li);
+
+					}
+					$(".rongNum li:first-of-type").before(span2);
+					$(".deep").show();
+				}
+			}
+			$(".nextNum span").on("click", function() {
+				if(isRongji) {
+					rongNext();
+				}
+			})
+			// 点击所需容积  数量中的确认
+
+			var aBool = true; //用来记录以后有没填的项目
+			var isOrd = true; // 判断重复点击
+			//所属容积的 添好数量的 “确定” 按钮
+			$(".rongque span").click(function() {
+				aBool = true; //表示填好了
+				$(".rongNum li input").each(function() {
+					if(typeof $(this).val() == 'undefined' || $(this).val() == '') {
+						aBool = false;
+					}
+				});
+				if(isOrd) {
+					rongQu();
+				}
+			})
+			//确定里的循环便利判断
+			function rongQu() {
+				if(aBool) {
+					$(".ewrq").html("");
+					var li = $(".rongNum li .sheng");
+					var input = $(".rongNum li input");
+					for(var i = 0; i < li.length; i++) {
+						var span = $("<li style='height:auto;'><span class='rongji' id='" + li[i].id + "'>" + $(
+								li[i]).text() + "</span><span class='shuli'>" + $(input[i]).val() +
+							"</span></li>");
+						$(".ewrq").append(span);
+					}
+
+					$(".jiantou").hide();
+					$(".rongNum").html("");
+
+					$(".rongjiTan").hide();
+				} else {
+
+					isOrd = false;
+					setTimeout(() => {
+						isOrd = true
+					}, 3000);
+					toastr.error("请输入数量");
+				}
+			}
+			$(".btn").on("click", function() {
+				var address = $(".faAddress").val();
+				var shouAddres = $(".shouAddress").val();
+				var arrfjraddress = address.trim().split(/\s+/);
+				var arrsjraddress = shouAddres.trim().split(/\s+/);
+				
+				
+				if($(".titile").attr("box") == "冷云箱子") {
+					var dui = {};
+					var arr1 = [];
+
+					for(let i = 0; i < $(".ewrq li").length; i++) {
+						//					var rongji = $(".ewrq li span[class='rongji']")[i].id;//以前是id
+						var rongji = $(".ewrq li span[class='rongji']")[i].textContent;
+						var shu = $(".ewrq li span[class='shuli']")[i].textContent;
+						dui[rongji] = shu;
+					}
+					arr1.push(dui);
+					$.ajax({
+						url: 'http://out.ccsc58.cc/DATA_PORT_WECHAT_1.01/index.php',
+						type: 'post',
+						dataType: "JSON",
+						data: {
+							myNum: $(".merber_id").val(),
+							phone: $(".phone").val(),
+							faname: $(".faName").val(),
+							fatel: $(".faPhone").val(),
+							faDepart: arrfjraddress[0],
+							faCity: arrfjraddress[1],
+							faaddres: arrfjraddress[2],
+							shouname: $(".shouName").val(),
+							shoutel: $(".shouPhone").val(),
+							shouDepart: arrsjraddress[0],
+							shouCity: arrsjraddress[1],
+							shouCountry: arrsjraddress[2],
+							shouaddres: arrsjraddress[3],
+							requiretaketime: $(".startTime").val(),
+							wdqj: $("#wdqjian").val(),
+							hwmc: $(".carName").val(),
+							rongjinum: arr1,
+							wdj: $("#checkbox_c2").prop("checked") ? "使用" : "不使用",
+							beizhu: $(".backup").val(),
+							isinsure: $("#checkbox_c3").prop("checked") ? 1 : 0,
+							cargovalue: $(".money").val(),
+							rest: $("#checkbox_c1").prop("checked") ? "正常派送" : "节假日休息",
+							zibeipack: 0
+						},
+						success: function(res) {
+							if(res.code == 200) {
+								console.log(res.info);
+								window.location.href = "price.html";
+
+							} else {
+								console.log(res.info);
+							}
+
+						},
+						error: function(err) {
+							console.log(err);
+
+						}
+					})
+				} else {
+			
+					$.ajax({
+						url: 'http://out.ccsc58.cc/DATA_PORT_WECHAT_1.01/index.php',
+						type: 'post',
+						dataType: "JSON",
+						data: {
+							myNum: $(".merber_id").val(),
+							phone: $(".phone").val(),
+							faname: $(".faName").val(),
+							fatel: $(".faPhone").val(),
+							faDepart: arrfjraddress[0],
+							faCity: arrfjraddress[1],
+							faCountry: arrfjraddress[2],
+							faaddres: arrfjraddress[3],
+							shouname: $(".shouName").val(),
+							shoutel: $(".shouPhone").val(),
+							shouDepart: arrsjraddress[0],
+							shouCity: arrsjraddress[1],
+							shouCountry: arrsjraddress[2],
+							shouaddres: arrsjraddress[3],
+							requiretaketime: $(".startTime").val(),
+							wdqj: "",
+							hwmc: "",
+							rongjinum: $('.zbx').val,
+							wdj: "",
+							beizhu: "",
+							isinsure: $("#checkbox_c3").prop("checked") ? 1 : 0,
+							cargovalue: $(".money").val(),
+							rest: $("#checkbox_c1").prop("checked") ? "正常派送" : "节假日休息",
+							zibeipack: 1
+						},
+						success: function(res) {
+							if(res.code == 200) {
+								console.log(res.info);
+								window.location.href = "price.html";
+							} else {
+								alert(res.info);
+							}
+						},
+						error: function(err) {
+							console.log(err);
+
+						}
+					})
+				}
+
+			})
+
+		})
+	</script>
+
+</html>

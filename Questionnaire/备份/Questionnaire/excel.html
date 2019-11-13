@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+
+	<head lang="en">
+		<meta charset="UTF-8">
+		<title>问卷调查数据</title>
+		<script language="JavaScript" type="text/javascript">
+			//第五种方法  
+			var idTmr;
+
+			function getExplorer() {
+				var explorer = window.navigator.userAgent;
+				//ie  
+				if(explorer.indexOf("MSIE") >= 0) {
+					return 'ie';
+				}
+				//firefox  
+				else if(explorer.indexOf("Firefox") >= 0) {
+					return 'Firefox';
+				}
+				//Chrome  
+				else if(explorer.indexOf("Chrome") >= 0) {
+					return 'Chrome';
+				}
+				//Opera  
+				else if(explorer.indexOf("Opera") >= 0) {
+					return 'Opera';
+				}
+				//Safari  
+				else if(explorer.indexOf("Safari") >= 0) {
+					return 'Safari';
+				}
+			}
+
+			function method5(tableid) {
+				if(getExplorer() == 'ie') {
+					var curTbl = document.getElementById(tableid);
+					var oXL = new ActiveXObject("Excel.Application");
+					var oWB = oXL.Workbooks.Add();
+					var xlsheet = oWB.Worksheets(1);
+					var sel = document.body.createTextRange();
+					sel.moveToElementText(curTbl);
+					sel.select();
+					sel.execCommand("Copy");
+					xlsheet.Paste();
+					oXL.Visible = true;
+
+					try {
+						var fname = oXL.Application.GetSaveAsFilename("Excel.xlsx","Excel.xls", "Excel Spreadsheets (*.xls), *.xls");
+					} catch(e) {
+						print("Nested catch caught " + e);
+					} finally {
+						oWB.SaveAs(fname);
+						oWB.Close(savechanges = false);
+						oXL.Quit();
+						oXL = null;
+						idTmr = window.setInterval("Cleanup();", 1);
+					}
+
+				} else {
+					tableToExcel(tableid)
+				}
+			}
+
+			function Cleanup() {
+				window.clearInterval(idTmr);
+				CollectGarbage();
+			}
+			var tableToExcel = (function() {
+				var uri = 'data:application/vnd.ms-excel;base64,',
+					template = '<html><head><meta charset="UTF-8"></head><body><table>{table}</table></body></html>',
+					base64 = function(s) {
+						return window.btoa(unescape(encodeURIComponent(s)))
+					},
+					format = function(s, c) {
+						return s.replace(/{(\w+)}/g,
+							function(m, p) {
+								return c[p];
+							})
+					}
+				return function(table, name) {
+					if(!table.nodeType) table = document.getElementById(table)
+					var ctx = {
+						worksheet: name || 'Worksheet',
+						table: table.innerHTML
+					}
+					window.location.href = uri + base64(format(template, ctx))
+				}
+			})()
+		</script>
+	</head>
+	<style>
+		 table.gridtable {
+          font-family: verdana,arial,sans-serif;
+          font-size:16px;
+          color:#333333;
+          border-width: 1px;
+         border-color: #666666;
+          border-collapse: collapse;
+      }
+      table.gridtable th {
+          border-width: 1px;
+          padding: 8px;
+          border-style: solid;
+          border-color: #666666;
+          background-color: #dedede;
+      }
+      table.gridtable td {
+          border-width: 1px;
+          padding: 8px;
+          border-style: solid;
+          border-color: #666666;
+          background-color: #ffffff;
+      }
+      td tr{
+      	 padding: 6px;
+      }
+     /* /gridtable */
+  
+		.hidden {
+			display: none;
+		}
+		#export{
+			    width: 80%;
+			    height: 3rem;
+			    background: #3299fe;
+			    line-height: 3rem;
+			    text-align: center;
+			    margin-left: 10%;
+			    margin-bottom: 1rem;
+			    border-radius: 10px;
+			    margin-top: 1rem;
+			    color: #fefefe;
+			    font-size: 1.5rem;
+			    letter-spacing: 2rem;
+			    position: fixed;
+			    bottom: 6rem;
+		}
+		#return{
+			    width: 80%;
+			    height: 3rem;
+			    background: #3299fe;
+			    line-height: 3rem;
+			    text-align: center;
+			    margin-left: 10%;
+			    margin-bottom: 1rem;
+			    border-radius: 10px;
+			    margin-top: 1rem;
+			    color: #fefefe;
+			    font-size: 1.5rem;
+			    letter-spacing: 2rem;
+			    position: fixed;
+			    bottom: 2rem;
+		}
+		table {
+   font-size:16px;
+}
+tr{
+	margin-top: 5px;
+}
+/* 双行颜色 */
+tr:nth-child(2n){ background:#F4F4F4;}
+/* 单行颜色 */
+tr:nth-child(2n+1){ background: #C0EBEF;}
+</style>
+	</style>
+
+	<body>
+
+		<div>
+			<button type="button" id="export" onclick="method5('tableExcel')">仅电脑端导出数据</button>
+			<button type="button" id="return">返回主页</button>
+		</div>
+		<div id="myDiv">
+			<table id="tableExcel" width="100%" border="1" cellspacing="0" cellpadding="0">
+				<tr>
+					<td colspan="8" align="center" style="font-size:20px ;font-weight: bold;">中集冷云微信调查问卷</td>
+				</tr>
+				<tr>
+					<th>您来自哪个行业?</th>
+					<th>您从事的职业？</th>
+					<th>您对我公司感兴趣的业务为？</th>
+					<th>您所在的城市区域？</th>
+					<th>用户名</th>
+					<th>微信名</th>
+					<th>公司名称</th>
+					<th>手机号</th>
+				</tr>
+				<tbody class="temp">
+
+				</tbody>
+			</table>
+		</div>
+		<script src="js/jquery-1.11.3.js"></script>
+		<script>
+			$(document).ready(function() {
+				var kaishi = localStorage.getItem("starttime");
+				var jieshu = localStorage.getItem("endtime");
+				$.ajax({
+					type: "post",
+					url: "http://www.ccsc58.com/json/weixin/03_00_question_select_excel.php",
+					data: {
+						admin_permit: "zjly8888",
+						starttime: kaishi,
+						endtime: jieshu
+					},
+					success: function(data) {
+						var _json = JSON.parse(data);
+						if(_json.code == 20000 && _json.message == "fail") {
+							alert("此时间段没有记录");
+						} else if(_json.code == 30000) {
+							alert("查询错误");
+						} else {
+							var dataArr = [];
+							for(var i in _json) {
+								dataArr.push(
+									'<tr>',
+									'<td>', _json[i].first, '</td>',
+									'<td>', _json[i].second, '</td>',
+									'<td>', _json[i].third, '</td>',
+									'<td>', _json[i].fourth, '</td>',
+									'<td>', _json[i].name, '</td>',
+									'<td>', _json[i].wechatname, '</td>',
+									'<td>', _json[i].company, '</td>',
+									'<td>', _json[i].tel, '</td>',
+									'</tr>'
+								)
+							}
+							$(".temp").html(dataArr.join(''));
+						}
+
+					}
+				});
+				$("#return").on("click",function(){
+					window.localStorage.clear();
+					window.location.href="selectQues.html";
+				})
+
+			})
+		</script>
+	</body>
+
+</html>

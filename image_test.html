@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>微信红包申请流程单（连续三十天）</title>
+		<link rel="stylesheet" href="css/index.css" />
+		<style type="text/css">
+			.img_logo {
+				width: 100%;
+			}
+			
+			.img_logo img {
+				width: 100%;
+			}
+			
+			form {
+				margin-top: 20px;
+				margin-bottom: 3rem;
+			}
+			
+			form div {
+				width: 100%;
+				height: 5rem;
+				border-top: 1px solid #e5e5e5;
+				border-bottom: 1px solid #e5e5e5;
+				line-height: 5rem;
+				text-align: center;
+				margin-top: 5px;
+				font-size: 1.5rem;
+				color: #a8a8a8;
+				white-space: nowrap;
+			}
+			
+			form div input {
+				width: 65%;
+				height: 4rem;
+				border: none;
+				line-height: 5rem;
+				text-align: center;
+				font-size: 1.5rem;
+				text-align: right;
+				padding-right: 5vw;
+			}
+			
+			form .button {
+				width: 80%;
+				height: 4rem;
+				background: #3299fe;
+				line-height: 4rem;
+				text-align: center;
+				margin-left: 10%;
+				border-radius: 10px;
+				margin-top: 20px;
+				color: #fefefe;
+				font-size: 2rem;
+			}
+			
+			.time {
+				position: fixed;
+				bottom: 0px;
+				left: 0px;
+				height: 3rem;
+				width: 100%;
+				line-height: 3rem;
+				text-align: center;
+				font-size: 1.5rem;
+				color: #b5b5b3;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="img_logo">
+			<img src="img/shouqian.png" />
+		</div>
+		<form action="" method="post">
+			<div>
+				付款金额：<input type="text" name="" id="" value="0.01" placeholder="必填,例：0.01" />
+			</div>
+			<div class="button">
+				确认付款
+			</div>
+		</form>
+		<span>
+			2017/05/19开始
+		</span>
+		<div class="time">
+		</div>
+		<script src="js/jquery-1.11.0.js"></script>
+		<script>
+			$(".button").on("click", function() {
+				var _jinE = $("form div:nth-of-type(1) input").val();
+				var _danWei = $("form div:nth-of-type(2) input").val();
+				var _money_name = $("form div:nth-of-type(3) input").val();
+				if(_jinE != "" && _jinE > 0) {
+					if(_danWei != "") {
+						if(_money_name != "") {
+							window.sessionStorage.setItem("pay_money", _jinE);
+							window.sessionStorage.setItem("pay_daWei", _danWei);
+							window.sessionStorage.setItem("_pay_name", _money_name);
+							window.location.href = "payweixin/example/jsapi.php?total=" + _jinE * 100;
+						} else {
+							alert("请输入正确的金额，不能包含除数字以外的内容！");
+						};
+					}
+				}
+			});
+
+			function history_time(_a) {
+				var _start_year = _a.getFullYear();
+				var _start_month = _a.getMonth() + 1 < 10 ? "0" + (_a.getMonth() + 1) : _a.getMonth() + 1;
+				var _start_date = _a.getDate() < 10 ? "0" + (_a.getDate()) : _a.getDate();
+				var _start_hour = _a.getHours() < 10 ? "0" + (_a.getHours()) : _a.getHours();
+				var _start_minutes = _a.getMinutes() < 10 ? "0" + (_a.getMinutes()) : _a.getMinutes();
+				var _start_seconds = _a.getSeconds() < 10 ? "0" + (_a.getSeconds()) : _a.getSeconds();
+				return _start_year + "-" + _start_month + "-" + _start_date + " " + _start_hour + ":" + _start_minutes + ":" + _start_seconds;
+			}
+			var _time = new Date();
+			$(".time").html(history_time(_time));
+		</script>
+	</body>
+
+</html>

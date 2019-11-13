@@ -1,0 +1,80 @@
+{
+    "button": [
+        {
+            "type": "view", 
+            "name": "🚇单号查询", 
+            "url": "http://www.ccsc58.cc/weixinnew/ITMS/logistics/logistics.php", 
+            "sub_button": [ ]
+        }, 
+        {
+            "name": "🚑服务中心", 
+            "sub_button": [
+                {
+                    "type": "view", 
+                    "name": "🌀温控平台", 
+                    "url": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx82dbac04fa8fd8ef&redirect_uri=http://www.ccsc58.cc/weixinnew/oauth2.php&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect", 
+                    "sub_button": [ ]
+                }, 
+                {
+                    "type": "view", 
+                    "name": "🏪产品中心", 
+                    "url": "http://www.cccc58.com/index.php?controller=site&action=pro_listss&fid=5&pid=24", 
+                    "sub_button": [ ]
+                }, 
+                {
+                    "type": "view", 
+                    "name": "🎯 对焦活动", 
+                    "url": "http://mp.weixin.qq.com/mp/homepage?__biz=MzIxOTYzMDY2OQ==&hid=3&sn=4bb58553ffda4d9756105ea9f6b06bbe#wechat_redirect", 
+                    "sub_button": [ ]
+                }, 
+                {
+                    "type": "view", 
+                    "name": "📥 行业资讯", 
+                    "url": "http://mp.weixin.qq.com/mp/homepage?__biz=MzI4MDk2OTA4Mg==&hid=1&sn=d19fefbee62b7c81415945dc2ab26b8f#wechat_redirect", 
+                    "sub_button": [ ]
+                }, 
+                {
+                    "type": "view", 
+                    "name": "❄智能冷链前线", 
+                    "url": "http://mp.weixin.qq.com/mp/homepage?__biz=MzIxNzU1MzIyNA==&hid=1&sn=dcf2df0452631e6d69908350d4f53ae6#wechat_redirect", 
+                    "sub_button": [ ]
+                }
+            ]
+        }, 
+        {
+            "name": "🎓关于我们", 
+            "sub_button": [
+                {
+                    "type": "view", 
+                    "name": "👤   个人中心", 
+                    "url": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx82dbac04fa8fd8ef&redirect_uri=http://www.ccsc58.cc/weixinnew/oauth2_Percert.php&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect", 
+                    "sub_button": [ ]
+                }, 
+                {
+                    "type": "view", 
+                    "name": "🏢   公司首页", 
+                    "url": "http://www.cccc58.com/", 
+                    "sub_button": [ ]
+                }, 
+                {
+                    "type": "view", 
+                    "name": "📱 安卓APP下载", 
+                    "url": "http://fusion.qq.com/cgi-bin/qzapps/unified_jump?appid=42375908isTimeline=falseactionFlag=0params=pname%3Dcom.ccsc.coldcloud%26versioncode%3D1%26channelid%3D%26actionflag%3D0from=singlemessageisappinstalled=1", 
+                    "sub_button": [ ]
+                }, 
+                {
+                    "type": "view", 
+                    "name": "📱 苹果APP下载", 
+                    "url": "https://itunes.apple.com/us/app/zhong-ji-leng-yun-wen-shi/id1173609882?mt=8", 
+                    "sub_button": [ ]
+                }, 
+                {
+                    "type": "click", 
+                    "name": "📋温度计说明书", 
+                    "key": "shuomingshu", 
+                    "sub_button": [ ]
+                }
+            ]
+        }
+    ]
+}

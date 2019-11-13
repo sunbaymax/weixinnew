@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<meta content="telephone=no" name="format-detection">
+		<meta content="email=no" name="format-detection">
+		<meta name="description" content="中集冷云冷链运输微信下单平台" />
+		<meta name="keywords" content="微信下单，冷链运输 " />
+		<meta name=" author " content="中集冷云 " />
+		<title>登陆页面</title>
+		<link rel="stylesheet " href="../css/base.css ">
+		<link rel="stylesheet " href="../css/toastr.min.css">
+		<link rel="stylesheet " href="../css/login.css">
+		<link rel="stylesheet " href="../css/mdialog.css">
+		<link rel="stylesheet " href="../css/jquery.idcode.css">
+	</head>
+	<style>
+      
+	</style>
+
+	<body>
+		<div class="container">
+			<!--<div class="top">
+				<a href="javascript:;" class="switch-pwd">密码登录&nbsp;&nbsp;></a>
+			</div>-->
+			<div class="banner">
+				<div>
+					<img src="../img/login-logo.png" class="logo" />
+					<h2>欢迎使用中集冷云公众号</h2>
+				</div>
+				<div>
+					请输入已绑定的手机号
+				</div>
+			</div>
+			<div class="formdata">
+				<div class="line">
+					<s class="tel-img"></s>
+					<p>
+						<input type="number" class="inputval" placeholder="请录入手机号码" id="telphone" />
+					</p>
+
+				</div>
+				<div class="line">
+					<s class="tel-img"></s>
+					<p>
+						<input type="number" class="inputval" placeholder="请录入手机号码" id="telphone" />
+					</p>
+
+				</div>
+				<div class="line yanzhengline">
+					<s class="yanzheng-img"></s>
+					<p class="inner">
+						<input type="text" class="inputval" placeholder="请输入验证码" id="Txtidcode" class="txtVerification" />
+						<span id="idcode"></span>
+						<img src="../img/success.png" class="hide" id="accass" />
+					</p>
+
+				</div>
+				<div class="hide" id="third">
+					<div class="line psdline ">
+						<s class="psd-img"></s>
+						<p>
+							<input type="password" class="inputval" placeholder="请输入登录密码" id="frist" />
+							<s class="nosee"></s>
+						</p>
+					</div>
+				</div>
+
+
+			</div>
+			<div class="btn">
+				<button class="btn-ok">登录</button>
+			</div>
+		</div>
+		<script src="../js/flexible.js "></script>
+		<script src="../js/jquery-1.11.0.js"></script>
+		<script src="../js/toastr.min.js"></script>
+		<script src="../js/jquery.idcode.js"></script>
+		<!--<script type="text/javascript" src="zepto.min.js"></script>
+        <script type="text/javascript" src="mdialog.js"></script>-->
+		<script>
+			$(function() {
+				sessionStorage.clear();
+				$.idcode.setCode();
+				var iserror = true;
+				toastr.options = {
+					timeOut: "3000",
+					positionClass: "toast-center-center"
+				};
+				var yanzheng = '';
+				var loginType = 'yanzhengma';
+				$('#Txtidcode').bind('input propertychange', function() {
+					if(iserror) {
+						if($(this).val().length == 5) {
+							var IsBy = $.idcode.validateCode();
+							if(IsBy) {
+								$("#ehong-code-tip-ck").text('');
+								$("#accass").show();
+								yanzheng = true;
+							} else {
+								iserror = false;
+								setTimeout(function() {
+									iserror = true;
+								}, 3000);
+								toastr.error("验证码输入错误");
+								$("#accass").hide();
+								yanzheng = false;
+							}
+						} else {
+							$("#accass").hide();
+							yanzheng = false;
+						}
+					}
+
+				})
+				$('.top a').on("click", function() {
+					if($(this).text().indexOf("密码登录") != -1) {
+						$('.yanzhengline').hide();
+						$('#third').show();
+						$('#frist').val('');
+						$(this).text('验证码登录    >')
+						$('.btn button').removeClass('btnhover');
+						loginType = 'mima';
+					} else {
+						$('.yanzhengline').show();
+						$('#third').hide();
+						$('#Txtidcode').val('');
+						$(this).text('密码登录    >');
+						$('.btn button').removeClass('btnhover');
+						loginType = 'yanzhengma';
+					}
+				})
+				$('input').bind('input propertychange', function() {
+					var tel = $('#telphone').val();
+					var yanzhengval = $('#Txtidcode').val();
+					var password = $('#frist').val();
+					var psw = $('#frist').val();
+					if(tel.length > 0 && yanzheng == true || tel.length > 0 && password.length > 0) {
+						$('.btn button').addClass('btnhover');
+					} else {
+						$('.btn button').removeClass('btnhover');
+					}
+				})
+
+				function isPoneAvailable($poneInput) {
+					var myreg = /^[1][3,4,5,7,8][0-9]{9}$/;
+					if(!myreg.test($poneInput.val())) {
+						return false;
+					} else {
+						return true;
+					}
+				}
+				$('.btn button').on('click', function() {
+					var tel = $('#telphone').val();
+					var yanzhengval = $('#Txtidcode').val();
+					var password = $('#frist').val();
+					var ma = '';
+					if(iserror) {
+						if(loginType == 'yanzhengma') {
+							ma = $('#Txtidcode').val();
+							if(tel.length <= 0) {
+								iserror = false;
+								setTimeout(function() {
+									iserror = true;
+								}, 3000);
+								toastr.error("手机号不能为空");
+								 
+								$('#telphone').focus();
+							} else if(!isPoneAvailable($("#telphone"))) {
+								iserror = false;
+								setTimeout(function() {
+									iserror = true
+								}, 3000);
+								toastr.error("手机格式错误");
+								$("#telphone").focus();
+							} else if(yanzhengval.length <= 0) {
+								iserror = false;
+								setTimeout(function() {
+									iserror = true;
+								}, 3000);
+								toastr.error("验证码不能为空");
+								$('#Txtidcode').focus();
+							} else if(!yanzheng) {
+								iserror = false;
+								setTimeout(function() {
+									iserror = true
+								}, 3000);
+								toastr.error("验证码错误");
+								$("#Txtidcode").focus();
+							} else {
+								$.ajax({
+									type: "post",
+									url: "http://out.ccsc58.cc/DATA_PORT_WECHAT_1.01/Login.php",
+									async: true,
+									data: {
+										Telephone:tel
+									},
+									dataType: "JSON",
+									success: function(res) {
+										console.log(res)
+										if(res.code == 200) {
+											window.sessionStorage.setItem("Telephone",tel);
+											if(res.data) {
+												var name = res.data.Name;
+												var _tel = res.data.Telephone;
+												var address = res.data.Depart + '' + res.data.City + '' + res.data.Area + '' + res.data.Address;
+												var account = res.data.AccountNumber;
+												var addData = {
+													addressname: name,
+													addresstel: _tel,
+													address: address,
+													addressaccount: account
+												};
+												sessionStorage.setItem('SendaddData', JSON.stringify(addData));
+											}
+											window.location.href = 'order.html';
+										} else if(res.code == 300) {
+											window.sessionStorage.setItem("Telephone",tel);
+											window.location.href = 'order.html';
+										} else {
+											toastr.error(res.msg)
+										}
+									},
+									error: function(err) {
+
+									}
+								});
+							}
+
+						} else {
+							if(tel.length <= 0) {
+								iserror = false;
+								setTimeout(function() {
+									iserror = true;
+								}, 3000);
+								toastr.error("手机号不能为空");
+								$('#telphone').focus();
+							} else if(!isPoneAvailable($("#telphone"))) {
+								iserror = false;
+								setTimeout(function() {
+									iserror = true
+								}, 3000);
+								toastr.error("手机格式错误");
+								$("#telphone").focus();
+							} else if(password.length <= 0) {
+								iserror = false;
+								setTimeout(function() {
+									iserror = true;
+								}, 3000);
+								toastr.error("密码不能为空");
+								$('#first').focus();
+							} else {
+								$.ajax({
+									type: "post",
+									url: "http://out.ccsc58.cc/DATA_PORT_WECHAT_1.01/Login.php",
+									async: true,
+									data: {
+										Telephone:tel,
+										PassWord:password
+									},
+									dataType: "JSON",
+									success: function(res) {
+										console.log(res)
+										if(res.code == 200) {
+											window.sessionStorage.setItem("Telephone",tel);
+											if(res.data) {
+												var name = res.data.Name;
+												var _tel = res.data.Telephone;
+												var address = res.data.Depart + '' + res.data.City + '' + res.data.Area + '' + res.data.Address;
+												var account = res.data.AccountNumber;
+												var addData = {
+													addressname: name,
+													addresstel: _tel,
+													address: address,
+													addressaccount: account
+												};
+												sessionStorage.setItem('SendaddData', JSON.stringify(addData));
+											}
+											window.location.href = 'order.html';
+										} else if(res.code == 300) {
+											window.sessionStorage.setItem("Telephone",tel);
+											window.location.href = 'order.html';
+										}else {
+											toastr.error(res.msg)
+										}
+									},
+									error: function(err) {
+
+									}
+								});
+							}
+						}
+					}
+				})
+
+			})
+		</script>
+	</body>
+
+</html>

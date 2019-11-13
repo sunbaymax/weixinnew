@@ -1,0 +1,313 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background: #E3E3E3;
+	font-size: 14px;
+}
+
+/*nav {
+	width: 100%;
+	height: 0.44rem;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background: #000000;
+	color: #ffffff;
+	position: relative;
+}
+
+nav div:first-of-type {
+	margin: 0 0 0 0.2rem;
+}*/
+
+.shouHuoDi {
+	width: 100%;
+	height: 0.8rem;
+	position: relative;
+}
+
+.detailMain {
+	width: 100%;
+	height: auto;
+	font-size: 14px;
+}
+
+main ul {
+	width: 90%;
+	margin-left: 5%;
+	height: auto;
+	background: #fff;
+}
+
+main ul li {
+	display: flex;
+	height: 0.4rem;
+	border-bottom: 1px solid #C0C0C0;
+	/*justify-content: space-between;*/
+	align-items: center;
+	padding: 0 0 0 0rem;
+	line-height: 0.4rem;
+	box-sizing: border-box;
+}
+
+li span:first-child {
+	display: inline-block;
+	width: 30%;
+	height: 0.4rem;
+	line-height: 0.4rem;
+	text-align: center;
+}
+
+.userinfo li span:last-of-type {
+	display: inline-block;
+	width: 65%;
+	padding-right: 5%;
+	height: 0.4rem;
+	line-height: 0.4rem;
+}
+
+.wuliu li span:last-of-type {
+	display: inline-block;
+	width: 65%;
+	padding-right: 5%;
+	height: 0.4rem;
+	line-height: 0.4rem;
+}
+
+.addres {
+	display: flex;
+}
+
+ul .addres {
+	height: 0.8rem;
+	line-height: 0.8rem;
+	align-items: left;
+}
+
+.titile {
+	font-size: 14px;
+	color: #000000;
+	font-weight: bold;
+	margin: 5px 5% 5px;
+}
+
+.faAddress,
+.shouAddress {
+	display: inline-block;
+	height: 0.8rem;
+	line-height: 0.4rem;
+	/*overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;*/
+}
+
+.basic li span:last-of-type {
+	display: inline-block;
+	width: 65%;
+	padding-right: 5%;
+	height: 0.4rem;
+	line-height: 0.4rem;
+}
+
+.paisong li span:first-child {
+	display: inline-block;
+	width: 30%;
+	height: 0.4rem;
+	line-height: 0.4rem;
+}
+
+.paisong li span:last-of-type {
+	display: inline-block;
+	width: 65%;
+	padding-right: 5%;
+	height: 0.4rem;
+	line-height: 0.4rem;
+}
+
+li div li {
+	border: none;
+}
+
+.wenzirongji {
+	padding-right: 0px;
+}
+
+footer {
+	text-align: center;
+	margin: 10px auto;
+}
+
+footer span,
+#con span {
+	border-radius: 10px;
+	background: #2879FF;
+	color: #ffffff;
+	width: 30%;
+	margin: 0 0 0 10%;
+	text-align: center;
+	line-height: 0.4rem;
+	cursor: pointer;
+	display: inline-block;
+	box-shadow: 3px 3px 2px #888888;
+}
+
+.hide {
+	display: none;
+}
+
+.show {
+	display: block;
+}
+
+.zibei {
+	width: 90%;
+	height: auto;
+	border-bottom: 1px solid #ccc;
+}
+
+.zibei li {
+	width: 100%;
+	height: 0.6rem;
+}
+
+.zibei li div {
+	width: 100%;
+	height: 0.6rem;
+	font-size: 14px;
+	background: #F0F8FF;
+	!important;
+	display: flex;
+}
+
+.zibei li span:first-child {
+	display: inline-block;
+	width: 30%;
+	height: 0.6rem;
+	line-height: 0.6rem;
+	font-size: 14px;
+}
+
+.zibei li span:last-child {
+	display: inline-block;
+	width: 70%;
+	height: 0.6rem;
+	line-height: 0.6rem;
+	font-size: 14px;
+}
+
+.zibei .wenzi {
+	width: 30%;
+	height: 0.6rem;
+	line-height: 0.6rem;
+	text-align: center;
+}
+
+.wenzi p {
+	height: 0.3rem;
+	line-height: 0.3rem;
+}
+
+.zibei .txtinput {
+	width: 20%;
+	height: 0.6rem line-height: 0.6rem text-align: center;
+}
+
+.txtinput p {
+	text-align: left;
+	height: 0.28rem;
+	line-height: 0.28rem;
+}
+
+.txtinput input {
+	width: 60%;
+	margin-top: 0.01rem;
+	padding-right: 5%;
+	height: 0.28rem;
+	line-height: 0.28rem;
+	text-align: center;
+	border: none;
+}
+
+.zibei .bubian {
+	width: 10%;
+	height: 0.6rem;
+	line-height: 0.6rem;
+	text-align: left;
+}
+
+.bubian p {
+	height: 0.3rem;
+	line-height: 0.3rem;
+}
+
+
+/*ul li:nth-of-type(odd){ background:#F4F4F4;}
+ul li:nth-of-type(even){ background:#F0F8FF; } */
+
+ul li:nth-of-type(even) input {
+	background: #F0F8FF!important;
+}
+
+ul li:hover {
+	background-color: #CAE1FF;
+}
+
+.zxsl:nth-of-type(odd) {
+	background: #F4F4F4;
+}
+
+.zxrj:nth-of-type(odd) {
+	background: #F4F4F4;
+}
+
+.zxsl:nth-of-type(even) {
+	background: #F0F8FF;
+}
+
+.zxrj:nth-of-type(even) {
+	background: #F0F8FF;
+}
+
+
+/*.detailMain ul li span:last-of-type {
+	text-align: right;
+	padding-right: 0.3rem;
+	margin-bottom: 0.2rem;
+	padding-top: 0.2rem;
+}
+
+*/
+
+nav {
+	width: 100%;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	background: #FFFFFF;
+}
+
+.return {
+	display: inline-block;
+	width: 10px;
+	height: 15px;
+	position: absolute;
+	top: 12.5px;
+	left: 15px;
+}
+
+.Percenter {
+	display: inline-block;
+	width: 15px;
+	height: 15px;
+	position: absolute;
+	top: 13px;
+	right: 15px;
+}
+
+nav span {
+	font-size: 18px;
+	font-weight: 800;
+}

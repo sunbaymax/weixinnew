@@ -1,0 +1,261 @@
+	body {
+	background: #C5E5FE;
+}
+
+.Whole {
+	width: 100vw;
+	height: auto;
+}
+
+.titleTop {
+	width: 100vw;
+	height: 6rem;
+	margin-top: 2rem;
+	display: flex;
+}
+
+.titleTop .postionimg {
+	display: inline-block;
+	width: 4rem;
+	height: 4rem;
+	margin-left: 2vw;
+	background: url(../img/postion.png) no-repeat;
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	-moz-background-size: 100% 100%;
+}
+
+.titleTop .chinese {
+	display: inline-block;
+	width: 4rem;
+	height: 4rem;
+	margin-left: 83vw;
+	background: url(../img/phone.png) no-repeat;
+	background-size: 80% 80%;
+	-moz-background-size: 80% 80%;
+}
+
+.title {
+	width: 100vw;
+	height: 20rem;
+	/* border: 1px solid #000000; */
+	margin-top: 2rem;
+	text-align: center;
+}
+
+.title img {
+	width: 70vw;
+	height: 10rem;
+}
+
+.logodesc {
+	margin-top: 0px;
+	color: #004B8F;
+	font-size: 4rem;
+}
+
+.content {
+	width: 100vw;
+	height: auto;
+	text-align: center;
+	/*position: relative;*/
+}
+
+.danhao {
+	text-align: center;
+	width: 76vw;
+	height: 6rem;
+	border-radius: 5rem;
+	font-size: 2.5rem;
+	z-index: 999;
+}
+
+.centect_input {
+	position: relative;
+}
+
+.search {
+	position: absolute;
+	top: 1.2rem;
+	left: 16vw;
+	display: inline-block;
+	width: 4rem;
+	height: 4rem;
+	background: url(../img/search.png);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	-moz-background-size: 100% 100%;
+}
+
+.fenge {
+	width: 100%;
+	height: 4rem;
+	margin-top: 3rem;
+}
+
+.fenge div {
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.fenge .left {
+	border: 3px solid #337cbd;
+	display: inline-block;
+	width: 33%;
+}
+
+.fenge .or {
+	font-size: 3rem;
+	color: #004B8F;
+	font-weight: bold;
+	margin: 0.3rem 1rem 0rem;
+}
+
+.centect_circle {
+	width: 100vw;
+	/*height: 400px;*/
+	text-align: center;
+}
+
+.circle {
+	position: relative;
+	width: 40rem;
+	height: 40rem;
+	background-color: #63a5e0;
+	border-radius: 50%;
+	-moz-border-radius: 50%;
+	-webkit-border-radius: 50%;
+	margin: 2rem auto 0rem;
+}
+
+.circle_baise {
+	position: absolute;
+	top: 3rem;
+	left: 7rem;
+	width: 26rem;
+	height: 26rem;
+	background-color: #f1e9e9;
+	border-radius: 50%;
+	-moz-border-radius: 50%;
+	-webkit-border-radius: 50%;
+	margin: 4rem auto 0rem;
+}
+
+.saoyisao {
+	display: inline-block;
+	width: 10rem;
+	height: 10rem;
+	position: absolute;
+	top: 6rem;
+	left: 8rem;
+}
+
+.sm {
+	display: inline-block;
+	font-size: 3rem;
+	color: #1e81da;
+	position: absolute;
+	top: 18rem;
+	left: 8rem;
+}
+
+.footer {
+	margin-top: 2rem;
+	width: 100vw;
+	height: 2rem;
+	line-height: 2rem;
+	text-align: center;
+	font-size: 2rem;
+	/*position: fixed;*/
+	/*bottom: 0rem;*/
+}
+
+.yunMsg ul li {
+	line-height: 50px;
+	border-bottom: 1px solid #000000;
+	padding-left: 10px;
+	font-size: 1.26rem;
+	font-weight: bold;
+	margin-top: 1.5rem;
+}
+
+.yunMsg {
+	text-align: left;
+	}
+	.info_wuliu {
+		font-size: 20px;
+		font-weight: bold;
+		line-height: 30px;
+		margin: 0 0 0 24px;
+		float: left;
+	}
+	.fristline .xia {
+		width: 4rem;
+		height: 2rem;
+		background: url(../img/details.png) no-repeat;
+		background-size: 80% 80%;
+		position: absolute;
+		top: 2rem;
+		right: 2rem;
+	}
+	.orderdescription {
+		width: 100%;
+		height: auto;
+		text-align: center;
+	}
+	.result-info2 {
+		width: 100%;
+		font-size: 1.8rem;
+		margin-top: 2rem;
+	}
+	tr td {
+		margin: 1rem auto;
+		padding: 1rem;
+		border: 1px solid #90bfff;
+		list-style: none;
+		text-decoration: none;
+		margin-top: 2rem;
+	}
+	.das {
+		width: 100%;
+		border-top: 1px solid #ccc;
+		border-bottom: 1px solid #ccc;
+		margin-top: 30px;
+		border-radius: 5px;
+		text-align: left;
+		font-size: 1.8rem;
+	}
+	.das p {
+		margin-bottom: 12px;
+		padding: 12px 0 0 54px;
+	}
+	.yunHand {
+		width: 300px;
+		height: 30px;
+		background: #f6f6f6;
+		border-left: 6px solid red;
+		font-size: 1.5rem;
+		margin-top: 2rem;
+	}
+	.fristline {
+		width: 100%;
+		height: 4rem;
+		position: relative;
+	}
+	.fristline span {
+		color: #000000;
+		line-height: 4rem;
+		font-size: 2rem;
+	}
+	.fristline .left {
+		position: absolute;
+		top: 1rem;
+		left: 2rem;
+	}
+	.fristline .right {
+		position: absolute;
+		top: 1rem;
+		right: 8rem;
+	}

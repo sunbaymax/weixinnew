@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+		<title>中集冷云微信下单绑定</title>
+		<link rel="stylesheet" type="text/css" href="inc/aui.2.0.css" />
+		<link rel="stylesheet" type="text/css" href="inc/public.css" />
+		<link href="inc/style.css" type="text/css" rel="stylesheet" />
+		<link rel="stylesheet" href="css/toastr.min.css">
+	</head>
+	<style>
+		body {
+			background: url(img/teacher-login.jpg);
+			0 0 no-repeat scroll transparent;
+			background-size: 100% 100%;
+			background-size: cover;
+			overflow: hidden;
+		}
+	</style>
+
+	<body>
+		<!--头部-->
+		<!--<header class="aui-bar aui-bar-nav">
+    <a class="aui-pull-left aui-btn">
+        <span class="aui-iconfont"><img src="img/icon-headback－left.png"><span div class="head-txt"></span></span>
+    </a>
+    <a class="aui-pull-right aui-btn">
+        <span class="aui-iconfont"><img src="img/icon-headmore-dian.png"></span>
+    </a>
+</header>-->
+
+		<div class="content">
+			<div class="content-tilte">
+				<center>快速绑定</center>
+			</div>
+			<div class="lins"></div>
+			<div class="form-box">
+					<div class="input-form">
+						<span><img src="img/icon-zhanghaouser.png"></span>
+						<input class="inputstyle accept" type="text" id="zhanghao" placeholder="客户账号">
+					</div>
+					<div class="lins">
+					<div class="input-form">
+						<span><img src="img/icon-cellphone.png"></span>
+						<input class="inputstyle phone" type="text" id="tel" placeholder="手机号">
+					</div>
+					<div class="lins"></div>
+					<div class="sub">
+						<input type="submit" name="submit" id="bangding" value="一键绑定">
+					</div>
+					<div class="lins"></div>
+					<div class="lins"></div>
+					<div class="lins"></div>
+					<div class="newuer">
+						<p>
+							<a href="#" class="zhuce">没有客户账号?</a><s class="login_wx"></s>
+						</p>
+					</div>
+
+					<div class="or">
+						<span class="division aui-pull-left"></span>
+						<span class="txt-or">or</span>
+						<span class="division aui-pull-right"></span>
+					</div>
+					<div class="newuer">
+						<p>
+							<a href="login.html">快速登录</a><s class="login_wx"></s>
+						</p>
+					</div>
+			</div>
+			<script src="js/jquery-1.11.0.js" type="text/javascript"></script>
+			<script src="js/toastr.min.js" type="text/javascript"></script>
+			<script type="text/javascript">
+			    $(document).ready(function(){  
+					$('.zhuce').on('click', function() {
+						window.location.href = "components/zhuce.html"
+					})
+					$("#bangding").on("click", function() {
+						var _openId = localStorage.getItem("openid");
+						var _accept = $(".accept").val();
+						var _phone = $(".phone").val();
+						var _data={
+								AccountNumber:_accept,
+								AccountTelephone: _phone,
+								Open_id: _openId
+							}
+						$.ajax({
+							url: "http://out.ccsc58.cc/DATA_PORT_WECHAT_1.01/binding.php",
+							type: "post",
+							dataType: "JSON",
+							data: _data,
+							success: function(data) {
+								if(data.code == "200") {
+									toastr.success('绑定成功!');
+									window.setTimeout(function(){
+										window.location.href="login.html?openid="+_openId;
+										//window.location.href="login.html?openid="+"123456";
+									},2000);
+								}
+								else if(data.code == "400") {
+									alert("账号已被绑定过，绑定失败！");
+								}
+								else{
+									alert("绑定失败！");
+								}
+							},
+							error: function() {
+								alert("网络错误！！");
+							}
+						});
+
+					})
+				})
+			</script>
+	</body>
+
+</html>

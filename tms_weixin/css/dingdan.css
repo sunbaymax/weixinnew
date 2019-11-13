@@ -1,0 +1,170 @@
+/*订单页面*/
+.dingDan_content{
+	width:100%;
+	height:auto;
+	margin-top:4rem;
+	overflow: hidden;
+}
+.dingDan_list{
+	width:90%;
+	height:12rem;
+	margin:1rem 0 0 4%;
+	border: 1px solid #ccc;
+	box-sizing: border-box;
+}
+.dingDan_list p{
+	width:95%;
+	padding-left:5%;
+	height:3rem;
+	line-height: 3rem;
+	font-size:1.5rem;
+	font-weight: bold;
+}
+.dingDan_list p span{
+	font-weight: normal;
+}
+.search{
+	width:1.5rem;
+	height:1.5rem;
+	position:absolute;
+	top:1.25rem;
+	right:1rem;
+}
+/*订单查询*/
+.dingDan_cha{
+	margin-top:16rem;
+}
+form{
+	position:fixed;
+	top:4rem;
+	left:0px;
+	text-align: center;
+	width:100%;
+	height:12rem;
+	line-height: 4rem;
+	font-size:1.5rem;
+	background:#fefefe;
+}
+form input[type="text"]{
+	width:60%;
+	height:2rem;
+	margin-left:5px;
+	text-align: center;
+	font-size:1.5rem;
+}
+form input[type="button"]{
+	width:80%;
+	height:3rem;
+	font-size:1.5rem;
+	background:#3299fe;
+	color:#fefefe;
+	letter-spacing: 2rem;border-radius:5px;
+}
+/*订单详情*/
+.xiang_top{
+	width:95%;
+	height:6rem;
+	line-height: 3rem;
+	padding-left: 5%;
+	font-size:1.5rem;
+}
+.faJian,.shouJian{
+	width:95%;
+	padding-left:5%;
+}
+h2{
+	border-top:1px solid #c1c1c1;
+	border-bottom: 1px solid #c1c1c1;
+	width:100%;
+	height:3rem;
+	line-height: 3rem;
+}
+.faJian p,.shouJian p{
+	width:100%;
+	height:2rem;
+	line-height: 2rem;
+	font-size:1.5rem;
+	font-weight: bold;
+}
+.faJian p span,.shouJian p span{
+	font-weight: normal;
+}
+.shouJian{
+	border-bottom: 1px solid #c1c1c1;
+}
+.huiFu{
+	display:block;
+	width:80%;
+	height:4rem;
+	text-align: center;
+	line-height: 4rem;
+	background:#3299fe;
+	margin:10%;
+	color:#fefefe;
+	letter-spacing: 2rem;border-radius:5px;
+	font-size:2rem;
+	font-weight: bold;
+}
+/*订单回复*/
+.hui_box{
+	width:95%;
+	height:16rem;
+	font-size:1.5rem;
+	padding-left:5%;
+}
+.hui_box p{
+	font-weight:bold;
+	border-bottom: 1px solid #c1c1c1;
+	box-sizing: border-box;
+	height:4rem;
+	position:relative;
+	line-height:4rem;
+}
+.hui_box p input{
+	width:70%;
+	height:3rem;
+	float:right;
+	border:none;
+	box-sizing: border-box;
+	font-size:1.5rem;
+	margin-top:0.5rem;
+}
+.hui_box p img{
+	width:3rem;
+	height:3rem;
+	position:absolute;
+	right:0.5rem;
+	top:0.5rem;
+}
+.special_yao{
+	width:95%;
+	height:auto;
+	padding-left:5%;
+}
+.special_yao p{
+	width:100%;
+	height:3rem;
+	font-weight: bold;
+	font-size:1.5rem;
+	line-height: 3rem;
+}
+.special_content{
+	width:95%;
+	height:15rem;
+	border:1px solid #c1c1c1;
+	font-size:1.5rem;
+	line-height:2rem;
+	color:#C2C2C2;
+}
+.huiFu_baocun{
+	width:95%;
+	height:4rem;
+	margin:2rem 0 2rem 0;
+	background:#3299fe;
+	text-align: center;
+	line-height: 4rem;
+	color:#fefefe;
+	letter-spacing: 2rem;border-radius:5px;
+	font-weight: bold;
+	font-size:2rem;
+}

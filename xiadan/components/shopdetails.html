@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>订单详情</title>
+		<!--<link rel="stylesheet" href="../css/index.css" />-->
+		<link rel="stylesheet" href="../css/toastr.min.css">
+		<link rel="stylesheet" href="../css/details.css" type="text/css">
+		<link rel="shortcut icon" type="image/ico" href="/favicon.ico" />
+
+	</head>
+	<!--<script type="text/javascript">
+		/*
+		 * 判断用户是否登录，如果已登录跳转到
+		 */
+		if(!window.localStorage.getItem("myNum")) {
+			window.location.href = "../login.html"
+		}
+	</script>-->
+	<style>
+		body {
+			background: #E8E8E8;
+			font-size: 14px;
+		}
+		
+		.xzrjsl ul li {
+			background: #000000;
+		}
+		
+		.xzrjsl li span {
+			display: inline-block;
+			width: 50%;
+		}
+		
+		.xzrjsl .rongji {
+			text-align: left;
+		}
+		
+		.addres {
+			height: auto;
+		}
+		
+		.wuliu li span:last-of-type {
+			display: inline-block;
+			width: 65%;
+			padding-right: 5%;
+			height: auto;
+			line-height: 45px;
+		}
+		
+		main ul li {
+			display: flex;
+			height: 45px;
+			border-bottom: 1px solid #C0C0C0;
+			/* justify-content: space-between; */
+			align-items: center;
+			padding: 0 0 0 0rem;
+			line-height: 45px;
+			box-sizing: border-box;
+		}
+		
+		.wuliu li .Companyline {
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+		}
+		.rongji-content .asdfkl li{
+			border: none;
+		}
+		.rongji-content .asdfkl li span:first-child{
+			width: 60%;
+		}
+	</style>
+
+	<body>
+		<nav>
+			<!--<div>
+				< 上一步 </div>
+					<div>订单详情</div>
+					<div></div>
+					<div></div>-->
+			<img src="../img/return.jpg" class="return" />
+			<span>订单详情</span>
+			<img src="../img/PersonalCenter.png" class="Percenter" />
+		</nav>
+		<!-- 详情 -->
+		<main class="detailMain">
+			<p class="titile">客户信息</p>
+			<ul class="userinfo">
+				<li>
+					<span>客服账号：</span>
+					<span class="merber_id"></span>
+				</li>
+				<li>
+					<span>客户账号：</span>
+					<span class="Account"></span>
+				</li>
+
+			</ul>
+			<p class="titile">物流信息</p>
+			<ul class="wuliu">
+				<li>
+					<span>发货人：</span>
+					<span class="faName"></span>
+				</li>
+				<li>
+					<span>联系电话：</span>
+					<span class="faPhone"></span>
+				</li>
+				<li>
+					<span>发件公司：</span>
+					<span class="faCompany Companyline"></span>
+				</li>
+				<li class="addres" style="height: auto;">
+					<span>发货地址：</span>
+					<span class="faAddress" style='text-align: initial;line-height: normal;'></span>
+				</li>
+				<li>
+					<span>收货人：</span>
+					<span class="shouName"></span>
+				</li>
+				<li>
+					<span>联系电话：</span>
+					<span class="shouPhone"></span>
+				</li>
+				<li>
+					<span>收件公司：</span>
+					<span class="shouCompany Companyline"></span>
+				</li>
+
+				<li class="addres" style="height: auto;">
+					<span>收货地址：</span>
+					<span class="shouAddress" style='text-align: initial;line-height: normal;'></span>
+				</li>
+				<li>
+					<span>取件时间：</span>
+					<span class="startTime"></span>
+				</li>
+				<li>
+					<span>运输时限：</span>
+					<span class="time_limit"></span>
+				</li>
+				<li>
+					<span>节假派送：</span>
+					<span class="ifrest"></span>
+				</li>
+
+			</ul>
+
+			<!-- 基础信息 -->
+			<p class="titile">商品信息</p>
+			<ul class="basic">
+				<li>
+					<span>温度区间：</span>
+					<span class="wdqj"></span>
+				</li>
+				<li>
+					<span>货物名称：</span>
+					<span class="carName"></span>
+				</li>
+				<!--<li>
+					<span>保存环境：</span>
+					<span class="bchj"></span>
+				</li>-->
+				<li style="height:auto;border: none;" class="rongji-content">
+					<span class="wenzirongji" style="display:inline-block;width: 30%;padding-right: 0px;">容积数量：</span>
+					<div style="border:none;width:70%;" class="xzrjsl">
+						<span style="border:none;display: inline-block;" class="asdfkl"></span>
+					</div>
+				</li>
+				<li style="border-top: 1px solid #CCCCCC;">
+					<span>温度计：</span>
+					<span class="tem"></span>
+				</li>
+				<li>
+					<span>备注：</span>
+					<span class="note"></span>
+				</li>
+			</ul>
+			<ul class="zibei">
+			</ul>
+
+			<!-- 发货信息 -->
+
+			<!-- 送达时间及投保情况 -->
+			<ul class="paisong">
+				<li class="toubao">
+
+				</li>
+				<li class="touman">
+
+				</li>
+			</ul>
+		</main>
+		<!--按钮  下一步-->
+		<footer>
+			<span style="cursor: pointer;">提交</span>
+			<span style="margin-right:15%;">修改</span>
+		</footer>
+
+	</body>
+	<script src="../js/rem.js" type="text/javascript"></script>
+	<script src="../js/jquery-1.11.0.js" type="text/javascript"></script>
+	<script src="../js/toastr.min.js" type="text/javascript"></script>
+	<script src="../js/PersonCenter.js" type="text/javascript"></script>
+	<script>
+		window.confirm = function(message) {
+			var iframe = document.createElement("IFRAME");
+			iframe.style.display = "none";
+			iframe.setAttribute("src", 'data:text/plain,');
+			document.documentElement.appendChild(iframe);
+			var alertFrame = window.frames[0];
+			var result = alertFrame.window.confirm(message);
+			iframe.parentNode.removeChild(iframe);
+			return result;
+		};
+		$(function() {
+			toastr.options = {
+				timeOut: "3000",
+				positionClass: "toast-center-center"
+			};
+			// 点击上一步                                  
+			$("nav div:first-of-type").on('click', function() {
+				window.location.href = "ordertake.html";
+			})
+			//            获取本地存储的信息
+			var myNum = eval("{localStorage.getItem('myNum')}");
+			var Acount = eval("{localStorage.getItem('Acount')}");
+			var orderMsg = JSON.parse(localStorage.getItem('orderMsg'));
+			var wen = JSON.parse(localStorage.getItem('wen'));
+			var arr = JSON.parse(localStorage.getItem("wenArr"));
+			//			var phone = JSON.parse(localStorage.getItem("phone"));
+			var fjrinfo = JSON.parse(localStorage.getItem('fjorderMsg'));
+			var sjrinfo = JSON.parse(localStorage.getItem('sjorderMsg'));
+
+			if(JSON.parse(localStorage.getItem('sjorderMsg'))) {
+				var sjorderMsg = JSON.parse(localStorage.getItem('sjorderMsg'));
+				$(".sjName").css("width", "30%").val(sjorderMsg.sjname);
+				$(".shoutel").css("width", "70%").text(sjorderMsg.sjtel);
+				$(".sjdizhi").text(sjorderMsg.sjaddrs);
+			}
+			$(".merber_id").html(myNum);
+			$(".Account").html(Acount);
+
+			//			if(JSON.parse(localStorage.getItem('zxdxs'))) {
+			//				$('.basic').addClass('hide');
+			//				var zxdxsinfo = JSON.parse(localStorage.getItem('zxdxs'));
+			//				var zibeixiang = $(`<li style="border-bottom:none"><div><span>自备数量：</span><span class="zbxnum">${zxdxsinfo.zxsl}</span></div></li>`);
+			//				$(".zibei").append(zibeixiang);
+			//
+			//			} else {
+			//
+			//			}
+			if(JSON.parse(localStorage.getItem('wen'))) {
+				$('zibei').addClass('hide');
+				//自选箱子温度计
+				$(".wdqj").html(wen.wdqj);
+				$(".carName").html(wen.cargoname);
+				$(".bchj").html(wen.bchj);
+				$(".note").html(wen.note);
+				for(let i = 0; i < arr.length; i++) { // 所需容积
+					var span = $(`<li style='height:auto;'><span class='rongji' >${arr[i].PackageName}</span><span class='shuli'>${arr[i].Num}</span></li>`);
+					$(".asdfkl").append(span);
+				}
+				// 温度计
+				if(wen.iswdj == '不使用') {
+					$(".tem").html("不使用温度计");
+				} else {
+					//var span = $(`<span class='wdjtype'>${wen.wdjtype} &nbsp;&nbsp;</span><span class='wdjnun' style='padding:0 0 0 0rem;'>${wen.wdjnum}</span>`);
+					//$(".tem").css({
+					//	"font-size":"12px",
+					//	'font-weight':"bolder"
+					//}).html(span);
+					$('.tem').text('使用温度计');
+
+				}
+			} else {
+
+				console.log(222)
+			}
+			var nullfjaddres;
+			if(orderMsg.fjrDaddres == '' || orderMsg.fjrDaddres == null) {
+				nullfjaddres = '';
+			} else {
+				nullfjaddres = orderMsg.fjrDaddres;
+			}
+			var nullsjaddres;
+			if(orderMsg.sjrDaddres == '' || orderMsg.sjrDaddres == null) {
+				nullsjaddres = '';
+			} else {
+				nullsjaddres = orderMsg.sjrDaddres;
+			}
+
+			$(".faName").html(orderMsg.fjrname);
+			$(".faPhone").html(orderMsg.fjrtelphone);
+			$(".faCompany").html(orderMsg.fjrcompany);
+			//$(".fabumen").html(orderMsg.fjbumen);
+			//$(".facity").html(orderMsg.startprovince +" / "+ orderMsg.startcity);
+			$(".faAddress").html(orderMsg.fjrProvince + " " + orderMsg.fjrCity + " " + orderMsg.fjrCountry + " " + nullfjaddres);
+			$(".shouName").html(orderMsg.sjrname);
+			$(".shouPhone").html(orderMsg.sjrtelphone);
+			$(".shouCompany").html(orderMsg.sjrcompany);
+
+			$(".shouAddress").html(orderMsg.sjrProvince + " " + orderMsg.sjrCity + " " + orderMsg.sjrCountry + " " + nullsjaddres);
+			$(".startTime").html(orderMsg.requiretaketime);
+			$(".reTime").html(orderMsg.limittime);
+			$(".time_limit").html(orderMsg.timelimit);
+			var pasong;
+			if(orderMsg.rest == 1) {
+				pasong = "正常派送";
+			} else {
+				pasong = "节假休息";
+			}
+			$(".ifrest").html(pasong);
+
+			// 投保
+			if(orderMsg.isinsure == 0) {
+				$(".toubao").html('<span>投保状态：</span><span class="mytoubao">不投保</span>')
+				$(".touman").html(`<span>投保金额：</span><span class='cargovalue'>${orderMsg.cargovalue}</span>`);
+			} else {
+				$(".toubao").html('<span>投保状态：</span><span class="mytoubao">投保</span>')
+				$(".touman").html(`<span>投保金额：</span><span class='cargovalue'>${orderMsg.cargovalue}</span>`);
+			}
+			// 提交  
+			$("footer span:first-of-type").on("click", function() {
+				var con = confirm("确定提交？"); //在页面上弹出对话框
+				if(con == true) {
+					tijiao();
+				};
+			})
+			// 修改 
+			$("footer span:last-of-type").on("click", function() {
+				//window.history.go(-1);
+				window.location.href = "ordertake.html";
+			})
+			// 返回上一页
+			$(".return").on("click", function() {
+				history.go(-1);
+			})
+
+			function ordermess() {
+				var timestamp = (new Date()).valueOf();
+
+				function getNowFormatDate() {
+					var date = new Date();
+					var seperator1 = "-";
+					var seperator2 = ":";
+					var month = date.getMonth() + 1;
+					var strDate = date.getDate();
+					if(month >= 1 && month <= 9) {
+						month = "0" + month;
+					}
+					if(strDate >= 0 && strDate <= 9) {
+						strDate = "0" + strDate;
+					}
+					var currentdate = date.getFullYear() + seperator1 + month + seperator1 + strDate +
+						" " + date.getHours() + seperator2 + date.getMinutes() +
+						seperator2 + date.getSeconds();
+					return currentdate;
+				}
+				var time = getNowFormatDate();
+				var maddress = $(".faAddress").text();
+
+				function trimAll(str) {
+					var string = '';
+					var arr = [];
+					for(var i = 0; i < str.length; i++) {
+						if(str.charCodeAt(i) == 32 || str.charCodeAt(i) == 12288) {
+							continue;
+						} else {
+							arr.push(str[i]);
+						}
+					}
+					return string = arr.join('');
+				}
+				var descaddres = trimAll(maddress);
+				$.ajax({
+					type: "post",
+					url: "http://www.ccsc58.cc/weixinnew/Push_message.php",
+					data: {
+						frist: "您好，您有新的订单需要处理!",
+						keyword1: timestamp,
+						keyword2: "微信下单",
+						keyword3: time,
+						keyword4: $(".faName").text(),
+						keyword5: descaddres,
+						remark: "中集冷云",
+						openId: "oTarnv5aWyxLcCENYrs5UOR3FqvQ",
+						app_key: "261AFF68C0E9F076420D083D66222824"
+					},
+					dataType: "JSON",
+					success: function(res) {
+						console.log("推送成功");
+					},
+					error: function(err) {
+						console.log(err);
+
+					}
+				});
+			}
+
+			function tijiao() {
+
+				if(JSON.parse(localStorage.getItem('IsZJ')) == 0) {
+					zbx()
+				} else {
+					lengyun()
+				}
+			}
+
+			function lengyun() {
+				var _data = {
+					Token: "wechat",
+					AccountNumber: $('.Account').text(),
+					Knight: $(".merber_id").text(),
+					WDQJ: wen.wdqj,
+					CargoName: wen.cargoname,
+					IsWdj: wen.iswdj == "使用" ? 1 : 0,
+					Note: wen.note,
+					Manager: $(".faName").text(),
+					GetName: $(".shouName").text(),
+					Address: $('.faAddress').text(),
+					GetAddress: $(".shouAddress").text(),
+					City: orderMsg.fjrCity,
+					GetCity: orderMsg.sjrCity,
+					Depart: orderMsg.fjrProvince,
+					GetDepart: orderMsg.sjrProvince,
+					Company: $('.faCompany').text(),
+					GetCompany: $(".shouCompany").text(),
+					Telephone: $(".faPhone").text(),
+					GetTelephone: $(".shouPhone").text(),
+					OrderTime: $('.startTime').text(),
+					LimitTime: $(".time_limit").text(),
+					IsZJ: 1,
+					IsDeliver: $('.ifrest').text() == "正常派送" ? 1 : 0,
+					SafeItem: $(".mytoubao").text(),
+					SafePay: $(".touman .cargovalue").text() == '' ? 2000 : $(".touman .cargovalue").text(),
+					Box: arr
+				};
+				console.log(_data);
+				//				return false;
+				$.ajax({
+					url: 'http://out.ccsc58.cc/DATA_PUBLIC/Order_down.php',
+					type: 'post',
+					dataType: "JSON",
+					data: _data,
+					success: function(res) {
+						if(res.code == 200) {
+							//							console.log("lengyun" + res.info);
+							//							ordermess();
+							//							window.location.href = "price.html";
+							toastr.success("下单成功")
+
+						} else {
+							console.log(res.info);
+						}
+
+					},
+					error: function(err) {
+						console.log(err);
+
+					}
+				})
+			}
+
+			function zbx() {
+				var zb_nums = parseInt(arr[0].Num);
+				var newdata = {
+					Token: "wechat",
+					AccountNumber: $('.Account').text(),
+					Knight: $(".merber_id").text(),
+					WDQJ: wen.wdqj,
+					CargoName: wen.cargoname,
+					IsWdj: wen.iswdj == "使用" ? 1 : 0,
+					Note: wen.note,
+					Manager: $(".faName").text(),
+					GetName: $(".shouName").text(),
+					Address: $('.faAddress').text(),
+					GetAddress: $(".shouAddress").text(),
+					City: orderMsg.fjrCity,
+					GetCity: orderMsg.sjrCity,
+					Depart: orderMsg.fjrProvince,
+					GetDepart: orderMsg.sjrProvince,
+					Company: $('.faCompany').text(),
+					GetCompany: $(".shouCompany").text(),
+					Telephone: $(".faPhone").text(),
+					GetTelephone: $(".shouPhone").text(),
+					OrderTime: $('.startTime').text(),
+					LimitTime: $(".time_limit").text(),
+					IsZJ: 0,
+					IsDeliver: $('.ifrest').text() == "正常派送" ? 1 : 0,
+					SafeItem: $(".mytoubao").text(),
+					SafePay: $(".touman .cargovalue").text() == '' ? 2000 : $(".touman .cargovalue").text(),
+					Box: zb_nums
+				}
+				$.ajax({
+					url: 'http://out.ccsc58.cc/DATA_PUBLIC/Order_down.php',
+					type: 'post',
+					dataType: "JSON",
+					data: newdata,
+					success: function(res) {
+						if(res.code == 200) {
+							toastr.success("下单成功");
+							//							ordermess();
+							//							window.location.href = "price.html";
+
+						} else {
+							alert(res.info);
+						}
+					},
+					error: function(err) {
+						console.log(err);
+
+					}
+				})
+			}
+
+		})
+	</script>
+
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<meta name="format-detection" content="telephone=no">
+    <title>test</title>
+    <script src="js/jquery-1.8.3.min.js">
+</script>
+    <script>
+ 
+jQuery(function($) {
+    $(".name").blur(function() {
+        var name = $(this).val().replace(/^\s*|\s*$/g, "");
+        if (name == "") {
+            $(".name_info").html("<span>请输入用户名！</span>");
+        } else if (!/^[\u4e00-\u9fa5]+$/.test(name)) {
+            $(".name_info").html("<span>请输入汉字！</span>");
+        } 
+        else 
+        {
+            $(".name_info").html("<span style='color:#3739BC'>√</span>");
+        }
+    });
+     
+    $(".number_name").blur(function() {
+        var number_name = $(this).val().replace(/^\s*|\s*$/g, "");
+        if (number_name == "") {
+            $(".number_info").html("<span>请输入账号！</span>");
+        } else if (!/^[\w\.\/]+$/.test(number_name)) {
+            $(".number_info").html("<span>请输入字母、数字及下划线！(可包括./)</span>");
+        } else {
+            $(".number_info").html("<span style='color:#3739BC'>√</span>");
+        }
+    });
+});
+</script>
+</head>
+<body>
+<table>
+    <tr>
+    <td class="star">*</td>
+   <td>学校名称：</td>
+   <td><input type="text" name="school.schoolName" id="sname" class="name" size="40"></td>
+   <td><span class="name_info"></span></td>                   
+  </tr>
+  <tr>
+  <td class="star">*</td>
+  <td>学校账号：</td>
+  <td><input type="text" name="school.schoolNum" id="snumber" class="number_name" size="40" ></td>
+  <td><span class="number_info"></span></td>
+    </tr>
+</table>
+</body>
+</html>

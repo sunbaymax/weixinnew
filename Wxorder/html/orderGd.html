@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<meta content="telephone=no" name="format-detection">
+		<meta content="email=no" name="format-detection">
+		<meta name="description" content="中集冷云冷链运输微信下单平台" />
+		<meta name="keywords" content="微信下单，冷链运输 " />
+		<meta name=" author " content="中集冷云 " />
+		<title>我要下单</title>
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all">
+		<link rel="stylesheet " href="../css/base.css ">
+		<link rel="stylesheet " href="../css/order.css">
+		<link rel="stylesheet " href="../css/pickuptime.css">
+		 <link rel="stylesheet" href="../css/borain-timeChoice.css">
+    <!--font-awesome图标如果项目有就不用，如果没有就要调用-->
+   	<link rel="stylesheet" type="text/css" href="http://cdn.bootcss.com/font-awesome/4.6.0/css/font-awesome.min.css">
+		<!--<link rel="stylesheet " href="../css/toastr.min.css">-->
+		<!--<link rel="stylesheet" href="../css/zepto.mtimer.css">-->
+		
+	</head>
+	<style>
+
+	</style>
+
+	<body>
+		<div class="wrapper">
+			<div class="container">
+				<header>
+					<h1><a href="javascript:;" class="slide-menu"><img src="../img/onmenu.png" alt=""></a></h1>
+					<label class="hide">客户账号：<span class="acount">20160024</span></label>
+				</header>
+				<div class="address">
+					<ul>
+						<li>
+							<div>
+								<img src="../img/jijianren.png" />
+							</div>
+							<div>
+								<span class="clickaddress Noexistsend">请点击添加寄件人地址</span>
+								<p class="hide existsend"><span class="username" id="send_username">张三</span><span class="tel" id="send_tel">18544556688</span></p>
+								<p class="hide existsend"><span class="address" id="send_address">北京市 顺义区 茂化工厂1号</span></p>
+							</div>
+
+							<div>
+								<a href="javascript:;" class="addressbook sendaddress">地址薄</a>
+							</div>
+						</li>
+						<li>
+							<div>
+								<img src="../img/shoujianren.png" />
+							</div>
+							<div>
+								<span class="clickaddress Noexistget">请点击添加收件人地址</span>
+								<p class="hide existget"><span class="username" id="get_username">李四</span><span class="tel" id="get_tel">18544556688</span></p>
+								<p class="hide existget"><span class="address" id="get_address">北京市 丰台区 汉威国际广场</span></p>
+
+							</div>
+
+							<div>
+								<a href="javascript:;" class="addressbook getaddress">地址薄</a>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="cargoinfo">
+					<div class="cargoinfo-title">
+						<h3>货物信息</h3>
+						<span class="clear">清空当前信息</span>
+					</div>
+					<ul>
+						<li>
+							<div>
+								<img src="../img/cargo.png" class="img_cargo" />
+							</div>
+
+							<div>
+								<input type="text" placeholder="请填写货物名称" />
+							</div>
+						</li>
+						<li>
+							<div>
+								<img src="../img/wendu.png" class="img_temp" />
+							</div>
+
+							<div class="choosewenqu">
+								<!--<input type="text" placeholder="请选择温区" readonly="readonly" class="Tempqu" id="Temparea" />-->
+								<label class="Tempqu" id="Temparea">请选择温区</label>
+								<img src="../img/xiala.png" class="xiala Tempqu" />
+							</div>
+
+						</li>
+						<li class="fatherbox">
+							<div>
+								<img src="../img/box.png" class="img_temp" />
+							</div>
+
+							<div class="choosewenqu">
+								<!--<input type="text" placeholder="请选择箱型" readonly="readonly" class="clickbox" id="BoxType"/>-->
+								<label class="clickbox boxinput" id="BoxType">请选择箱型</label>
+								<img src="../img/xiala.png" class="xiala clickbox" />
+								<p class="gw_num hide">
+									<img src="../img/reduce.png" class="jian" />
+									<input type="text" value="1" class="num" readonly="readonly" />
+									<img src="../img/addbox.png" class="add" />
+								</p>
+
+							</div>
+
+						</li>
+						<!--<li class="childbox">
+							<div>
+								<img src="../img/box.png" class="img_temp" />
+							</div>
+
+							<div class="choosewenqu">
+								<label class="clickbox boxinput" id="BoxType">请选择箱型</label>
+								<img src="../img/delbox.png" class="delbox" />
+								<p class="gw_num">
+									<img src="../img/reduce.png" class="jian" />
+									<input type="text" value="1" class="num" />
+									<img src="../img/addbox.png" class="add" />
+								</p>
+							</div>
+						</li>-->
+
+						<!--<li>
+							<div>
+								<img src="../img/shuliang.png" class="img_nums" />
+							</div>
+
+							<div>
+								<input type="number" placeholder="请输入数量" />
+							</div>
+						</li>-->
+					</ul>
+				</div>
+				<div class="time">
+					<div>
+						<div>
+							<img src="../img/shijian.png" />
+						</div>
+
+						<div class="time-right">
+							<label id="ChooseTimes" class="chooseTime clickTime">预约取件时间</label>
+							<!--<input type="text" id="picktime" class="start-two" placeholder="预约取件时间" readonly>-->
+							<img src="../img/xiala.png" class="xiala clickTime" />
+						</div>
+
+					</div>
+
+					<!--<div class="iDate full">
+						<img src="../img/shijian.png" />
+						<input type="text" placeholder="请选择预约时间">
+						<button type="button" class="addOn"></button>
+					</div>-->
+				</div>
+
+				<div class="btndiv">
+					<button class="btn-order">下单</button>
+				</div>
+			</div>
+		</div>
+		<div class="setbg hide">
+			<div class="yin"></div>
+			<!-- 所需容积 -->
+			<div class="cooperation  Temparea hide">
+				<div class="cooperation-top">请选择温区</div>
+				<div class="Temparea-Ways">
+					<p class="type-tittle">干冰</p>
+					<p class="Dryice Tempareac"><span class="ni">-90℃~-60℃</span><span class="ni">-90℃~-40℃</span><span class="ni">-90℃~-20℃</span></p>
+					<p class="type-tittle">常温</p>
+					<p class="NormalTemp Tempareac"><span class="ni">0℃~30℃</span><span class="ni">6℃~36℃</span></p>
+
+				</div>
+				<div class="nextNum">
+					<button class="cooperation-btn Temparea-btn">确定</button>
+				</div>
+			</div>
+			<div class="cooperation  BoxType hide">
+				<div class="cooperation-top">请选择箱型</div>
+				<div class="BoxType-Ways">
+					<p class="BoxTypef1"><span class="ni">GB(大) </span><span class="ni">GB(小) </span><span class="ni">新GB(大)</span></p>
+					<p class="BoxTypef2"><span class="ni">CW </span><span class="ni">CW(冬)</span></p>
+				</div>
+				<div class="nextNum">
+					<button class="cooperation-btn BoxType-btn">确定</button>
+				</div>
+			</div>
+			<div class="cooperation  TimeType hide">
+				<div class="cooperation-top">预约取件时间</div>
+				<div class="TimeType-Ways">
+					<div class="TimeType-day">
+						<div class="ni">
+							<span class="ri">今日</span>
+							<span class="qi">2019-05-10</span>
+							<img src="../img/chooseTime.png" class="hide" />
+						</div>
+						<div class="ni">
+							<span class="ri">明日</span>
+							<span class="qi">2019-05-11</span>
+							<img src="../img/chooseTime.png" class="hide" />
+						</div>
+						<div class="ni">
+							<span class="ri">后日</span>
+							<span class="qi">2019-05-12</span>
+							<img src="../img/chooseTime.png" class="hide" />
+						</div>
+					</div>
+					<div class="TimeType-datetime">
+						<!--<span class="ni">2小时上门</span>-->
+					</div>
+				</div>
+				<div class="nextNum">
+					<button class="cooperation-btn time-btn">确定</button>
+				</div>
+			</div>
+
+		</div>
+
+		<!-- 侧边导航 -->
+		<div class="slide-mask"></div>
+		<aside class="slide-wrapper">
+			<div>
+				<div class="menu_top">
+					<img src="../img/fanhui.png" />
+				</div>
+				<ul class="menu_content">
+					<li>
+						<img src="../img/wodedingdan.png" />
+						<a href="orderlist.html">我的订单</a>
+					</li>
+					<li>
+						<img src="../img/dizhibu.png" />
+						<a href="addressbook.html">地址薄</a>
+					</li>
+					<li>
+						<img src="../img/lianxikefu.png" />
+						<a href="tel:400-6507168">联系客服</a>
+					</li>
+
+				</ul>
+				<div class="menu_footer">
+					<img src="../img/userimg.png" class="touxiang" />
+					<p class="haveinfo">
+						<span class="turename">孙畅</span>
+						<span class="turetel">1855554446</span>
+					</p>
+					<a href="login.html" class="hide" id="editlogin">注销登录</a>
+				</div>
+			</div>
+		</aside>
+	</body>
+	<script src="../js/jquery-1.11.0.js"></script>
+	<script src="../js/toastr.min.js"></script>
+	<script src="../js/flexible.js "></script>
+	<script src="../js/order.js"></script>
+	<script src="../js/pickuptime.min.js"></script>
+	<script type="text/javascript" src="../js/moment.js"></script>
+	<script type="text/javascript" src="../js/bootstrap-datetimepicker.js"></script>
+	<!--<script src="../js/borain-timeChoice.js"></script>-->
+	<!--<script src="../js/zepto.js"></script>
+	<script src="../js/zepto.mtimer.js"></script>-->
+	<script>
+		
+	</script>
+
+</html>

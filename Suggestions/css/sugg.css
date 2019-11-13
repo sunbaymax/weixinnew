@@ -1,0 +1,139 @@
+        body{
+			Background-color:#f4f4f4;
+		}
+		.title{
+			width: 100%;
+			height:44px;
+			line-height:44px;
+			background:#3299fe;
+			position: relative;
+		}
+		.title img{
+			width: 7.5px;
+		    height: 15px;
+		    line-height: 44px;
+		    position: absolute;
+			top: 14.5px;
+			left:15px;
+		}
+		.back_login{
+			font-family:"微软雅黑";
+			color: #FFFFFF;
+			font-size: 14px;
+			line-height: 44px;
+			position: absolute;
+			top: 0px;
+			left:27.5px;
+			text-decoration: none;
+		}
+		.title_h{
+			font-family: "微软雅黑";
+			font-size: 17px;
+			color: #FFFFFF;
+			text-align: center;
+			margin-top:0px ;
+		    line-height:44px ;
+		}
+		.centent_p{
+			width: 100%;
+			height: 30px;
+			line-height: 30px;
+			background: #f4f4f4;
+		}
+		.centent_p .ti_p{
+			color: #999999;
+			margin-top: 10px;
+			margin-bottom: 10px;
+			margin-left: 15px;
+		}
+		.data_center{
+			width: 100%;
+		}
+		.form_centect{
+			width: 100%;
+			height: 50px;
+			line-height: 50px;
+			border-bottom:1px solid #999999;
+			background: #FFFFFF;
+		}
+		.t1{
+			display: inline-block;
+			width: 14px;
+			height: 16px;
+			line-height: 50px;
+			margin-left: 15px;
+			margin-right: 18px;
+			margin-top: 17px;
+			float: left;
+		}
+		.input_data{
+			display: inline-block;
+			width: 200px;
+			height: 20px;
+			line-height: 20px;
+			float: left;
+			margin-top: 17px;
+			font-family:"微软雅黑" ;
+			font-size: 14px;
+			color: #000000;
+			border: none;
+			
+		}
+		.centent{
+			width:100%;
+			height: 81px;
+			line-height: 81px;
+			background: ;#ffffff
+		}
+		.centent img{
+			width: 50px;
+			height: 50px;
+			line-height: 50px;
+			margin-top: 15px;
+			margin-left: 15px;
+			margin-right: 15px;
+			margin-bottom: 15px;
+			float: left;
+			
+		}
+		.centent span{
+			display: inline-block;
+			width: 34px;
+			height: 81px;
+			line-height: 81px;
+			margin-top: 0px;
+			font-size: 16px;
+			float: left;
+			margin-right: 5px;
+			
+		}
+		.centent .wechat_name{
+			/*float: left;*/
+		   /* display: inline-block;*/
+		    border: none;
+		    width: 100px;
+		    height: 16px;
+		    font-size: 10px;
+		    margin-top: 35px;
+		    
+		    /*border: 1px solid #0000FF;*/
+		   /* font-size: 14px;*/
+		}
+		.btn{
+			width: 100%;
+			height: 44px;
+			position: absolute;
+			bottom: 60px;
+			overflow:hidden;
+			text-align: center;		
+			z-index: -99;
+		}
+		.btn button{
+			width: 300px;
+			height: 44px;
+            color: #FFFFFF;
+            font-size: 18px;
+            background: #3299fe;
+           	border-radius: 8px;
+		}
+		

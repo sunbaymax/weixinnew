@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<!-- <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"> -->
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>我要下单</title>
+		<!--<link href="../css/layout.min.css" rel="stylesheet" />-->
+		<link rel="shortcut icon" type="image/ico" href="/favicon.ico" />
+		<link rel="shortcut icon" href="img/bitbug_favicon2.ico" />
+		<link href="../css/scs.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../css/toastr.min.css">
+		<link rel="stylesheet" type="text/css" href="../css/shijian.css" />
+		<link rel="stylesheet" href="../css/index.css" type="text/css">
+		<link rel="stylesheet" href="../css/ordertake.css" />
+		
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<meta content="telephone=no" name="format-detection">
+		<meta content="email=no" name="format-detection">
+
+	</head>
+	<style>
+		.centerinfotop {
+			width: 100%;
+		}
+		
+		.centerinfotop .faName,
+		.shouusername {
+			width: 50%;
+		}
+		
+		.centerinfotop .fatel,
+		.shoutel {
+			width: 50%;
+			text-align: left;
+		}
+		
+		.fadizhi {
+			text-align: left;
+			overflow: hidden;
+			/*内容超出后隐藏*/
+			text-overflow: ellipsis;
+			/* 超出内容显示为省略号*/
+			white-space: nowrap;
+			/*文本不进行换行*/
+		}
+		
+		.shoudizhi {
+			text-align: left;
+			overflow: hidden;
+			/*内容超出后隐藏*/
+			text-overflow: ellipsis;
+			/* 超出内容显示为省略号*/
+			white-space: nowrap;
+		}
+	</style>
+
+	<body>
+		<nav>
+			<div>
+				< 上一步</div>
+					<div>下单</div>
+					<div></div>
+					<div></div>
+					<img src="../img/history5.png" class="title_history_img" />
+		</nav>
+		<!--内容部分-->
+		<main>
+			<div class="centect">
+				<div class="scroll">
+					<div class="currentline currentlinetop">
+						<div class="leftimg">
+							<img class="tubiao" src="../img/send_J.png" />
+						</div>
+						<div class="centerinfo">
+							<div class="centerinfotop">
+								<input type="text" class="fausername faName" contenteditable placeholder="请输入发件人信息"></input>
+								<div class="fatel faPhone"></div>
+							</div>
+							<div class="fadizhi">
+
+							</div>
+						</div>
+						<div class="dizhibo">
+							<a href="fjaddrslibs.html">地址薄</a>
+						</div>
+					</div>
+					<div class="currentline">
+						<div class="leftimg">
+							<img class="tubiao" src="../img/send_G.png" />
+						</div>
+						<div class="centerinfo">
+							<div class="centerinfotop">
+								<input type="text" class="shouusername sjName" placeholder="请输入收件人信息"></input>
+								<div class="shoutel sjtel"></div>
+							</div>
+							<div class="shoudizhi sjdizhi">
+							</div>
+						</div>
+						<div class="dizhibo">
+							<a href="sjaddrslibs.html">地址薄</a>
+						</div>
+					</div>
+					<div class="currentline">
+						<div class="leftimg">
+							<img class="tubiao timetubiao" src="../img/time.png" />
+						</div>
+						<div class="centerinfo centerinfoinput">
+							<input type="text" class="shangmentime dsa" placeholder="上门取件时间" />
+						</div>
+						<div class="dizhibo alt">
+							<a href="#">></a>
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<!--投保 -->
+			<div class="tou">
+				<div>
+					<input type="checkbox" id="isTou" value="">
+					<label for="isTou">&nbsp;是否投保</label>
+				</div>
+				<div class="toubao">
+					<span>投保金额（非必填）</span>
+					<div>
+						<input type="text" placeholder="请填写您的物品实际价值" style="text-align: right" class="cargovalue">
+						<span>&nbsp;元</span>
+					</div>
+				</div>
+			</div>
+			<div style="height: 0.7rem;"></div>
+		</main>
+		<!--按钮  下一步-->
+		<footer>
+			<span>确认</span>
+		</footer>
+
+	</body>
+	<script src="../js/rem.js" type="text/javascript"></script>
+	<script src="../js/jquery-1.11.0.js" type="text/javascript"></script>
+	<script src="../js/jquer_shijian.js?ver=1" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/toastr.min.js" type="text/javascript"></script>
+	<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	<!--调用JSSDK-->
+	<script src="../js/jquery.scs.min.js"></script>
+	<script src="../js/CNAddrArr.min.js"></script>
+	<script>
+		$(function() {
+
+			if(JSON.parse(localStorage.getItem('fjorderMsg'))) {
+				var fjorderMsg = JSON.parse(localStorage.getItem('fjorderMsg'));
+				$(".faName").css("width", "30%").val(fjorderMsg.fjname);
+				$(".fatel").css("width", "70%").text(fjorderMsg.fjtel);
+				$(".fadizhi").text(fjorderMsg.fjaddrs);
+
+			} else {
+				getFaMsg();
+			}
+			if(JSON.parse(localStorage.getItem('sjorderMsg'))) {
+				var sjorderMsg = JSON.parse(localStorage.getItem('sjorderMsg'));
+				$(".sjName").css("width", "30%").val(sjorderMsg.sjname);
+				$(".shoutel").css("width", "70%").text(sjorderMsg.sjtel);
+				$(".sjdizhi").text(sjorderMsg.sjaddrs);
+
+			}
+			if(JSON.parse(localStorage.getItem('orderMsg'))) {
+				var _orderMsg = JSON.parse(localStorage.getItem('orderMsg'));
+				$(".dsa").val(_orderMsg.requiretaketime);
+				if (_orderMsg.isinsure == 1) {
+					$("#isTou").prop("checked", "true");
+					$(".cargovalue").val(_orderMsg.cargovalue);
+				}else{
+					$(".cargovalue").val("");
+				}
+
+			}
+
+			//获取后台发件人默认取件人信息
+			function getFaMsg() {
+				var _AccountNumber = localStorage.getItem("myNum");
+				var _AccountTelephone = localStorage.getItem("phone");
+				$.ajax({
+					url: "http://out.ccsc58.cc/DATA_PORT_WECHAT_1.01/Address_lib2.php",
+					type: "post",
+					data: {
+						AccountNumber: _AccountNumber,
+						AccountTelephone: _AccountTelephone,
+						action: "get_default_lib"
+					},
+					dataType: "JSON",
+					success: function(obj) {
+						console.log(obj);
+						if(obj.code=="400"){
+							console.log(1);
+						}else{
+						$(".faName").css("width", "30%").val(obj.info[0].Name);
+						$(".fatel").css("width", "70%").text(obj.info[0].Telephone);
+						var descaddress = obj.info[0].Depart + " " + obj.info[0].City + " " + obj.info[0].Address;
+						$(".fadizhi").text(descaddress);
+						}
+					},
+					error: function(res) {
+						console.log(res)
+					}
+				});
+			}
+
+			/**
+			 * 通过数组id获取地址列表数组
+			 *
+			 * @param {Number} id
+			 * @return {Array} 
+			 */
+			function getAddrsArrayById(id) {
+				var results = [];
+				if(addr_arr[id] != undefined)
+					addr_arr[id].forEach(function(subArr) {
+						results.push({
+							key: subArr[0],
+							val: subArr[1]
+						});
+					});
+				else {
+					return;
+				}
+				return results;
+			}
+			/**
+			 * 通过开始的key获取开始时应该选中开始数组中哪个元素
+			 *
+			 * @param {Array} StartArr
+			 * @param {Number|String} key
+			 * @return {Number} 
+			 */
+			function getStartIndexByKeyFromStartArr(startArr, key) {
+				var result = 0;
+				if(startArr != undefined)
+					startArr.forEach(function(obj, index) {
+						if(obj.key == key) {
+							result = index;
+							return false;
+						}
+					});
+				return result;
+			}
+
+			//bind the click event for 'input' element
+			$("#myAddrs").click(function() {
+				console.log(1111)
+				var PROVINCES = [],
+					startCities = [],
+					startDists = [];
+				//Province data，shall never change.
+				addr_arr[0].forEach(function(prov) {
+					PROVINCES.push({
+						key: prov[0],
+						val: prov[1]
+					});
+				});
+				//init other data.
+				var $input = $(this),
+					dataKey = $input.attr("data-key"),
+					provKey = 1, //default province 北京
+					cityKey = 36, //default city 北京
+					distKey = 37, //default district 北京东城区
+					distStartIndex = 0, //default 0
+					cityStartIndex = 0, //default 0
+					provStartIndex = 0; //default 0
+
+				if(dataKey != "" && dataKey != undefined) {
+					var sArr = dataKey.split("-");
+					if(sArr.length == 3) {
+						provKey = sArr[0];
+						cityKey = sArr[1];
+						distKey = sArr[2];
+
+					} else if(sArr.length == 2) { //such as 台湾，香港 and the like.
+						provKey = sArr[0];
+						cityKey = sArr[1];
+					}
+					startCities = getAddrsArrayById(provKey);
+					startDists = getAddrsArrayById(cityKey);
+					provStartIndex = getStartIndexByKeyFromStartArr(PROVINCES, provKey);
+					cityStartIndex = getStartIndexByKeyFromStartArr(startCities, cityKey);
+					distStartIndex = getStartIndexByKeyFromStartArr(startDists, distKey);
+				}
+				var navArr = [{ //3 scrollers, and the title and id will be as follows:
+					title: "省",
+					id: "scs_items_prov"
+				}, {
+					title: "市",
+					id: "scs_items_city"
+				}, {
+					title: "区",
+					id: "scs_items_dist"
+				}];
+				SCS.init({
+					navArr: navArr,
+					onOk: function(selectedKey, selectedValue) {
+						$input.val(selectedValue).attr("data-key", selectedKey);
+					}
+				});
+				var distScroller = new SCS.scrollCascadeSelect({
+					el: "#" + navArr[2].id,
+					dataArr: startDists,
+					startIndex: distStartIndex
+				});
+				var cityScroller = new SCS.scrollCascadeSelect({
+					el: "#" + navArr[1].id,
+					dataArr: startCities,
+					startIndex: cityStartIndex,
+					onChange: function(selectedItem, selectedIndex) {
+						distScroller.render(getAddrsArrayById(selectedItem.key), 0); //re-render distScroller when cityScroller change
+					}
+				});
+				var provScroller = new SCS.scrollCascadeSelect({
+					el: "#" + navArr[0].id,
+					dataArr: PROVINCES,
+					startIndex: provStartIndex,
+					onChange: function(selectedItem, selectedIndex) { //re-render both cityScroller and distScroller when provScroller change
+						cityScroller.render(getAddrsArrayById(selectedItem.key), 0);
+						distScroller.render(getAddrsArrayById(cityScroller.getSelectedItem().key), 0);
+					}
+				});
+			});
+
+			//历史订单
+			$('.title_history_img').on("click", function() {
+				//获取客户账号 成功跳转页面
+				window.location.href = "history.html"
+
+			});
+			toastr.options = {
+				timeOut: "3000",
+				positionClass: "toast-center-center"
+			};
+
+//			$(".dsa").focus(function() {
+
+				$(".dsa").shijian(); // 调时间接口
+//			});
+			var box = true;
+			// 点击 提交
+			$('footer span').on('click', function() {
+				if(box) {
+					if($(".faName").val() == "" || $(".faName").val() == null) {
+						box = false;
+						setTimeout(function() {
+							box = true;
+						}, 3000)
+						toastr.error("请输入发货人");
+					} else if($(".faPhone").text() == "" || $(".faPhone").text() == null) {
+						box = false;
+						setTimeout(function() {
+							box = true;
+						}, 3000)
+						toastr.error("请输入发货人联系电话");
+					} else if($(".fadizhi").text() == "" || $(".fadizhi").text() == null) {
+						box = false;
+						setTimeout(function() {
+							box = true;
+						}, 3000)
+						toastr.error("请输入发货地址");
+					} else if($(".sjName").val() == "" || $(".sjName").val() == null) {
+						box = false;
+						setTimeout(function() {
+							box = true;
+						}, 3000)
+						toastr.error("请输入收货人姓名 ");
+					} else if($(".sjtel").text() == "" || $(".sjtel").text() == null) {
+						box = false;
+						setTimeout(function() {
+							box = true;
+						}, 3000)
+						toastr.error("请输入收货人联系电话");
+					} else if($(".sjdizhi").text() == "" || $(".sjdizhi").text() == null) {
+						box = false;
+						setTimeout(function() {
+							box = true;
+						}, 3000)
+						toastr.error("请输入收货人地址");
+					} else if($(".dsa").val() == "" || $(".dsa").val() == null) {
+						box = false;
+						setTimeout(function() {
+							box = true;
+						}, 3000)
+						toastr.error("请输入上门取件时间");
+					} else if($("#isTou").prop("checked")) {
+
+						if($(".cargovalue").val() == "" || $(".cargovalue").val() == null) {
+							box = false;
+							setTimeout(function() {
+								box = true;
+							}, 3000)
+							toastr.error("请输入投保金额");
+						} else {
+							order(); //已投保并带有金额
+						}
+					} else {
+						order(); //未投保
+					}
+				}
+			});
+			$(".cargovalue").focus(function() {
+				if(box) {
+					if($("#isTou").prop("checked") == false) {
+						$(".cargovalue").blur();
+						box = false;
+						setTimeout(function() {
+							box = true;
+						}, 3000)
+						toastr.error("请选择投保状态");
+					}
+				}
+
+			});
+
+			function order() {
+				var obj = {
+					requiretaketime: $(".dsa").val(),
+					limittime: $(".sel").val(),
+					isinsure: $("#isTou").prop("checked") ? 1 : 0,
+					cargovalue: $("#isTou").prop("checked") ? $(".cargovalue").val() : 0,
+				};
+				localStorage.setItem('orderMsg', JSON.stringify(obj));
+				$("main input, main select").val('');
+				$("#isTou").attr("checked", false);
+				window.location.href = "shopdetails.html";
+			}
+			// 点击上一步
+			$("nav div:first-of-type").on('click', function() {
+				window.location.href = "tempature.html"
+				//window.history.go(-1);
+			})
+			// 查询  省份  
+			$(".faCom,.shouCom").click(function() {
+				$.ajax({
+					url: "http://www.ccsc58.cc/zjlytms/api.php/price/getProvince",
+					type: "get",
+					dataType: "JSONP",
+					jsonp: "callback",
+					jsonpCallback: "data",
+					success: function(res) {
+						var pro, shouPro;
+						pro = "<li class='active'>请选择</li>";
+						shouPro = "<li class='active'>请选择</li>";
+						for(var i = 0; i < res.list.startProvince.length; i++) {
+							pro += "<li>" + res.list.startProvince[i].startprovince + "</li>"
+						}
+						for(var j = 0; j < res.list.endProvince.length; j++) {
+							shouPro += "<li>" + res.list.endProvince[j].endprovince + "</li>"
+						}
+						$(".leftPro").html(pro);
+						$(".shouleftPro").html(shouPro);
+					},
+					error: function(err) {
+						console.log(err);
+					}
+				})
+				$(".cit").css({
+					"height": window.screen.height / 2
+				});
+				$(".faCityTan").show();
+				$(".rightCity").html("");
+				$("body").css({
+					"overflow": "hidden"
+				});
+			})
+			// 发件   点击省份  选择城市
+			$("body").on("click", ".leftPro li", function() {
+				$(this).attr("class", "active").siblings().attr("class", "");
+				$(".faCom .span1").html($(this).text());
+				$.ajax({
+					url: "http://www.ccsc58.cc/zjlytms/api.php/price/getCity",
+					type: "post",
+					data: {
+						startProvince: $(this).text()
+					},
+					dataType: "JSONP",
+					jsonp: "callback",
+					jsonpCallback: "data",
+					success: function(res) {
+						var city = "";
+						for(var i = 0; i < res.list.startCity.length; i++) {
+							city += "<li>" + res.list.startCity[i].startcity + "</li>"
+						}
+						$(".rightCity").html(city);
+					},
+					error: function(err) {
+						console.log(err);
+					}
+				})
+			})
+			// 发件  城市  点击  
+			$("body").on("click", ".rightCity li", function() {
+				$(".faCom .span2").html($(this).text());
+				$(".faCityTan,.shouCityTan").hide();
+				$("body").css({
+					"overflow": "auto"
+				});
+			})
+			// 收件  
+			$(".shouCom").click(function() {
+				$(".shouCit").css({
+					"height": window.screen.height / 2
+				});
+				$(".shouCityTan").show();
+				$("body").css({
+					"overflow": "auto"
+				});
+			})
+			// 收件 身份 点击
+			$("body").on("click", ".shouleftPro li", function() {
+				$(this).attr("class", "active").siblings().attr("class", "");
+				$(".shouCom .span3").text($(this).text());
+				$.ajax({
+					url: "http://www.ccsc58.cc/zjlytms/api.php/price/getCity",
+					type: "post",
+					data: {
+						endProvince: $(this).text()
+					},
+					dataType: "JSONP",
+					jsonp: "callback",
+					jsonpCallback: "data",
+					success: function(res) {
+						var city = "";
+						for(var i = 0; i < res.list.endCity.length; i++) {
+							city += "<li>" + res.list.endCity[i].endcity + "</li>"
+						}
+						$(".shourightCity").html(city);
+					},
+					error: function(err) {
+						//                  console.log(err);
+					}
+				})
+			})
+			// 收件  城市 
+			// 发件  城市  点击  
+			$("body").on("click", ".shourightCity li", function() {
+				$(".shouCom .span4").text($(this).text());
+				$(".faCityTan,.shouCityTan").hide();
+				$("body").css({
+					"overflow": "auto"
+				});
+			})
+			//        点击弹框消失
+			$(".yin").on('click', function() {
+				if($(".span1,.span3").html() == "请选择") {
+					$(".span1,.span3").html("请选择");
+					$(".span2,.span4").html("");
+				}
+				$(".faCityTan,.shouCityTan").hide();
+				$("body").css({
+					"overflow": "auto"
+				});
+			})
+			$(".close").click(function() {
+				if($(".span1,.span3").html() == "请选择") {
+					$(".span1,.span3").html("请选择");
+					$(".span2,.span4").html("");
+				}
+				$(".faCityTan,.shouCityTan").hide();
+				$("body").css({
+					"overflow": "auto"
+				});
+			})
+		})
+	</script>
+
+</html>

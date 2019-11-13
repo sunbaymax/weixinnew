@@ -1,0 +1,106 @@
+/*进港页面*/
+.jinGang_content{
+	width:100%;
+	height:auto;
+	margin-top:4rem;
+	overflow: hidden;
+}
+.jinGang_list{
+	width:100%;
+	height:9rem;
+	margin:1rem 0 0 0;
+	border-top: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	box-sizing: border-box;
+}
+.jinGang_list p{
+	width:100%;
+	height:3rem;
+	line-height: 3rem;
+	font-size:1.5rem;
+	font-weight: bold;
+	padding: 0 0 0 1rem;
+}
+.jinGang_list p span{
+	font-weight: normal;
+}
+.search{
+	width:1.5rem;
+	height:1.5rem;
+	position:absolute;
+	top:1.25rem;
+	right:1rem;
+}
+/*进港详情*/
+.jinGang_xiangcontent p{
+	width:95%;
+	height:4.1rem;
+	line-height: 4rem;
+	padding-left:5%;
+	border-bottom:1px solid #c1c1c1;
+	font-size:1.5rem;
+}
+.jinGang_xiangcontent p input{
+	box-sizing: border-box;
+	height:4rem;
+	border: none;
+	float:right;
+	width:70%;
+	text-align: right;
+	font-size:1.5rem;
+	margin-right:5px;
+}
+.xiang_baoCun,.jinGang,.jinGangCha_content div{
+	width:95%;
+	height:4rem;
+	margin:2rem 0 2rem 2.5%;
+	background:#3299fe;
+	text-align: center;
+	line-height: 4rem;
+	color:#fefefe;
+	letter-spacing: 2rem;
+	border-radius:5px;
+	font-weight: bold;
+	font-size:2rem;
+}
+/*进港通知*/
+.jinGang_tong_xiangcontent,.jinGangCha_content{
+	margin-top:4rem;
+}
+.jinGang_tong_xiangcontent p{
+	width:95%;
+	height:4rem;
+	line-height: 4rem;
+	padding-left:5%;
+	border-bottom:1px solid #c1c1c1;
+	font-size:1.5rem;
+}
+.jinGang_tong_xiangcontent p input{
+	box-sizing: border-box;
+	height:4rem;
+	border: none;
+	float:right;
+	width:70%;
+	text-align: right;
+	font-size:1.5rem;
+}
+/*进港查询*/
+.jinGangCha_content{
+	position:relative;
+}
+.jinGangCha_content input{
+	width:90%;
+	height:4rem;
+	line-height: 4rem;
+	font-size:1.5rem;
+	margin:2rem 0 0 5%;
+	border:none;
+	border-bottom: 1px solid #c2c2c2;
+}
+.jinGangCha_content img{
+	width:3rem;
+	height:3rem;
+	position:absolute;
+	top:2.5rem;
+	right:5%;
+}

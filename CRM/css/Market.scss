@@ -1,0 +1,183 @@
+@charset "utf-8";
+@function px2rem($px) {
+    $rem: 37.5px;
+    @return ($px/$rem)+rem;
+}
+
+body {
+    background: #E8E8E8;
+}
+
+.header_content {
+    width: 100%;
+    height: px2rem(60px);
+    line-height: px2rem(60px);
+    background: #FFFFFF;
+    padding: 0 px2rem(15px) !important;
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    z-index: 999;
+    .search-content {
+        width: 100%;
+        height: px2rem(60px);
+       position: relative;
+    }
+    .father-search-content{
+        display: inline-block;
+        width: 92%;
+        padding-left: px2rem(5px);
+        box-sizing: border-box;
+        height: px2rem(34px);
+        margin-top:  px2rem(13px);
+        position: relative;
+    }
+    .search-input {
+//      display: inline-block;
+        width: 100%;
+        height: px2rem(34px);
+        font-size: px2rem(14px);
+        position: absolute;
+        top: px2rem(0px);
+        left: px2rem(0px);
+        border: 1px solid #CCCCCC;
+        padding-left: px2rem(22px);
+        padding-right: px2rem(22px);
+        box-sizing: border-box;
+    }
+    .search-img {
+//      display: inline-block;
+        width: px2rem(16px);
+        height: px2rem(16px);
+        position: absolute;
+        top: px2rem(9px);
+//      left: px2rem(5px);
+    }
+    .searchRight{
+         position: absolute;
+        top: px2rem(9px);
+        right: px2rem(10px);
+    }
+    .serchLeft{
+        position: absolute;
+        top: px2rem(9px);
+        left: px2rem(10px);
+    }
+    .add-img {
+        display: inline-block;
+        width: px2rem(20px);
+        height: px2rem(20px);
+        position: absolute;
+        top: px2rem(18px);
+        right: px2rem(1px);
+    }
+    .split-line{
+//      display: inline-block;
+        width: px2rem(2px);
+        height: px2rem(34px);
+        border-left: 1px solid #C0C0C0;
+        position: absolute;
+        top: px2rem(0px);
+        right: px2rem(30px);
+    }
+    .delete-img{
+//      display: inline-block;
+        width: px2rem(12px);
+        height: px2rem(12px);
+        position: absolute;
+        top: px2rem(11px);
+        right: px2rem(38px);
+    }
+
+}
+
+.content-market {
+    margin-top: px2rem(65px);
+    width: 100%;
+    height: auto;
+    padding: 0 px2rem(10px);
+    box-sizing: border-box;
+    .market-item {
+        width: 100%;
+        height: px2rem(60px);
+        font-size: px2rem(12px);
+        display: flex;
+        background: #ffffff;
+        margin-top: px2rem(5px);
+        padding: 0 px2rem(10px);
+        box-sizing: border-box;
+        border-radius: px2rem(5px);
+    }
+    .market-left {
+        width: 84%;
+        height: px2rem(60px);
+        border-left: 1px solid #E8E8E8;
+    }
+    .market-right {
+        width: 16%;
+        height: px2rem(60px);
+        line-height: px2rem(60px);
+        text-align: center;
+    }
+    .inner-line {
+        height: px2rem(30px);
+        line-height: px2rem(30px);
+        display: flex;
+    }
+    .username {
+        display: inline-block;
+        height: px2rem(60px);
+        line-height: px2rem(60px);
+        font-size: px2rem(16px);
+        font-weight: bold;
+    }
+    .company {
+        display: inline-block;
+        width: 100%;
+        height: px2rem(30px);
+        line-height: px2rem(30px);
+        text-align: right;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    .address {
+        display: inline-block;
+        width: 100%;
+        text-align: right;
+        height: px2rem(30px);
+        line-height: px2rem(30px);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+//  .operation-img{
+//      display: inline-block;
+//      width: px2rem(16px);
+//      height: px2rem(16px);
+//      margin-left: px2rem(10px);
+//      margin-top: px2rem(22px);
+//  }
+}
+.hide{
+    display: none;
+}
+.nothing{
+    margin-top: px2rem(120px);
+    width: 100%;
+    height: auto;
+    .nothing-img{
+        display: block;
+        width: px2rem(100px);
+        height: px2rem(100px);
+        margin: 0 auto;
+    }
+    .nothingText{
+        width: 100%;
+        text-align: center;
+        font-size: px2rem(14px);
+        padding-top: px2rem(15px);
+        color: #CCCCCC;
+         margin: 0 auto;
+    }
+}

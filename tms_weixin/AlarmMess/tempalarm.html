@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>温度报警详情</title>
+		<link rel="stylesheet" type="text/css" href="../css/index.css" />
+	</head>
+
+	<style>
+		.content {
+			width: 100%;
+			height: auto;
+			background: #ECECEC;
+		}
+		
+		.content_top {
+			display: block;
+			width: 100%;
+			height: 20vh;
+			line-height: 20vh;
+			text-align: center;
+			font-size: 3rem;
+			background: #3299fe;
+			color: #fefefe;
+		}
+		
+		.tupian {
+			width: 10vh;
+			height: 10vh;
+		}
+		
+		.desc {
+			width: 100%;
+		}
+		
+		.list_center li {
+			width: 90%;
+			height: 6.25rem;
+			line-height: 6.25rem;
+			margin-top: 15px;
+			margin-bottom: 15px;
+			padding-left: 10%;
+			border: 1px solid #50667F;
+			background: #FFFFFF;
+		}
+		
+		li:last-child {
+			width: 90%;
+			height: 12.5rem;
+			line-height: 12.5rem;
+			margin-top: 10px;
+			margin-bottom: 10px;
+			padding-left: 10%;
+			border: 1px solid #50667F;
+			background: #FFFFFF;
+			display: flex;
+		}
+		
+		textarea.huanjing {
+			width: 62%;
+			border: none;
+			padding-left: 3%;
+			padding-top: 4rem;
+			height: 7rem;
+			/* font-size: 19rem; */
+		}
+		
+		label {
+			font-size: 1.75rem;
+			margin-left: 20px;
+			color: #000000;
+			font-weight: bold;
+		}
+		
+		span {
+			margin-left: 5%;
+			font-size: 1.75rem;
+		}
+		
+		label:last-child {
+			margin-left: 5%;
+			font-size: 1.75rem;
+			height: 12.5rem;
+			line-height: 12.5rem;
+		}
+		
+		.divbtn {
+			width: 80%;
+			margin-left: 10%;
+			height: 100px;
+			margin-bottom: 100px;
+		}
+		
+		#btn_off,
+		#btn_ok {
+			margin-top: 30px;
+			width: 100%;
+			height: 120px;
+			background-color: #3299fe;
+			color: #fefefe;
+			font-size: 2rem;
+			font-weight: bold;
+			margin-left: 0%;
+			border-radius: 10px;
+			box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+		}
+		
+		.huanjing {
+			/*display: inline-block;
+			width: 60%;
+			height: 10rem;
+			line-height: 10rem;*/
+		}
+		
+		.ge {
+			width: 100%;
+			height: 210px;
+		}
+	</style>
+	<script src="../js/jquery-2.1.0.js"></script>
+	<script>
+		$(document).ready(function() {
+
+			function UrlSearch() {
+				var name, value;
+				var str = location.href; //取得整个地址栏
+				var num = str.indexOf("?")
+				str = str.substr(num + 1); //取得所有参数   stringvar.substr(start [, length ]
+
+				var arr = str.split("&"); //各个参数放到数组里
+				for(var i = 0; i < arr.length; i++) {
+					num = arr[i].indexOf("=");
+					if(num > 0) {
+						name = arr[i].substring(0, num);
+						value = arr[i].substr(num + 1);
+						this[name] = value;
+					}
+				}
+			}
+
+			var Request = new UrlSearch(); //实例化
+//			console.log(Request)
+//			console.log((decodeURI(Request.shebeihao)) + (decodeURI(Request.danhao)) + (decodeURI(Request.time)) + (decodeURI(Request.postion)) + (decodeURI(Request.leixing)));
+			var _url = window.location.href;
+            
+            var shebeihao=(decodeURI(Request.shebeihao));
+            $(".number").html(shebeihao);//设备号
+			var danhao = (decodeURI(Request.danhao));
+			$(".yundan").html(danhao);
+			var date = new Date();
+			Date.prototype.Format = function(fmt) { //author: meizz
+				var o = {
+					"M+": this.getMonth() + 1, //月份
+					"d+": this.getDate(), //日
+					"h+": this.getHours(), //小时
+					"m+": this.getMinutes(), //分
+					"s+": this.getSeconds(), //秒
+					"q+": Math.floor((this.getMonth() + 3) / 3), //季度
+					"S": this.getMilliseconds() //毫秒
+				};
+				if(/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+				for(var k in o)
+					if(new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+				return fmt;
+			}
+			var time1 = new Date().Format("yyyy-MM-dd");
+			var time2 = new Date().Format("yyyy-MM-dd hh:mm:ss");
+
+			$("#newtime").html(time2);
+			$(".yundan").html(danhao);
+			$(".postion").html(decodeURI(Request.postion));
+			$(".huanjing").html(decodeURI(Request.leixing)).css({
+				"font-size": "1.75rem",
+				"color": "red",
+				"font-weight": "bold",
+				"margin-left": "1.2rem"
+			});
+
+			$("#btn_off").on("click", function() {
+				var msg = "您真的确定要取消推送报警吗？\n\n请确认！";
+				if(confirm(msg) == true) {
+
+					$.ajax({
+						url: "http://www.ccsc58.com/json/17_00_PutData_Tms_SignTime.php",
+						data: {
+							"admin_permit": "3d66cee22eb39927242348df53c21a9e",
+							"WaybillNumber": danhao,
+							"SignTime": time2
+						},
+						dataType: 'json',
+						method: 'GET',
+						success: function(data) {
+
+							console.log(data);
+							if(data.code == 10000 && data.message == "success") {
+								alert("取消成功");
+								return true;
+								window.opener=null;
+								window.open('','_self');
+								window.close();
+							}
+						},
+						error: function(xhr) {
+							// 导致出错的原因较多，以后再研究
+							alert('error:' + JSON.stringify(xhr));
+						}
+					})
+				}
+
+				//alert("推送取消成功");
+				else {
+					alert("将继续推送");
+					return false;
+				}
+			})
+		})
+	</script>
+
+	<body>
+
+		<div class="content">
+			<div class="content_top">
+
+				运单温度异常详情
+
+			</div>
+			<div class="desc">
+				<ul class="list_center">
+					<li><label>&nbsp;&nbsp;&nbsp;运单号:</label><span class="yundan">000000000000</span></li>
+					<li><label>当前时间:</label><span id="newtime">2000-01-01 00:00:00</span></li>
+					<li><label>报警类型:</label><span>超温报警</span></li>
+					<li><label>设备标号:</label><span class="number">90015</span></li>
+					<li><label>物流节点:</label><span class="postion">待定路线</span></li>
+					<li><label>详情描述:</label><textarea class="huanjing">模拟环境【当前温度:10℃,温度上限:8℃】</textarea></li>
+				</ul>
+				<div class="divbtn">
+					<input type="button" id="btn_off" value="取消推送" name="btn_off" />
+					<!--<input type="button" id="btn_ok" value="继续推送" name="btn_off" />-->
+				</div>
+			</div>
+			<div class="ge"></div>
+		</div>
+	</body>
+
+</html>

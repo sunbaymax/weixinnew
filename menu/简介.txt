@@ -1,0 +1,36 @@
+<p style="text-align:center;">
+	<span style="line-height:1.5;font-size:24px;"><strong>公司介绍</strong></span> 
+</p>
+<p style="text-align:center;">
+	<span style="line-height:1.5;font-size:16px;"><strong><br /></strong></span> 
+</p>
+<p style="text-align:left;">
+	<span style="line-height:24px;font-size:16px;"><b></b></span><span style="line-height:1.5;font-size:14px;">       中集冷云（北京）供应链管理有限公司，是“中集集团”旗下一家提供冷链设备销售、租赁以及供应链综合解决方案的服务型企业。
+	</span></p><p>
+		<span style="font-family:'宋体';font-size:10.5pt;"><span>中集冷云（北京）供应链管理有限公司，是</span>“中集集团”旗下一家集冷链设备研发生产、销售租赁与冷链运输为一体的综合服务型企业。</span>
+	</p>
+	<p>
+		<span style="font-family:'宋体';font-size:10.5pt;">    <span>中集冷云</span></span><span style="font-family:'宋体';font-size:10.5pt;"><span>坚持</span></span><span style="font-family:'宋体';font-size:10.5pt;">“</span><span style="font-family:'宋体';font-size:10.5pt;"><span>创</span></span><span style="font-family:'宋体';font-size:10.5pt;">·</span><span style="font-family:'宋体';font-size:10.5pt;"><span>造</span></span><span style="font-family:'宋体';font-size:10.5pt;">·</span><span style="font-family:'宋体';font-size:10.5pt;"><span>新价值</span></span><span style="font-family:'宋体';font-size:10.5pt;">”</span><span style="font-family:'宋体';font-size:10.5pt;"><span>的理念</span></span><span style="font-family:'宋体';font-size:10.5pt;"><span>，我们不仅专注于做中国最优的相变储能材料、温度记录仪和保温箱，我们还为客户提供专业的冷链运输服务。我们拥有国内领先的技术研发团队、高素质的管理团队以及专业的运输团队；公司骨干人员均在冷链行业从业</span>5-10<span>年以上。我们在北京、杭州、成都、青岛设有</span><span>4</span><span>个温控产品生产基地。在全国</span><span>35</span><span>个省会及枢纽城市均建有分公司，配送范围辐射全国</span><span>1000</span><span>多个城市。为了更好的给客户提供安全、放心的冷链运输服务，我们在北京、上海、广州、杭州、成都、石家庄、武汉等枢纽城市建有专业冷库，</span></span><span style="font-family:'宋体';font-size:10.5pt;"><span>使用空间</span></span><span style="font-family:'宋体';font-size:10.5pt;"><span>达</span></span><span style="font-family:'宋体';font-size:10.5pt;">2</span><span style="font-family:'宋体';font-size:10.5pt;">0000<span>多立方米，可为您提供样本暂存、冰排预处理等服务。</span></span>
+	</p>
+	<p>
+		<span style="font-family:'宋体';font-size:10.5pt;">    <span>我们拥有冷链验证实验室，可根据您的产品尺寸为您定制专业保温箱；相变材料研发实验室，可控温度</span>-60<span>℃</span><span>~999</span><span>℃；我们拥有专业自制温控测试系统，同时具备冷链设备验证的资质，可进行第三方验证服务，温度计校准及代校准服务</span></span><span style="font-family:'宋体';font-size:10.5pt;"><span>。</span></span>
+	</p>
+	<p>
+		<span style="font-family:'宋体';font-size:10.5pt;">    <span>质量把控上我们搭建了成熟的评估体系，制定了严格的操作规范，员工入职均接受冷链安全法律法规的培训、药品相关知识培训、操作流程培训、温控产品原理及使用方法等技术培训。</span></span>
+	</p>
+	<p>
+		<span style="font-family:'宋体';font-size:10.5pt;">    <span>我们致力于为医药行业客户提供智能冷链运输一体化综合解决方案，让您安心、省心、放心。</span></span>
+	</p>
+	<p style="text-indent:21pt;">
+		<span style="font-family:'宋体';font-size:10.5pt;"><span>中集冷云以医药行业客户的实际需求为出发点，以国家</span>GSP<span>规范为操作标准，从产品的包装、运输、过程温控、数据的采集和存储等环节为医药行业客户提供安全、专业、高效、信息化的医药冷链一体化综合解决方案。我们自主研发了云信息平台，帮助客户实现数据的可视可追溯，温控数据可为客户保留</span><span>5</span><span>年。服务客户涵盖生命科学、生物技术、药品研发、临床检验、生物医药、生物试剂等领域。</span></span>
+	</p>
+	<p>
+		<span style="font-family:'宋体';font-size:10.5pt;">    <span>中集冷云以助力客户的企业发展为己任，从多个维度为客户提供医药冷链一体化解决方案，如：信息化云平台对接应用、医药冷链专用箱的选择、运输方案的制定、仓储服务提供、专业运营团队支持、应急预案布设等，帮助客户实现运营质量高标化、成本最优化。</span></span>
+	</p>
+	<p style="text-indent:21pt;">
+		<span style="font-family:'宋体';font-size:10.5pt;"><span>中集冷云不忘初心</span>——愿与您一直携手前行！为民众健康保驾护航！</span>
+	</p>
+
+
+<div style="text-align:left;">
+	<br /></div>

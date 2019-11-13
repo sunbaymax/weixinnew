@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>我要下单</title>
+    <link rel="stylesheet" href="../css/index.css" type="text/css">
+</head>
+<body>
+    <nav>
+        <div>< 上一步</div>
+        <div>下单</div>
+        <div></div>
+        <div></div>
+    </nav>
+<!--内容部分-->
+<main>
+    <div style="padding: 10px;border-bottom: 1px solid #000000;">
+        <p style="font-size: 14px;padding: 5px;">请输入货物信息及包装要求</p>
+    </div>
+    <ul class="contant">
+        <li>
+            <div>
+                <span>温度要求</span>
+                <div style="border: none;" class="wendu">
+                    <input type="text" readonly class="wenqj">
+                    <span> ></span>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div>
+                <span>保存环境</span>
+                <span class="huan"></span>
+            </div>
+        </li>
+        <li>
+            <div>
+                <span>货物名称</span>
+                <input type="text" style="border:1px solid #ccc;" class="ming">
+            </div>
+        </li>
+        <li style="height:auto;">
+            <div>
+                <span>所需容积</span>
+                <div style="border: none;" class="rongji">
+                    <div style="border:none;">
+                        <ul class="ewrq" style="border:none;margin-left: 1rem;"></ul>
+                    </div>
+                    <span class="jiantou" style="padding:0.1rem 0 0.1rem 0;"> ></span>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div>
+                <span>温度计</span>
+                <div style="border: none;" class="wenduji">
+                    <div class="wenduValue"></div>
+                    <span> ></span>
+                </div>
+            </div>
+        </li>
+        <li style="height: auto;padding: 0.05rem 0.05rem 0.05rem 0.15rem;">
+            <div style="border: none;height: auto;">
+                <span>备注</span>
+                <textarea name="" id="beizh" ></textarea>
+            </div>
+        </li>
+    </ul>
+</main>
+<!--按钮  下一步-->
+<footer>
+    <span class="next">下一步</span>
+</footer>
+<!--温度要求   弹框  start-->
+    <div class="wenTan fda">
+        <div class="yin"></div>
+        <div class="wdqj">
+            <p>0℃~30℃</p>
+            <p>15℃~25℃</p>
+            <p>-25℃~-15℃</p>
+            <p>2℃~8℃</p>
+            <p>-78℃~-20℃</p>
+        </div>
+    </div>
+<!--温度要求   弹框  end-->
+<!--所需容积  弹框  start-->
+    <div class="fda rongjiTan">
+        <div class="yin"></div>
+        <!-- 所需容积 -->
+        <div class="rong rongj">
+            <div style="line-height:0.5rem;">&nbsp;&nbsp;所需容积</div>
+            <div class="fasf"></div>
+            <div class="nextNum">
+                <span>下一步</span>
+            </div>
+            <div></div>
+
+        </div>
+        <!-- 所需数量 -->
+        <div class="deep fdasfs">
+            <span>&nbsp;&nbsp;请输入所需容积数量</span>
+            <div>
+                <ul class="rongNum"></ul>
+            </div>
+            <div class="rongque">
+                <span>确认</span>
+            </div>
+        </div>
+    </div>
+<!--所需容积  弹框  end-->
+<!--温度计   弹框  start-->
+    <div class="fda dujiTan">
+        <div class="yin"></div>
+        <div class="afsda">
+            <div style="color:#000000;padding: 0.3rem 0 0.3rem 0;">&nbsp;&nbsp;温度计类型</div>
+            <div class="wenlei wenle">
+                <span>U盘温度计</span>
+                <span>TP温度计</span>
+                <span>不使用温度计</span>
+            </div>
+            <div></div>
+
+        </div>
+        <!-- 温度计数量 -->
+        <div class="deep">
+            <section>
+                <span>温度计类型</span>
+                <span class="wenxing"></span>
+            </section>
+            <div class="wenle wejiNum">
+                <span>温度计数量</span>
+                <span>1</span>个
+                <span>2</span>个
+                <span>3</span>个
+            </div>
+            <div></div>
+        </div>
+
+    </div>
+<!--温度计   弹框  end-->
+</body>
+<script src="../js/rem.js" type="text/javascript"></script>
+<script src="../js/jquery-1.9.1.js" type="text/javascript"></script>
+<script>
+    $(function () {
+        $(".wenqj").val("");
+        $(".ming").val("");
+        $("#beizh").val("");
+        //        点击上一步
+        $("nav div:first-of-type").on('click',function () {
+             window.location.href = "../index.html";
+        })
+
+        //        点击温度要求
+        $(".wendu").on('click',function () {
+            $(".wenTan").show();
+        })
+        //  点击温度区间
+        $(".wdqj p").on('click',function(){
+            $(".wenTan").hide();
+            var wdqj = $(this).html();
+            $.ajax({
+                url:"http://www.ccsc58.cc/zjlytms/api.php/Order/ajax",
+                type:"post",
+                data:{
+                    wdqj:wdqj,
+                    state:2
+                },
+                dataType:"JSON",
+                success:function(res){
+                    console.log(res);
+                    var dataArr = [];
+                    var huanjing = {"0℃~30℃":"常温","15℃~25℃":"阴凉","-25℃~-15℃":"低温","2℃~8℃":"冷藏","-78℃~-20℃":"干冰"};
+                    $(".huan").html(huanjing[wdqj]);
+                    $('.wenqj').val(wdqj).css("text-align","right");
+                    $(".wenqj").next().hide();
+                    res.forEach( item =>{
+                            dataArr.push(
+                                '<span class="ni" id="'+ item.id +'">',item.bcname,'</span>'
+                            )
+                    });
+                    $(".fasf").html(dataArr.join(''));
+
+
+                },
+                error:function(err){
+                    console.log(err);
+                }
+            })
+        })
+        // 点击所需容积
+        $(".rongji").on('click',function(){
+            var wen = $(".wenqj").val();
+            if(wen == ""){
+                alert("请选择温度要求");
+            }else{
+                $(".rongjiTan").show();
+                $(".rongj").show();
+                $(".fdasfs").hide();
+                $(".fasf span").attr("class","ni");
+            }
+        })
+        
+        // 点击容积
+        $("body").on("click",".fasf span",function(){
+            if($(this).attr("class") == "ni"){
+                    $(this).attr("class","spanActive");
+            }else if($(this).attr("class") == "spanActive"){
+                    $(this).attr("class","ni");
+                }
+                   
+            })
+        // 点击所需容积中的下一步
+        $(".nextNum").on("click",function(){
+            var dataSpan = $(".fasf span[class=spanActive]");
+            console.log(dataSpan);
+            $(".rongj").hide();
+            for(let i=0;i<dataSpan.length;i++){
+            var li = $("<li><span><span class='sheng' id='"+ dataSpan[i].id+"'>"+dataSpan[i].textContent+"</span>容积</span><input type='text' style='border:1px solid #ccc;text-align:right;'></li>");
+                $(".rongNum").append(li);
+            }
+            $(".deep").show();
+        })        
+        // 点击所需容积  数量中的确认
+        $(".rongque").on("click",function(){
+            $(".ewrq").html("");
+            var li = $(".rongNum li .sheng");
+            var input = $(".rongNum li input");
+            for(let i=0;i<li.length;i++){
+                 var span = $("<li style='height:auto;'><span class='rongji' id='"+ li[i].id+"'>"+$(li[i]).text()+"</span><span class='shuli'>"+$(input[i]).val()+"</span></li>");
+                  $(".ewrq").append(span);
+            }
+             $(".jiantou").hide();
+            $(".rongNum").html("");
+
+            $(".rongjiTan").hide();
+        })
+        
+        // 点击温度计
+        $(".wenduji").on('click',function(){
+            if($(".wenqj").val()==""){
+                alert("请选择温度要求");
+            }else{
+                $(".dujiTan").show();
+                $(".afsda").show();
+                $(".deep").hide();
+            }
+            
+        })
+        // 点击温度计下的类型
+        $(".wenlei span").on("click",function(){
+            if($(this).html() == "不使用温度计"){
+                $(".wenduValue").next().hide();
+                $(".wenduValue").html($(this).html());
+                $(".dujiTan").hide();
+            }else{
+                $(".wenxing").html($(this).html());
+                $(".afsda").hide();
+                $(".deep").show();
+                $(".wejiNum span:not(:first-of-type)").on('click',function(){
+                    var span = $("<span class='wdjtype'>"+$(".wenxing").html()+"</span><span class='wdjnun'>"+$(this).html()+"</span>");
+                    $(".wenduValue").next().hide();
+                    $(".wenduValue").html(span)
+                    $(".dujiTan").hide();
+                    
+                })
+            }
+            
+        })
+//        点击弹框消失
+        $(".yin").on('click',function () {
+            $(".fda").hide();
+        })
+//        点击下一步
+        $(".next").on('click',function () {
+            if($(".wenqj").val() == "" ||$(".ming").val() == "" ||$("#beizh").val() == ""){
+                alert("请输入完整信息");
+            }else{
+                fdsafs()
+            }
+        });
+
+        function fdsafs() {
+            if($(".wenduValue").text() == "不使用温度计"){
+                var isw = 0;
+                var isty = "";
+                var isnu = "";
+            }else{
+                isw = 1;
+                isty = $(".wdjtype").text();
+                isnu = $(".wdjnun").text();
+            }
+            var dui = {};
+            var arr1 = [];
+            for(let i=0;i<$(".ewrq li").length;i++){
+                var rongji = $(".ewrq li span[class='rongji']")[i].id;
+                var shu = $(".ewrq li span[class='shuli']")[i].textContent;
+                dui[rongji] = shu ;
+            }
+            arr1.push(dui);
+            var obj = {
+                wdqj : $(".wenqj").val(),
+                bchj : $(".huan").html(),
+                cargoname : $(".ming").val(),// 货物名称
+                bcnum : arr1 ,   // 所需容积
+                iswdj : isw, // 是否使用温度计
+                wdjtype : isty,// tp温度计  u盘温度计
+                wdjnum : isnu, // 温度计数量
+                note : $("#beizh").val() // 备注
+            };
+            localStorage.setItem("wen",JSON.stringify(obj));
+            window.location.href = "take.html";
+        }
+    })
+</script>
+</html>
