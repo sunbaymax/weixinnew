@@ -1,0 +1,94 @@
+{
+	"button": [
+		{
+			"name": "🔥我要下单",
+			"sub_button": [
+		         {
+					"type": "view",
+					"name": "🏨临床",
+					"url": "http://www.ccsc58.cc/weixinnew/ZdtqWxorder/login.html",
+					"sub_button": []
+				},{
+					"type": "view",
+					"name": "💊药品",
+					"url": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx82dbac04fa8fd8ef&redirect_uri=http://www.ccsc58.cc/weixinnew/oauth2_newwxchatorder.php&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect",
+					"sub_button": []
+				}, {
+					"type": "view",
+					"name": "📦普货",
+					"url": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx82dbac04fa8fd8ef&redirect_uri=http://www.ccsc58.cc/weixinnew/oauth2_newwxchatorder.php&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect",
+					"sub_button": []
+				}, {
+					"type": "view",
+					"name": "💉试剂",
+					"url": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx82dbac04fa8fd8ef&redirect_uri=http://www.ccsc58.cc/weixinnew/oauth2_newwxchatorder.php&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect",
+					"sub_button": []
+				}, {
+					"type": "view",
+					"name": "🚑器械",
+					"url": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx82dbac04fa8fd8ef&redirect_uri=http://www.ccsc58.cc/weixinnew/oauth2_newwxchatorder.php&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect",
+					"sub_button": []
+				}
+			]
+		}, {
+			"name": "🔍查询",
+			"sub_button": [
+			    {
+					"type": "view",
+					"name": "📝客服下单",
+					"url": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx82dbac04fa8fd8ef&redirect_uri=http://www.ccsc58.cc/weixinnew/oauth2_wechatorder.php&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect",
+					"sub_button": []
+				}, 
+		
+				{
+					"type": "view",
+					"name": "🚇单号查询",
+					"url": "http://www.ccsc58.cc/weixinnew/Orderquery/index.php",
+					"sub_button": []
+				},
+				{
+					"type": "view",
+					"name": "🌀温控平台",
+					"url": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx82dbac04fa8fd8ef&redirect_uri=http://www.ccsc58.cc/weixinnew/oauth2.php&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect",
+					"sub_button": []
+				},
+				{
+					"type": "view",
+					"name": "🏦资产管理",
+					"url": "http://ams.cccc58.com/wxlogin/login",
+					"sub_button": []
+				}
+			]
+		}, {
+			"name": "☁中集冷云",
+			"sub_button": [
+				{
+					"type": "view",
+					"name": "🏢公司官网",
+					"url": "http://www.cccc58.com",
+					"sub_button": []
+				}, {
+					"type": "view",
+					"name": "🎯企业宣传",
+					"url": "https://mp.weixin.qq.com/mp/homepage?__biz=MzIxOTYzMDY2OQ==&hid=1&sn=69bbaa00ff62d1ab98e79442506850c4",
+					"sub_button": []
+				}, {
+					"type": "click",
+					"name": "☎联系客服",
+					"key": "tel",
+					"sub_button": []
+				}, {
+					"type": "view",
+					"name": "🔚消息推送",
+					"url": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx82dbac04fa8fd8ef&redirect_uri=http://www.ccsc58.cc/weixinnew/oauth_3.php&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect",
+					"sub_button": []
+				}, {
+					"type": "view",
+					"name": "🏁意见反馈",
+					"url": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx82dbac04fa8fd8ef&redirect_uri=http://www.ccsc58.cc/weixinnew/oauth2_Suggs.php&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect",
+					"sub_button": []
+				}
+			]
+		}
+	]
+}

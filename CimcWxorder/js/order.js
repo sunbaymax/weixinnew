@@ -358,24 +358,7 @@ $(function() {
 		location.href = 'Addgetaddress.html';
 	})
 
-	function toggleBody(isPin) {
 
-		if(isPin) {
-
-			document.body.style.height = '100vh'
-
-			document.body.style['overflow-y'] = 'hidden'
-		} else {
-
-			document.body.style.height = 'unset'
-
-			document.body.style['overflow-y'] = 'auto'
-
-		}
-	}
-
-	//toggleBody(1)  //在跳出弹窗的时候
-	//toggleBody(0)  //弹窗消失的时候
 	$(".yin").on('click', function() {
 		$(".setbg").hide();
 		$('body,html').animate({
@@ -385,6 +368,9 @@ $(function() {
 
 	$(".closewindow").on('click', function() {
 		$(".setbg").hide();
+		$('body,html').animate({
+			scrollTop: 0
+		}, 0);
 	})
 
 	//点击温度区间
@@ -413,9 +399,9 @@ $(function() {
 	//点击货物类型
 	$(".cgoodtype").on('click', function() {
 		//查看当前选中的箱子
-		$('body,html').animate({
-			scrollTop: 0
-		}, 0);
+//		$('body,html').animate({
+//			scrollTop: 0
+//		}, 0);
 		$('.acountlist').hide();
 		$(".setbg").show();
 		$(".goodsType").show();
@@ -760,9 +746,9 @@ $(function() {
 	//根据温区查找箱型
 	function tempboxtype(wdqj) {
 
-		$('body,html').animate({
-			scrollTop: 0
-		}, 0);
+//		$('body,html').animate({
+//			scrollTop: 0
+//		}, 0);
 		var _wdqj = wdqj;
 		$.ajax({
 			type: "post",
@@ -1348,7 +1334,7 @@ $(function() {
 			}
 
 			console.log(_data)
-			//return false;
+			
 			$.ajax({
 				type: "post",
 				url: "http://out.ccsc58.cc/DATA_PORT_WECHAT_1.03/Order.php",
@@ -1358,7 +1344,7 @@ $(function() {
 					console.log(res)
 					if(res.code == '200') {
 						var nowtime = getNowFormatDate();
-						var openids = ['oTarnv5aWyxLcCENYrs5UOR3FqvQ'];
+						var openids = ['oTarnv5aWyxLcCENYrs5UOR3FqvQ','oTarnv-4gXJ3TRvg415ECeck61lQ'];
 						for(i = 0; i < openids.length; i++) {
 							$.ajax({
 								type: "post",

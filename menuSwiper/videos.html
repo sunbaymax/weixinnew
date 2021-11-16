@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+		<title>中集智冷科技有限公司</title>
+		<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+		<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+
+	<body>
+		<style type="text/css">
+			.title {
+				height: 46px;
+				line-height: 46px;
+				background: #038DFA;
+				text-align: center;
+				color: #FFFFFF;
+				margin-bottom: 15px;
+				position: relative;
+			}
+			.back{
+				display: inline-block;
+				height: 20px;
+				width: 20px;
+				position: absolute;
+				top: 13px;
+				left: 15px;
+			}
+		</style>
+		<div class="title">
+			<img src="../img/back.png" class="back" /> 产品说明书列表
+
+		</div>
+		<div class="container">
+
+			<!-- 右对齐 -->
+			<div class="media" id="jkbwx">
+				<div class="media-body">
+					<h4 class="media-heading">监控宝微信小程序及公众号操作使用教程</h4>
+					<p>账号注册，绑定设备，手机实时监测，历史数据查询，超限温度报警易，数据导出，温度曲线一目了然，微信公众号报警，操作，功能全，远程定位温湿度 省心 放心。</p>
+				</div>
+				<div class="media-right">
+					<img src="img/vodie1.png" class="media-object" style="width:100px;margin-top: 30px;">
+				</div>
+			</div>
+
+			<div class="media" id="pcyunpingtai">
+				<div class="media-body">
+					<h4 class="media-heading">CIMC温控平台基础操作视频</h4>
+					<p>平台的主要功能有：多级树状部门管理、运单监控、温湿度数据监控、U盘数据导入导出、预警信息查询、设备定位监控以及行驶轨迹查询。是一个集查询、录入、管理于一体的平台。</p>
+				</div>
+				<div class="media-right">
+					<img src="img/pcyunpingtai.png" class="media-object" style="width:100px;margin-top: 30px;">
+				</div>
+			</div>
+
+			
+
+		</div>
+		<script>
+			$(function(){
+				$(".back").on("click",function(){
+					window.location.href='product.html'
+				})
+				$("#jkbwx").on("click",function(){
+					window.location.href='https://mp.weixin.qq.com/s/Tf87L9zLq4U0EhuMTSqkEg'
+				})
+				$("#pcyunpingtai").on("click",function(){
+					window.location.href='img/TempCtroplatform.mp4'
+				})
+			})
+		</script>
+
+	</body>
+
+</html>

@@ -194,7 +194,7 @@ function Tui_song($first,$keyword1,$keyword2,$keyword3,$keyword4,$keyword5,$rema
                 'remark'=>array('value'=>urlencode($remark),'color'=>"#000"),
             )
         );
-        $url="http://api.weixin.qq.com/cgi-bin/message/template/send?access_token=".getAccessToken();
+        $url="https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=".getAccessToken();
         $result=https_request($url,urldecode(json_encode($template)));
         //var_dump($result);
     }
@@ -217,7 +217,7 @@ function Feedbackreminding($first,$keyword1,$keyword2,$keyword3,$keyword4,$remar
                 'remark'=>array('value'=>urlencode($remark),'color'=>"#000",),
             )
         );
-        $url="http://api.weixin.qq.com/cgi-bin/message/template/send?access_token=".getAccessToken();
+        $url="https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=".getAccessToken();
         $result=https_request($url,urldecode(json_encode($template)));
         header('location:../weixin/image_test.html');
     }
@@ -237,7 +237,7 @@ function question($first,$keyword1,$keyword2,$remark,$openId,$app_key)
                 'remark'=>array('value'=>urlencode($remark),'color'=>"#000",),
             )
         );
-        $url="http://api.weixin.qq.com/cgi-bin/message/template/send?access_token=".getAccessToken();
+        $url="https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=".getAccessToken();
         $result=https_request($url,urldecode(json_encode($template)));
         header('location:../weixin/image_test.html');
     }
@@ -249,7 +249,7 @@ function orderMess($first,$keyword1,$keyword2,$keyword3,$keyword4,$keyword5,$rem
         $template=array(
             'touser'=>"$openId",
             'template_id'=>"vycBEiJO0tmZuR3cuwCKeXxz1HDfwM2Iv2XfvQcTu0E",
-            'url'=>"http://www.ccsc58.cc/weixinnew/Wxorder/html/orderdesc.html?id=".$keyword1."&isget=指令下达",
+            'url'=>"",
             'topcolor'=>"#000000",
             'data'=>array('first'=>array('value'=>urlencode($first),'color'=>"#000",),
                 'keyword1'=>array('value'=>urlencode($keyword1),'color'=>"#000",),
@@ -260,7 +260,7 @@ function orderMess($first,$keyword1,$keyword2,$keyword3,$keyword4,$keyword5,$rem
                 'remark'=>array('value'=>urlencode($remark),'color'=>"#000",),
             )
         );
-        $url="http://api.weixin.qq.com/cgi-bin/message/template/send?access_token=".getAccessToken();
+        $url="https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=".getAccessToken();
         $result=https_request($url,urldecode(json_encode($template)));
     }
 }
@@ -279,7 +279,7 @@ function Reply($first,$keyword1,$keyword2,$keyword3,$remark,$openId,$app_key,$id
                 'remark'=>array('value'=>urlencode('感谢您的反馈，希望我们的回复能解决您的问题！'),'color'=>"#000",),
             )
         );
-        $url="http://api.weixin.qq.com/cgi-bin/message/template/send?access_token=".getAccessToken();
+        $url="https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=".getAccessToken();
         $result=https_request($url,urldecode(json_encode($template)));
         header('location:../weixin/image_test.html');
     }
@@ -298,7 +298,7 @@ function download($first,$keyword1,$keyword2,$keyword3,$remark,$openId,$url)
                 'remark'=>array('value'=>urlencode($remark),'color'=>"#000",),
             )
         );
-        $url="http://api.weixin.qq.com/cgi-bin/message/template/send?access_token=".getAccessToken();
+        $url="https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=".getAccessToken();
         $result=https_request($url,urldecode(json_encode($template)));
         var_dump($result);
 }
@@ -316,7 +316,7 @@ function invite($first,$keyword1,$keyword2,$keyword3,$remark,$openId)
                 'remark'=>array('value'=>urlencode($remark),'color'=>"#000ff",),
             )
         );
-        $url="http://api.weixin.qq.com/cgi-bin/message/template/send?access_token=".getAccessToken();
+        $url="https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=".getAccessToken();
         $result=https_request($url,urldecode(json_encode($template)));
         var_dump($result);
 }

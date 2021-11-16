@@ -91,11 +91,11 @@
 				var iserror = true;
 
 				if(localStorage.getItem('Acount')) {
-					var Acount = JSON.parse(localStorage.getItem('Acount'));
+					var Acount = localStorage.getItem('Acount');
 					$("#acount").val(Acount);
 				}
 				if(localStorage.getItem('Telphone')) {
-					var telphone = JSON.parse(localStorage.getItem('Telphone'));
+					var telphone = localStorage.getItem('Telphone');
 					console.log(telphone)
 					$("#telphone").val(telphone);
 				}

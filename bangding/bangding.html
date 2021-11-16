@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-		<title>中集智冷科技有限公司</title>
+		<title>消息绑定</title>
 		<link rel="stylesheet" type="text/css" href="../css/index.css" />
 		<link rel="stylesheet" type="text/css" href="css/bangding.css" />
 	</head>
@@ -24,49 +24,9 @@
 			<div class="yanZhengMa">获取验证码</div>
 			<input type="text" class="messageCode" name="messageCode" placeholder="请输入验证码" />
 			<div class="button" id="btnok">确认提交</div>
-			<div class="button" id="banding">解除绑定</div>
 		</form>
 		<script type="text/javascript">
-			$("#banding").on('click', function() {
-				var phone = $("input[name='phone']").val();
-				var reg = /^1[345789]\d{9}$/;
-				if($(".phone").val() == "") {
-					alert("手机号不能为空!");
-					return false;
-				} else if(!reg.test(phone)) {
-					alert("请输入正确格式的手机号!");
-					return false;
-				} else {
-					$.ajax({
-						url: "http://www.zjcoldcloud.com/xiandun/public/index.php/index/contact/unbundle",
-						type: "post",
-						dataType: "JSON",
-						data: {
-							phone: phone,
-							openid: _openId
-						},
-						success: function(data) {
-							console.log(data);
-							if(data.message == "success") {
-								alert('解绑成功');
-								window.location.reload()
-							} else {
-								alert('解绑失败');
-							}
-
-						},
-						error: function() {
-							alert("网络错误！！");
-							//window.location.href="binding_ok.html";
-						}
-					});
-				}
-
-			});
-
-			$("#btnok").on('click', function() {
-				var url = "http://www.ccsc58.com/json/03_00_tb_contact_openid.php";
-				console.log(_openId);
+			$("#btnok").on('click', function() {			
 				var phone = $("input[name='phone']").val();
 				window.localStorage.setItem("phone", phone);
 				var messageCode = $("input[name='messageCode']").val();
@@ -87,39 +47,31 @@
 				}
 
 				$.ajax({
-					url: "http://www.ccsc58.com/json/03_00_tb_contact_openid.php",
-					type: "post",
+					url: "https://www.zjcoldcloud.com/xiandun/public/index.php/index/contact/alarmBinding",
+					type: "get",
 					dataType: "JSON",
 					data: {
-						admin_permit: "zjly8888",
-						mobile: phone,
+						phone,
+					    code: messageCode,
 						openid: _openId
 					},
-					success: function(data) {
-						console.log(data);
-						if(data.message == "sucess") {
-							console.log('恭喜您绑定成功,中集冷云会推送最新消息给您！');
+					success: function(res) {
+						console.log(res);
+						if(res.code == 0) {
 							window.location.href = "binding_ok.html";
-						}
-						if(data.code == '20000') {
-							alert('微信号被绑定过了，请换一个手机号！');
-						}
-						if(data.code == '30000') {
-							alert('微信号被绑定过了，请换一个手机号！');
+						}else {
+							alert(res.message);
 						}
 					},
 					error: function() {
 						alert("网络错误！！");
-						//window.location.href="binding_ok.html";
 					}
 				});
 			});
 			$(".yanZhengMa").on('click', function() {
 				var val = $(this).text();
-
 				switch(val) {
 					case "获取验证码":
-						var url = "./yanzhengma.php";
 						var tel = $("input[name='phone']").val();
 						if(tel.length) {
 							var reg = /^1[345789]\d{9}$/;
@@ -140,11 +92,26 @@
 										$(".yanZhengMa").text("获取验证码");
 									}
 								}, 1000);
-								$.post(url, {
-									tel: tel
-								}, function(msg) {
-
-									console.log(msg); //发送成功
+								$.ajax({
+									url: "https://www.zjcoldcloud.com/xiandun/public/index.php/index/register/sendCode",
+									type: "get",
+									dataType: "JSON",
+									data: {
+										phone: tel,
+										action:""
+									},
+									success: function(res) {
+										console.log(res);
+										
+										if(res.code == 0) {
+											console.log('短信发送成功')
+										}else {
+											alert('短信发送失败');
+										}
+									},
+									error: function() {
+										alert("网络错误！！");
+									}
 								});
 							} else {
 								alert('手机格式不正确');

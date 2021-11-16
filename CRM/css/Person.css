@@ -3,6 +3,14 @@
 	height: 10.83rem;
 	background: #12599B;
 }
+.title {
+    height: 3.33rem;
+    width: 100%;
+    background: #12599B;
+    color: #FFFFFF;
+    text-align: center;
+    position: relative;
+}
 
 .block_center {
 	width: 90%;

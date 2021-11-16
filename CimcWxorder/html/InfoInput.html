@@ -124,11 +124,11 @@
 			})
 			var _openid = localStorage.getItem('openid');
 			if(localStorage.getItem('Acount')) {
-				var Acount = JSON.parse(localStorage.getItem('Acount'));
+				var Acount = localStorage.getItem('Acount');
 				$("#acount").val();
 			}
 			if(localStorage.getItem('Telphone')) {
-				var telphone = JSON.parse(localStorage.getItem('Telphone'));
+				var telphone = localStorage.getItem('Telphone');
 				$("#telphone").val(telphone);
 			}
 			if(localStorage.getItem('ChaddreType') == 'send') {

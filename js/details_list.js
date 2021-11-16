@@ -222,9 +222,10 @@
 			})
 		}
 	}
+	//http://www.ccsc58.com/json/01_00_tb_history_data.php http://www.ccsc58.com/json/xiandun_history_data.php
 	//获取页面当前时间；
 	$.ajax({
-		url: "http://www.ccsc58.com/json/01_00_tb_history_data.php",
+		url: "http://www.ccsc58.com/json/xiandun_history_data.php",
 		type: "post",
 		data: {
 			UserP: "w",
@@ -362,7 +363,7 @@
 	function my_history_ajax(_start, _history_start_time, _history_end_time, _iscroll_length) {
 		$.ajax({
 			type: "post",
-			url: "http://www.ccsc58.com/json/01_00_tb_history_data.php",
+			url: "http://www.ccsc58.com/json/xiandun_history_data.php",
 			data: {
 				UserP: "w",
 				SheBeiBianHao: _num_m,

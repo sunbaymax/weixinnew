@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+		<title>中集智冷科技有限公司</title>
+		<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+		<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+
+	<body>
+		<style type="text/css">
+			.title {
+				height: 46px;
+				line-height: 46px;
+				background: #038DFA;
+				text-align: center;
+				color: #FFFFFF;
+				margin-bottom: 15px;
+				position: relative;
+			}
+			.back{
+				display: inline-block;
+				height: 20px;
+				width: 20px;
+				position: absolute;
+				top: 13px;
+				left: 15px;
+			}
+		</style>
+		<div class="title">
+			<img src="../img/back.png" class="back" /> 产品说明书列表
+
+		</div>
+		<div class="container">
+
+			<!-- 右对齐 -->
+			<div class="media" id="xiandun">
+				<div class="media-body">
+					<h4 class="media-heading">ZL-TH10TP（监控宝）使用说明书</h4>
+					<p>鲜盾 食品生鲜：实时上传；位置跟踪；双缓存技术；支持环境温度检测；一键打印；飞行模式。支持远程自动参数下载。</p>
+				</div>
+				<div class="media-right">
+					<img src="http://www.ccsc58.cc/leng/img/product/jiankongbao.png" class="media-object" style="width:100px">
+				</div>
+			</div>
+
+			<div class="media" id="yaodun">
+				<div class="media-body">
+					<h4 class="media-heading">ZL-TH10TP使用说明书</h4>
+					<p>药盾 医药：实时上传；位置跟踪；双缓存技术；支持环境温度检测；一键打印；飞行模式。支持远程自动参数下载。</p>
+				</div>
+				<div class="media-right">
+					<img src="http://www.ccsc58.cc/leng/img/product/10tp.jpg" class="media-object" style="width:100px">
+				</div>
+			</div>
+
+			<div class="media" id="upan1000b">
+				<div class="media-body">
+					<h4 class="media-heading">LY-RTH1000B使用说明书</h4>
+					<p>温度采集 数据记录 PDF导出、全国唯一干电池供电PDF记录仪；测量范围-99.9℃~99.9℃；防水等级IP66；探头可泡水测量；最大存储记录数9000组。</p>
+				</div>
+				<div class="media-right">
+					<img src="http://www.ccsc58.cc/leng/img/product/1000B.png" class="media-object" style="width:100px">
+				</div>
+			</div>
+
+		</div>
+		<script>
+			$(function(){
+				$(".back").on("click",function(){
+					window.location.href='product.html'
+				})
+				$("#xiandun").on("click",function(){
+					window.location.href='http://www.ccsc58.cc/leng/FreshShield/file/zlth10tp.pdf'
+				})
+				$("#yaodun").on("click",function(){
+					window.location.href='http://www.ccsc58.cc/leng/img/product/yiyao10tp.jpg'
+				})
+				$("#upan1000b").on("click",function(){
+					window.location.href='http://mp.weixin.qq.com/s/8bXlkPaTNIagbCN8Zqaqhg'
+				})
+			})
+		</script>
+
+	</body>
+
+</html>

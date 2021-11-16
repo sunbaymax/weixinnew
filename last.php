@@ -110,7 +110,7 @@ if (!empty($postStr)){
             }
             else if($keyword=="oms"||$keyword=="OMS"){
                 $msgType = "text";
-                $contentStr = "您好,请通过链接进行用户名绑定："."<a href=\"https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx82dbac04fa8fd8ef&redirect_uri=http://www.ccsc58.cc/weixinnew/oauth2_omsbanding.php&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect\">ttps://open.weixin.qq.com/connect/oauth2/authorize/oms</a>";
+                $contentStr = "您好,请通过链接进行用户名绑定："."<a href=\"https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx82dbac04fa8fd8ef&redirect_uri=http://www.ccsc58.cc/weixinnew/oauth2_omsbanding.php&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect\">https://open.weixin.qq.com/connect/oauth2/authorize/oms</a>";
                 $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
                 echo $resultStr;
             }
@@ -174,7 +174,7 @@ if (!empty($postStr)){
                 echo $resultStr;
             }else if($keyword=="下载"||$keyword=="app"||$keyword=="APP"||$keyword=="App"||$keyword=="安卓"||$keyword=="ios"||$keyword=="IOS"||$keyword=="应用"||$keyword=="苹果"){
                 $msgType = "text";
-                $contentStr = "<a href=\"http://fusion.qq.com/cgi-bin/qzapps/unified_jump?appid=42375908&isTimeline=false&actionFlag=0&params=pname%3Dcom.ccsc.coldcloud%26versioncode%3D1%26channelid%3D%26actionflag%3D0&from=singlemessage&isappinstalled=1\">中集冷云(安卓)</a>\n\n<a href=\"https://itunes.apple.com/us/app/zhong-ji-leng-yun-wen-shi/id1173609882?mt=8\">中集冷云(苹果)</a>";
+                $contentStr = "<a href=\"http://www.ccsc58.cc/weixinnew/bangding/andownload.php\">中集冷云(安卓)</a>\n\n<a href=\"https://itunes.apple.com/us/app/zhong-ji-leng-yun-wen-shi/id1173609882?mt=8\">中集冷云(苹果)</a>";
                 $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
                 echo $resultStr;
             }else if($keyword=="客服"){
@@ -206,7 +206,14 @@ if (!empty($postStr)){
                 $contentStr = "<a href=\"http://www.ccsc58.cc/weixinnew/html/warning_rukou.html\">设备报警列表</a>";
                 $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
                 echo $resultStr;
-            }else if(is_numeric($keyword)&&strlen($keyword)>=5&&strlen($keyword)<=8){
+            }
+            else if($keyword=="正大天晴"||$keyword=="ZDTQ"||strstr($keyword, "正大")){
+                $msgType = "text";
+                $contentStr = "<a href=\"http://www.ccsc58.cc/weixinnew/ZdtqWxorder/login.html\">我要下单</a>";
+                $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
+                echo $resultStr;
+            }
+            else if(is_numeric($keyword)&&strlen($keyword)>=5&&strlen($keyword)<=8){
                 $msgType = "text";
                 //$contentStr = "<a href=\"http://www.ccsc58.cc/weixinnew/details_rukou.html?num_m=".$keyword."\">".$keyword."</a>";
                 $contentStr = "<a href=\"http://www.ccsc58.com/index_data_for_weinxin_2.php?id=".$keyword."\">".$keyword."</a>";
@@ -506,9 +513,9 @@ function Tui_song($first,$keyword1,$keyword2,$keyword3,$keyword4,$keyword5,$rema
                 'remark'=>array('value'=>urlencode($remark),'color'=>"#000"),
             )
         );
-        $url="http://api.weixin.qq.com/cgi-bin/message/template/send?access_token=".getAccessToken();
+        $url="https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=".getAccessToken();
         $result=https_request($url,urldecode(json_encode($template)));
-        //var_dump($result);
+        echo($result);
     }
 }
 
@@ -535,7 +542,7 @@ function shebei_pdf($first,$keyword1,$remark,$openId,$app_key)
                 'remark'=>array('value'=>urlencode($remark),'color'=>"#000"),
             )
         );
-        $url="http://api.weixin.qq.com/cgi-bin/message/template/send?access_token=".getAccessToken();
+        $url="https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=".getAccessToken();
         $result=https_request($url,urldecode(json_encode($template)));
         //var_dump($result);
     }
@@ -567,7 +574,7 @@ function jiankong($first,$keyword1,$keyword2,$keyword3,$remark,$openId,$app_key)
                 'remark'=>array('value'=>urlencode($remark),'color'=>"#008000"),
             )
         );
-        $url="http://api.weixin.qq.com/cgi-bin/message/template/send?access_token=".getAccessToken();
+        $url="https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=".getAccessToken();
         $result=https_request($url,urldecode(json_encode($template)));
         var_dump($result);
     }
@@ -586,7 +593,7 @@ function xiafa_yzm($first,$keyword1,$keyword2,$remark,$openId,$app_key)
                 'remark'=>array('value'=>urlencode('请于30分钟内正确输入 ，若非本人操作，请忽略！'),'color'=>"#008000"),
             )
         );
-        $url="http://api.weixin.qq.com/cgi-bin/message/template/send?access_token=".getAccessToken();
+        $url="https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=".getAccessToken();
         $result=https_request($url,urldecode(json_encode($template)));
         return $result;
     }
@@ -607,7 +614,7 @@ function Pay_money($first,$keyword1,$keyword2,$keyword3,$keyword4,$remark,$openI
                 'remark'=>array('value'=>urlencode($remark),'color'=>"#000",),
             )
         );
-        $url="http://api.weixin.qq.com/cgi-bin/message/template/send?access_token=".getAccessToken();
+        $url="https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=".getAccessToken();
         $result=https_request($url,urldecode(json_encode($template)));
         header('location:../weixin/image_test.html');
     }

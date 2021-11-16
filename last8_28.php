@@ -33,7 +33,7 @@ function Tui_song($first,$keyword1,$keyword2,$keyword3,$keyword4,$keyword5,$rema
                 'remark'=>array('value'=>urlencode($remark),'color'=>"#000"),
             )
         );
-        $url="http://api.weixin.qq.com/cgi-bin/message/template/send?access_token=".getAccessToken();
+        $url="https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=".getAccessToken();
         $result=https_request($url,urldecode(json_encode($template)));
         //var_dump($result);
     }
@@ -61,7 +61,7 @@ function TempAnomaly($first,$keyword1,$keyword2,$keyword3,$keyword4,$keyword5,$r
                 'remark'=>array('value'=>urlencode($remark),'color'=>"#000",),
             )
         );
-        $url="http://api.weixin.qq.com/cgi-bin/message/template/send?access_token=".getAccessToken();
+        $url="https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=".getAccessToken();
         $result=https_request($url,urldecode(json_encode($template)));
          var_dump($result);
     }
@@ -83,7 +83,7 @@ function zhongjiang($first,$keyword1,$keyword2,$keyword3,$remark,$openId,$app_ke
                 'remark'=>array('value'=>urlencode('再次感谢您对中集冷云公司的支持，本消息仅为中奖凭证,工作人员会耐心核实,希望中奖者耐心等待奖品。  特此通知！'),'color'=>"#000",),
             )
         );
-        $url="http://api.weixin.qq.com/cgi-bin/message/template/send?access_token=".getAccessToken();
+        $url="https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=".getAccessToken();
         $result=https_request($url,urldecode(json_encode($template)));
          var_dump($result);
     }
@@ -102,7 +102,7 @@ function xiafa_yzm($first,$keyword1,$keyword2,$remark,$openId,$app_key)
                 'remark'=>array('value'=>urlencode('请于1分钟内正确输入 ，若非本人操作，请忽略！'),'color'=>"#008000"),
             )
         );
-        $url="http://api.weixin.qq.com/cgi-bin/message/template/send?access_token=".getAccessToken();
+        $url="https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=".getAccessToken();
         $result=https_request($url,urldecode(json_encode($template)));
         echo $result;
     }
@@ -123,7 +123,7 @@ function Pay_money($first,$keyword1,$keyword2,$keyword3,$keyword4,$remark,$openI
                 'remark'=>array('value'=>urlencode($remark),'color'=>"#000",),
             )
         );
-        $url="http://api.weixin.qq.com/cgi-bin/message/template/send?access_token=".getAccessToken();
+        $url="https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=".getAccessToken();
         $result=https_request($url,urldecode(json_encode($template)));
         header('location:../weixin/image_test.html');
     }
@@ -142,7 +142,7 @@ function draw($first,$keyword1,$keyword2,$keyword3,$remark,$openId)
                 'remark'=>array('value'=>urlencode($remark),'color'=>"#000",),
             )
         );
-        $url="http://api.weixin.qq.com/cgi-bin/message/template/send?access_token=".getAccessToken();
+        $url="https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=".getAccessToken();
         $result=https_request($url,urldecode(json_encode($template)));
         echo($result);
     
