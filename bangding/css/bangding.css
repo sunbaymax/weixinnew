@@ -6,15 +6,18 @@
 	left:0;
 	z-index: -99999;
 }
+html{
+	height: 100%;
+}
 body{
 	background: url(../img/bangding.png) no-repeat; 
-	background-repeat:no-repeat; background-size:100% 120%;-moz-background-size:100% 120%;}  
+	background-repeat:no-repeat; background-size:100% 100%;-moz-background-size:100% 100%;}  
 	
 .hong_box{
 	position:relative;
 	z-index: 10;
 	width:100%;
-	margin-top:11vh;
+	margin-top:38vh;
 	margin-bottom: 2rem;
 }
 .hong_box p{

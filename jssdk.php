@@ -66,24 +66,7 @@ class JSSDK {
   }
 
   private function getAccessToken() {
-    // access_token 应该全局存储与更新，以下代码以写入到文件中做示例
-//  $data = json_decode($this->get_php_file("access_token.php"));
-//  if ($data->expire_time < time()) {
-//    // 如果是企业号用以下URL获取access_token
-//    // $url = "https://qyapi.weixin.qq.com/cgi-bin/gettoken?corpid=$this->appId&corpsecret=$this->appSecret";
-//    $url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=$this->appId&secret=$this->appSecret";
-//    $res = json_decode($this->httpGet($url));
-//    $access_token = $res->access_token;
-//    if ($access_token) {
-//      $data->expire_time = time() + 7000;
-//      $data->access_token = $access_token;
-//      $this->set_php_file("access_token.php", json_encode($data));
-//    }
-//  } else {
-//    $access_token = $data->access_token;
-//  }
-//  return $access_token;
-    $url = "http://www.zjcoldcloud.com/weixin/get_token_zjly.php";
+    $url = "http://120.55.186.125/crontab/alarmDeal/getToken.php";
     $access_token=file_get_contents($url);
     return $access_token;
   }

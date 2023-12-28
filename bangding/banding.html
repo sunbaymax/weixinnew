@@ -29,7 +29,7 @@
 		<script type="text/javascript">
 			$("#banding").on('click', function() {
 				var phone = $("input[name='phone']").val();
-				var reg = /^1[345789]\d{9}$/;
+				var reg = /^1[3456789]\d{9}$/;
 				if($(".phone").val() == "") {
 					alert("手机号不能为空!");
 					return false;
@@ -38,7 +38,7 @@
 					return false;
 				} else {
 					$.ajax({
-						url: "http://www.zjcoldcloud.com/xiandun/public/index.php/index/contact/unbundle",
+						url: "http://erpapi.ccsc58.com/xiandun/public/index.php/index/contact/unbundle",
 						type: "post",
 						dataType: "JSON",
 						data: {
@@ -71,7 +71,7 @@
 				window.localStorage.setItem("phone", phone);
 				var messageCode = $("input[name='messageCode']").val();
 				var admin_permit = "zjly8888";
-				var reg = /^1[345789]\d{9}$/;
+				var reg = /^1[3456789]\d{9}$/;
 				if($(".phone").val() == "") {
 					alert("手机号不能为空!");
 					return false;
@@ -122,7 +122,7 @@
 						var url = "./yanzhengma.php";
 						var tel = $("input[name='phone']").val();
 						if(tel.length) {
-							var reg = /^1[345789]\d{9}$/;
+							var reg = /^1[3456789]\d{9}$/;
 							if(reg.test(tel)) {
 								console.log("短信已发至您的手机");
 								var num = 60;
